@@ -40,6 +40,7 @@ const DebateArgument = mongoose.model("Debate", debateSchema);
 app.get("/", function(req, res){
     res.render('index');
 });
+
 // INDEX OF DEBATES
 app.get("/debates", function(req,res){
     DebateArgument.find(function(err, foundDebates){
@@ -61,6 +62,16 @@ app.post("/debates", function(req,res){
             res.render('compose');
         } else {
             res.redirect("/debates");
+        }
+    });
+});
+// SHOW
+app.get("/debates/:id", function(req, res){
+    DebateArgument.findById(req.params.id, function(err, foundArg){
+        if(err){
+            res.redirect("/debates");
+        } else {
+            res.render("debates/show", {debate: foundArg});
         }
     });
 });
