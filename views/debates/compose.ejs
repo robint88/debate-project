@@ -1,0 +1,23 @@
+<%- include("../partials/header") %>
+
+<h1>LET'S DEBATE</h1>
+
+<div class="row justify-content-sm-center">
+    <div class="col-md-10">
+        <form action="/debates" method="post">
+            <div class="form-group">
+                <label for="debateTitle">Title</label>
+                <input class="form-control" type="text" name="debate[title]" id="debateTitle">
+
+                <label for="debateAuthor">Author</label>
+                <input class="form-control" type="text" name="debate[author]" id="debateAuthor">
+
+                <label for="debateContent">Content</label>
+                <textarea class="form-control" name="debate[content]" id="debateContent" cols="30" rows="10" placeholder="Write your argument here"></textarea>
+            </div>
+            <button class="btn btn-outline-info" type="submit" name="createPost">publish</button>
+        </form>
+    </div>
+</div>
+
+<%- include("../partials/footer") %>
