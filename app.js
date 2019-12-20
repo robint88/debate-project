@@ -1,28 +1,18 @@
 require('dotenv').config();
 const express = require('express');
+const methodOverride = require('method-override');
 const ejs = require('ejs');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
 const app = express();
 
-// const draftDebate = [
-//     {
-//         title: "Money is good.",
-//         author: "Adam Smith",
-//         content: "Bacon ipsum dolor amet turkey ham hock fatback rump pork kielbasa. Sausage rump pig boudin turducken ground round flank jerky. Shoulder pig jowl bresaola ham pastrami leberkas ribeye. Shoulder short ribs salami, biltong leberkas filet mignon spare ribs sausage. Sirloin burgdoggen tongue pastrami sausage ham hock tenderloin prosciutto."
-//     },
-//     {
-//         title: "Money is bad.",
-//         author: "Karl Marx",
-//         content: "Bacon ipsum dolor amet turkey ham hock fatback rump pork kielbasa. Sausage rump pig boudin turducken ground round flank jerky. Shoulder pig jowl bresaola ham pastrami leberkas ribeye. Shoulder short ribs salami, biltong leberkas filet mignon spare ribs sausage. Sirloin burgdoggen tongue pastrami sausage ham hock tenderloin prosciutto."
-//     }
-// ]
 
 //set ejs view engine, body-parser& public directory
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname+'/public'));
+app.use(methodOverride("_method"));
 
 // Set up DB
 mongoose.connect("mongodb://localhost:27017/debateDB", {useNewUrlParser: true});
@@ -61,7 +51,7 @@ app.post("/debates", function(req,res){
         if(err){
             res.render('compose');
         } else {
-            res.redirect("/debates");
+            res.redirect("/debates/" + newArg._id);
         }
     });
 });
@@ -70,10 +60,46 @@ app.get("/debates/:id", function(req, res){
     DebateArgument.findById(req.params.id, function(err, foundArg){
         if(err){
             res.redirect("/debates");
+            console.log(err);
         } else {
             res.render("debates/show", {debate: foundArg});
         }
     });
+});
+// EDIT
+app.get("/debates/:id/edit", function(req,res){
+    DebateArgument.findById(req.params.id, function(err, foundArg){
+        if(err){
+            res.redirect("/debates");
+            console.log(err);
+        } else {
+            res.render("debates/edit", {debate: foundArg});
+        }
+    });
+});
+// UPDATE
+app.put("/debates/:id", function(req,res){
+    DebateArgument.findByIdAndUpdate(req.params.id, req.body.debate, function(err, updatedArg){
+        if(err){
+            res.redirect("/debates");
+            console.log(err);
+        } else {
+            res.redirect("/debates/" + req.params.id);
+        }
+    });
+});
+// DESTROY
+app.delete("/debates/:id", function(req,res){
+    DebateArgument.findByIdAndRemove(req.params.id, function(err){
+        if(err){
+            res.redirect("/debates");
+            console.log(err);
+        } else {
+            res.redirect("/debates");
+        }
+        
+    });
+    // res.send("THIS WAY");
 });
 
 //server

@@ -9,7 +9,18 @@
             <%= debate.author %>
         </p>
             <%= debate.content %>
+        
     </div>
+    
 </div>
+<div class="row justify-content-md-center">
+    <div class="col-sm-4 text-center">
+        <a class="btn btn-outline-info" href="/debates/<%= debate._id %>/edit"> edit </a>
+    </div>
+    <form class="col-sm-4 text-center" action="/debates/<%= debate._id %>?_method=DELETE" method="POST">
+        <button class="btn btn-outline-danger"> delete </button>
+    </form>
+</div>
+
 
 <%- include("../partials/footer") %>

@@ -1,0 +1,23 @@
+<%- include("../partials/header") %>
+
+<h1>LET'S DEBATE</h1>
+
+<div class="row justify-content-sm-center">
+    <div class="col-md-10">
+        <form action="/debates/<%= debate._id %>?_method=PUT" method="POST">
+            <div class="form-group">
+                <label for="debateTitle">Title</label>
+                <input class="form-control" type="text" name="debate[title]" id="debateTitle" value="<%= debate.title %>">
+
+                <label for="debateAuthor">Author</label>
+                <input class="form-control" type="text" name="debate[author]" id="debateAuthor" value="<%= debate.author %>">
+
+                <label for="debateContent">Content</label>
+                <textarea class="form-control" name="debate[content]" id="debateContent" cols="30" rows="10"><%= debate.content %></textarea>
+            </div>
+            <button class="btn btn-outline-info" type="submit" name="updatePost">update</button>
+        </form>
+    </div>
+</div>
+
+<%- include("../partials/footer") %>
