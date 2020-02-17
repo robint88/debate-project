@@ -32,9 +32,17 @@ h3 {
     font-weight: 700;
 }
 
+hr {
+    background: #00798C;
+    width: 75%;
+}
+
 .carousel-item {
     height: 500px;
+    padding-top: 0;
 }
+
+
 .carousel-image {
     width: 100%;
     margin: 0;

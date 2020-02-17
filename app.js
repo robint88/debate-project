@@ -5,6 +5,11 @@ const ejs = require('ejs');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
+const Debate = require("./models/debate");
+// const Comment = require("./models/comment");
+
+const seedDB = require("./seeds");
+
 const app = express();
 
 
@@ -14,15 +19,16 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname+'/public'));
 app.use(methodOverride("_method"));
 
+
 // Set up DB
+seedDB();
 mongoose.connect("mongodb://localhost:27017/debateDB", {useNewUrlParser: true});
 
-const debateSchema = new mongoose.Schema({
-    title: String, 
-    author: String,
-    content: String
-});
-const DebateArgument = mongoose.model("Debate", debateSchema);
+// const topicScema = new mongoose.Schema({
+//     title: String,
+//     debateArgs: []
+// });
+
 
 // ROUTES 
 
@@ -33,7 +39,7 @@ app.get("/", function(req, res){
 
 // INDEX OF DEBATES
 app.get("/debates", function(req,res){
-    DebateArgument.find(function(err, foundDebates){
+    Debate.find(function(err, foundDebates){
         if(err){
             console.log(err);
         } else {
@@ -47,7 +53,7 @@ app.get("/debates/new", function(req,res){
 });
 //CREATE
 app.post("/debates", function(req,res){
-    DebateArgument.create(req.body.debate, function(err, newArg){
+    Debate.create(req.body.debate, function(err, newArg){
         if(err){
             res.render('compose');
         } else {
@@ -57,18 +63,19 @@ app.post("/debates", function(req,res){
 });
 // SHOW
 app.get("/debates/:id", function(req, res){
-    DebateArgument.findById(req.params.id, function(err, foundArg){
+    Debate.findById(req.params.id).populate("comments").exec(function(err, foundArg){
         if(err){
             res.redirect("/debates");
             console.log(err);
         } else {
+            console.log(foundArg);
             res.render("debates/show", {debate: foundArg});
         }
     });
 });
 // EDIT
 app.get("/debates/:id/edit", function(req,res){
-    DebateArgument.findById(req.params.id, function(err, foundArg){
+    Debate.findById(req.params.id, function(err, foundArg){
         if(err){
             res.redirect("/debates");
             console.log(err);
@@ -79,7 +86,7 @@ app.get("/debates/:id/edit", function(req,res){
 });
 // UPDATE
 app.put("/debates/:id", function(req,res){
-    DebateArgument.findByIdAndUpdate(req.params.id, req.body.debate, function(err, updatedArg){
+    Debate.findByIdAndUpdate(req.params.id, req.body.debate, function(err, updatedArg){
         if(err){
             res.redirect("/debates");
             console.log(err);
@@ -90,7 +97,7 @@ app.put("/debates/:id", function(req,res){
 });
 // DESTROY
 app.delete("/debates/:id", function(req,res){
-    DebateArgument.findByIdAndRemove(req.params.id, function(err){
+    Debate.findByIdAndRemove(req.params.id, function(err){
         if(err){
             res.redirect("/debates");
             console.log(err);

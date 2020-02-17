@@ -21,6 +21,20 @@
         <button class="btn btn-outline-danger"> delete </button>
     </form>
 </div>
+<br>
+<hr>
+<br>
+<div class="row justify-content-md-center">
+    <div class="col-sm-10">
+        <h3>Discussion</h3>
+    </div>
+    <% debate.comments.forEach(function(comment){ %>
+        <p>
+            <strong><%= comment.author %></strong> - <%= comment.text %>
+        </p>
+    <% }) %>
+</div>
+
 
 
 <%- include("../partials/footer") %>
