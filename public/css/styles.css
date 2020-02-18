@@ -64,4 +64,24 @@ hr {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23EDAE49' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E") !important;
 }
 
+#joinDiscBtn {
+    color:white;
+}
 
+#joinDiscBtn:hover{
+    color: #00798C;
+    text-decoration: underline;
+}
+
+#commentSect {
+    border-radius: 10px;
+    background: rgba(0, 121, 140, 0.384)
+}
+
+.comment{
+    padding: 3px;
+}
+
+.comment:nth-child(even){
+    background: rgba(237, 174, 73, 0.1);
+}

@@ -1,7 +1,7 @@
 <%- include("../partials/header") %>
 
 <div class="row justify-content-md-center">
-    <div class="col-sm-10">
+    <div class="col-sm-12">
         <h2>
             <%= debate.title %>
         </h2>
@@ -13,11 +13,12 @@
     </div>
     
 </div>
+<br>
 <div class="row justify-content-md-center">
-    <div class="col-sm-4 text-center">
+    <div class="col text-center">
         <a class="btn btn-outline-info" href="/debates/<%= debate._id %>/edit"> edit </a>
     </div>
-    <form class="col-sm-4 text-center" action="/debates/<%= debate._id %>?_method=DELETE" method="POST">
+    <form class="col text-center" action="/debates/<%= debate._id %>?_method=DELETE" method="POST">
         <button class="btn btn-outline-danger"> delete </button>
     </form>
 </div>
@@ -25,14 +26,19 @@
 <hr>
 <br>
 <div class="row justify-content-md-center">
-    <div class="col-sm-10">
+    <div class="col-sm-12">
         <h3>Discussion</h3>
     </div>
-    <% debate.comments.forEach(function(comment){ %>
-        <p>
-            <strong><%= comment.author %></strong> - <%= comment.text %>
-        </p>
-    <% }) %>
+    <p class="col-sm-12 text-right">
+        <a id="joinDiscBtn" href="/debates/<%= debate._id %>/discussion/new">Join the discussion.</a>
+    </p>
+    <div id="commentSect" class="col-sm-12">
+        <% debate.comments.forEach(function(comment){ %>
+            <p class="col-sm-12 comment">
+                <strong><%= comment.author %></strong> - <em><%= comment.text %></em>
+            </p>
+        <% }) %>
+    </div>
 </div>
 
 

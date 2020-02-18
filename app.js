@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
 const Debate = require("./models/debate");
-// const Comment = require("./models/comment");
+const Comment = require("./models/comment");
 
 const seedDB = require("./seeds");
 
@@ -36,6 +36,10 @@ mongoose.connect("mongodb://localhost:27017/debateDB", {useNewUrlParser: true});
 app.get("/", function(req, res){
     res.render('index');
 });
+
+//************************************** 
+// DEBATES
+//************************************** 
 
 // INDEX OF DEBATES
 app.get("/debates", function(req,res){
@@ -107,6 +111,42 @@ app.delete("/debates/:id", function(req,res){
         
     });
     // res.send("THIS WAY");
+});
+
+
+//************************************** 
+// DISCUSSION
+//************************************** 
+
+//New
+app.get("/debates/:id/discussion/new", function(req, res){
+    Debate.findById(req.params.id, function(err, foundDebate){
+        if(err){
+            console.log(err);
+        } else {
+            res.render("discussion/new", {debate: foundDebate});
+        }
+    });
+});
+
+//Create
+app.post("/debates/:id/discussion", function(req, res){
+    Debate.findById(req.params.id, function(err, foundDebate){
+        if(err){
+            console.log(err);
+            res.redirect("/debates");
+        } else {
+            Comment.create(req.body.comment, function(err, comment){
+                if(err){
+                    console.log(err);
+                } else {
+                    foundDebate.comments.push(comment);
+                    foundDebate.save();
+                    res.redirect("/debates/"+ foundDebate._id);
+                }
+            })
+        }
+    });
 });
 
 //server
