@@ -1,26 +1,34 @@
 <%- include("../partials/header") %>
 
-<div class="row justify-content-md-center">
-    <div class="col-sm-12">
-        <h2>
-            <%= debate.for.title %>
-        </h2>
-        <h4>The Case FOR</h4>
-        <p>
+<h2>
+        <%= debate.topic %>
+    </h2>
+
+<div class="row">
+
+        <h4 class="col-md-12">The Case FOR</h4>
+        <p class="col-md-12">
             <em>by - <%= debate.for.author %></em>
         </p>
-        <p>
-            <%= debate.for.content %>
-        </p>
-        <h4>The Case AGAINST</h4>
-        <p>
+        <div class="col-md-12 row">
+               
+                <p class="col-md-6"> 
+                    <%= debate.for.content %>
+                </p>
+                <img class="img-fluid col-md-6" src="http://lorempixel.com/540/360" alt="">
+        </div>
+        
+        <h4 class="col-md-12">The Case AGAINST</h4>
+        <p class="col-md-12">
             <em>by - <%= debate.against.author %></em>
         </p>
-        <p>
-            <%= debate.for.content %>
-        </p>
+        <div class="col-md-12 row">
+            <img class="col-md-6" src="http://lorempixel.com/640/460" alt="">
+            <p class="col-md-6">
+                <%= debate.against.content %>
+            </p>
+        </div>
         
-    </div> 
     
 </div>
  <br>
