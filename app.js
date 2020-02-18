@@ -95,6 +95,7 @@ app.put("/debates/:id", function(req,res){
             res.redirect("/debates");
             console.log(err);
         } else {
+            console.log(updatedArg);
             res.redirect("/debates/" + req.params.id);
         }
     });

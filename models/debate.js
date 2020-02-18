@@ -1,9 +1,17 @@
 const mongoose = require('mongoose');
 
 const debateSchema = new mongoose.Schema({
-    title: String, 
-    author: String,
-    content: String,
+    topic: String,
+    for: {
+        title: String, 
+        author: String,
+        content: String
+    },
+    against: {
+        title: String, 
+        author: String,
+        content: String
+    },
     comments: [
         {
             type: mongoose.Schema.Types.ObjectId,

@@ -3,17 +3,27 @@
 <div class="row justify-content-md-center">
     <div class="col-sm-12">
         <h2>
-            <%= debate.title %>
+            <%= debate.for.title %>
         </h2>
+        <h4>The Case FOR</h4>
         <p>
-            <%= debate.author %>
+            <em>by - <%= debate.for.author %></em>
         </p>
-            <%= debate.content %>
+        <p>
+            <%= debate.for.content %>
+        </p>
+        <h4>The Case AGAINST</h4>
+        <p>
+            <em>by - <%= debate.against.author %></em>
+        </p>
+        <p>
+            <%= debate.for.content %>
+        </p>
         
-    </div>
+    </div> 
     
 </div>
-<br>
+ <br>
 <div class="row justify-content-md-center">
     <div class="col text-center">
         <a class="btn btn-outline-info" href="/debates/<%= debate._id %>/edit"> edit </a>
@@ -40,7 +50,6 @@
         <% }) %>
     </div>
 </div>
-
 
 
 <%- include("../partials/footer") %>

@@ -7,11 +7,8 @@
     <% debates.forEach(function(debate){ %>
         <div class="col text-center">
             <h3>
-                <%= debate.title %>
+                <%= debate.topic %>
             </h3>
-            <p>
-                <%= debate.author %>
-            </p>
             <a href="debates/<%=debate._id%>">
                 view
             </a>

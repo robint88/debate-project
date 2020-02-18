@@ -3,16 +3,19 @@ const Debate = require('./models/debate');
 const Comment = require('./models/comment');
 
 const data = [
-    {
-        title: "The Earth is flat",
-        author: "Some old guy",
-        content: "Are creatures of the cosmos. Citizens of distant epochs Flatland tendrils of gossamer clouds ship of the imagination Jean-FranÃƒÂ§ois Champollion hundreds of thousands at the edge of forever Orion’s sword decipherment muse about, cosmos from which we spring consciousness citizens of distant epochs Orion’s sword another world Vangelis star stuff harvesting star light explorations finite but unbounded concept of the number one intelligent beings tingling of the spine."
-    },
-    {
-        title: "The Earth is round",
-        author: "Some modern guy",
-        content: "Are creatures of the cosmos. Citizens of distant epochs Flatland tendrils of gossamer clouds ship of the imagination Jean-FranÃƒÂ§ois Champollion hundreds of thousands at the edge of forever Orion’s sword decipherment muse about, cosmos from which we spring consciousness citizens of distant epochs Orion’s sword another world Vangelis star stuff harvesting star light explorations finite but unbounded concept of the number one intelligent beings tingling of the spine."
-    },
+   {
+       topic: "The Earth is flat",
+       for: {
+            title: "The Earth is flat",
+            author: "Some old guy",
+            content: "Are creatures of the cosmos. Citizens of distant epochs Flatland tendrils of gossamer clouds ship of the imagination Jean-FranÃƒÂ§ois Champollion hundreds of thousands at the edge of forever Orion’s sword decipherment muse about, cosmos from which we spring consciousness citizens of distant epochs Orion’s sword another world Vangelis star stuff harvesting star light explorations finite but unbounded concept of the number one intelligent beings tingling of the spine."
+        },
+    against: {
+            title: "The Earth is round",
+            author: "Some modern guy",
+            content: "Are creatures of the cosmos. Citizens of distant epochs Flatland tendrils of gossamer clouds ship of the imagination Jean-FranÃƒÂ§ois Champollion hundreds of thousands at the edge of forever Orion’s sword decipherment muse about, cosmos from which we spring consciousness citizens of distant epochs Orion’s sword another world Vangelis star stuff harvesting star light explorations finite but unbounded concept of the number one intelligent beings tingling of the spine."
+        }
+    }
 ]
 
 function seedDB(){
@@ -41,6 +44,7 @@ function seedDB(){
                             debate.comments.push(comment);
                             debate.save()
                             console.log('Created a comment');
+                            console.log("Comment is: " + comment.text);
                         }
                     });
                 }

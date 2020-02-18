@@ -6,14 +6,27 @@
     <div class="col-md-10">
         <form action="/debates" method="post">
             <div class="form-group">
-                <label for="debateTitle">Title</label>
-                <input class="form-control" type="text" name="debate[title]" id="debateTitle">
+                
+                <label for="debateTitle">Topic</label>
+                <input class="form-control" type="text" name="debate[topic]" id="debateTitle">
 
-                <label for="debateAuthor">Author</label>
-                <input class="form-control" type="text" name="debate[author]" id="debateAuthor">
+                <h4>For</h4>
+                
+                <label for="debateForAuthor">Author</label>
+                <input class="form-control" type="text" name="debate[for][author]" id="debateForAuthor">
 
-                <label for="debateContent">Content</label>
-                <textarea class="form-control" name="debate[content]" id="debateContent" cols="30" rows="10" placeholder="Write your argument here"></textarea>
+                <label for="debateForContent">Content</label>
+                <textarea class="form-control" name="debate[for][content]" id="debateForContent" cols="30" rows="10" placeholder="Write your argument here"></textarea>
+                
+                <br>
+
+                <h4>Against</h4>
+               
+                <label for="debateAgainstAuthor">Author</label>
+                <input class="form-control" type="text" name="debate[against][author]" id="debateAgainstAuthor">
+
+                <label for="debateAgainstContent">Content</label>
+                <textarea class="form-control" name="debate[against][content]" id="debateAgainstContent" cols="30" rows="10" placeholder="Write your argument here"></textarea>
             </div>
             <button class="btn btn-outline-info" type="submit" name="createPost">publish</button>
         </form>
