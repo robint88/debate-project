@@ -2,13 +2,18 @@ const mongoose = require('mongoose');
 
 const debateSchema = new mongoose.Schema({
     topic: String,
+    summary: String,
     for: {
         author: String,
-        content: String
+        content: String,
+        factScore: Number,
+        votes: Number
     },
     against: {
         author: String,
-        content: String
+        content: String,
+        factScore: Number,
+        votes: Number
     },
     comments: [
         {

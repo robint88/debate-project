@@ -22,6 +22,7 @@ body{
     color: #EDAE49;
 }
 
+
 h2 {
     color:#EDAE49;
     font-weight: 700;
@@ -30,6 +31,9 @@ h2 {
 h3 {
     color:#EDAE49;
     font-weight: 700;
+}
+h4 {
+    color: #fff;
 }
 
 hr {
@@ -68,25 +72,28 @@ hr {
     white-space: pre-line;
 }
 
+#debateTopics {
+    margin-top: 7%;
+}
+
 .debateTitle {
     min-height: 225px;
     text-align: left;
     background: #00798C;
+    color: #fff;
 }
 
-.debateTitle:nth-child(3){
-    background: #EDAE49;
-}
-.debateTitle:nth-child(3) h3{
-    color: #00798C;
-}
-.debateTitle:nth-child(3) h3:hover {
+.debateTitle:nth-child(even){
+    background: #2E294E;
     color: #fff;
+}
+.debateTitle:nth-child(even):hover {
+    color: #EDAE49;
 }
 
 .debateTitle:hover {
     text-decoration: none;
-    color: #fff;
+    background: #fff
 }
 .caption {
     font-size: 50px;
@@ -95,7 +102,16 @@ hr {
 }
 
 .caption:hover {
-    color: #fff;
+    color: #EDAE49;
+}
+
+#forContent {
+    padding: 3%;
+}
+
+#againstContent {
+    background: rgba(0, 121, 140, 0.466);
+    padding: 3%;
 }
 
 #joinDiscBtn {

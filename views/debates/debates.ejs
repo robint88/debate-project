@@ -3,14 +3,13 @@
 <h1 class="text-center">
     Current Debates
 </h1>
-<div class="row">
+<div class="row" id="debateTopics">
     <% debates.forEach(function(debate){ %>
-        <a href="debates/<%=debate._id%>" class="col-sm-6 col-lg-4 col d-flex debateTitle">
-            <h3 class="caption d-flex align-items-center">
+        <a href="debates/<%=debate._id%>" class=" col-md-4 col d-flex debateTitle">
+            <h4 class="caption d-flex align-items-center">
                 <%= debate.topic %>
-            </h3>        
+            </h4>        
         </a>
     <% }) %>
 </div>
-
 <%- include("../partials/footer") %>

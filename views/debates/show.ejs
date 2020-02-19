@@ -1,32 +1,39 @@
 <%- include("../partials/header") %>
 
-<h2>
-        <%= debate.topic %>
-    </h2>
+<h1 class="display-2">
+    <%= debate.topic %>
+</h1>
+<p class="lead">
+    <%= debate.summary %>
+</p>
 
 <div class="row">
 
-        <h4 class="col-md-12">The Case FOR</h4>
-        <p class="col-md-12">
-            <em>by - <%= debate.for.author %></em>
-        </p>
-        <div class="col-md-12 row">
-               
-                <p class="col-md-6 debateContent"> 
-                    <%= debate.for.content %>
-                </p>
-                <img class="img-fluid col-md-6" src="https://loremflickr.com/320/240" alt="">
+        <div class="col-sm-12" id="forContent">
+            <h4 class="col-md-12">The Case FOR</h4>
+            <p class="col-md-12">
+                <em>by - <%= debate.for.author %></em>
+            </p>
+            <div class="col-md-12 row">
+                    
+                    <p class="col-md-6 debateContent"> 
+                        <%= debate.for.content %>
+                    </p>
+                    <img class="img-fluid col-md-6" src="https://loremflickr.com/320/240" alt="">
+            </div>
         </div>
         
-        <h4 class="col-md-12">The Case AGAINST</h4>
-        <p class="col-md-12">
-            <em>by - <%= debate.against.author %></em>
-        </p>
-        <div class="col-md-12 row">
-            <img class="col-md-6" src="https://loremflickr.com/320/240" alt="">
-            <p class="col-md-6 debateContent">
-                <%= debate.against.content %>
+        <div class="col-md-12" id="againstContent">
+            <h4 class="col-md-12">The Case AGAINST</h4>
+            <p class="col-md-12">
+                <em>by - <%= debate.against.author %></em>
             </p>
+            <div class="col-md-12 row">
+                <img class="col-md-6" src="https://loremflickr.com/320/240" alt="">
+                <p class="col-md-6 debateContent">
+                    <%= debate.against.content %>
+                </p>
+            </div>
         </div>
         
     
@@ -53,7 +60,7 @@
     <div id="commentSect" class="col-sm-12">
         <% debate.comments.forEach(function(comment){ %>
             <p class="col-sm-12 comment">
-                <strong><%= comment.author %></strong> - <em><%= comment.text %></em>
+                <%= comment.author %> - <em><%= comment.text %></em>
             </p>
         <% }) %>
     </div>

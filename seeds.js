@@ -4,7 +4,8 @@ const Comment = require('./models/comment');
 
 const data = [
    {
-       topic: "The Earth is flat",
+       topic: "Could the Earth be flat?",
+       summary: "Everyone is talking about it. Let's see what these idiots have to say!",
        image: "https://cdn.mos.cms.futurecdn.net/kHGBAaGn2sbVhGnSuFNpQa-970-80.jpg",
        for: {
             author: "Some old guy",
@@ -16,7 +17,34 @@ const data = [
         }
     },
    {
-       topic: "Dogs are great",
+       topic: "Should we be worried about China?",
+       summary: "Everyone is talking about it. Let's see what these idiots have to say!",
+       image: "https://cdn.mos.cms.futurecdn.net/kHGBAaGn2sbVhGnSuFNpQa-970-80.jpg",
+       for: {
+            author: "Some ok guy",
+            content: "Are creatures of the cosmos. Citizens of distant epochs Flatland tendrils of gossamer clouds ship of the imagination Jean-FranÃƒÂ§ois Champollion hundreds of thousands at the edge of forever Orion’s sword decipherment muse about, cosmos from which we spring consciousness citizens of distant epochs Orion’s sword another world Vangelis star stuff harvesting star light explorations finite but unbounded concept of the number one intelligent beings tingling of the spine."
+        },
+    against: {
+            author: "Some stupid guy",
+            content: "Are creatures of the cosmos. Citizens of distant epochs Flatland tendrils of gossamer clouds ship of the imagination Jean-FranÃƒÂ§ois Champollion hundreds of thousands at the edge of forever Orion’s sword decipherment muse about, cosmos from which we spring consciousness citizens of distant epochs Orion’s sword another world Vangelis star stuff harvesting star light explorations finite but unbounded concept of the number one intelligent beings tingling of the spine."
+        }
+    },
+   {
+       topic: "Is McDonalds bad for you?",
+       summary: "Everyone is talking about it. Let's see what these idiots have to say!",
+       image: "https://cdn.mos.cms.futurecdn.net/kHGBAaGn2sbVhGnSuFNpQa-970-80.jpg",
+       for: {
+            author: "Some old guy",
+            content: "Are creatures of the cosmos. Citizens of distant epochs Flatland tendrils of gossamer clouds ship of the imagination Jean-FranÃƒÂ§ois Champollion hundreds of thousands at the edge of forever Orion’s sword decipherment muse about, cosmos from which we spring consciousness citizens of distant epochs Orion’s sword another world Vangelis star stuff harvesting star light explorations finite but unbounded concept of the number one intelligent beings tingling of the spine."
+        },
+    against: {
+            author: "Some modern guy",
+            content: "Are creatures of the cosmos. Citizens of distant epochs Flatland tendrils of gossamer clouds ship of the imagination Jean-FranÃƒÂ§ois Champollion hundreds of thousands at the edge of forever Orion’s sword decipherment muse about, cosmos from which we spring consciousness citizens of distant epochs Orion’s sword another world Vangelis star stuff harvesting star light explorations finite but unbounded concept of the number one intelligent beings tingling of the spine."
+        }
+    },
+   {
+       topic: "Are dogs mans best friend?",
+       summary: "Everyone is talking about it. Let's see what these idiots have to say!",
        image: "https://cdn.mos.cms.futurecdn.net/kHGBAaGn2sbVhGnSuFNpQa-970-80.jpg",
        for: {
             author: "Doc",
