@@ -5,14 +5,11 @@
 </h1>
 <div class="row">
     <% debates.forEach(function(debate){ %>
-        <div class="col text-center">
-            <h3>
+        <a href="debates/<%=debate._id%>" class="col-sm-6 col-lg-4 col d-flex debateTitle">
+            <h3 class="caption d-flex align-items-center">
                 <%= debate.topic %>
-            </h3>
-            <a href="debates/<%=debate._id%>">
-                view
-            </a>
-        </div>
+            </h3>        
+        </a>
     <% }) %>
 </div>
 

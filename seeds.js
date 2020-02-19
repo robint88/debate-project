@@ -14,6 +14,18 @@ const data = [
             author: "Some modern guy",
             content: "Are creatures of the cosmos. Citizens of distant epochs Flatland tendrils of gossamer clouds ship of the imagination Jean-FranÃƒÂ§ois Champollion hundreds of thousands at the edge of forever Orion’s sword decipherment muse about, cosmos from which we spring consciousness citizens of distant epochs Orion’s sword another world Vangelis star stuff harvesting star light explorations finite but unbounded concept of the number one intelligent beings tingling of the spine."
         }
+    },
+   {
+       topic: "Dogs are great",
+       image: "https://cdn.mos.cms.futurecdn.net/kHGBAaGn2sbVhGnSuFNpQa-970-80.jpg",
+       for: {
+            author: "Doc",
+            content: "Did you hurt your head? Okay, alright, I’ll prove it to you. Look at my driver’s license, expires 1987. Look at my birthday, for crying out load I haven’t even been born yet. And, look at this picture, my brother, my sister, and me. Look at the sweatshirt, Doc, class of 1984. Oh. Actually, people call me Marty. Uh no, not hard at all. So anyway, George, now Lorraine, she really likes you. She told me to tell you that she wants you to ask her to the Enchantment Under The Sea Dance."
+        },
+    against: {
+            author: "Marty",
+            content: "Did you hurt your head? Okay, alright, I’ll prove it to you. Look at my driver’s license, expires 1987. Look at my birthday, for crying out load I haven’t even been born yet. And, look at this picture, my brother, my sister, and me. Look at the sweatshirt, Doc, class of 1984. Oh. Actually, people call me Marty. Uh no, not hard at all. So anyway, George, now Lorraine, she really likes you. She told me to tell you that she wants you to ask her to the Enchantment Under The Sea Dance."
+        }
     }
 ]
 

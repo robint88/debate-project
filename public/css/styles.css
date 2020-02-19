@@ -64,6 +64,40 @@ hr {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23EDAE49' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E") !important;
 }
 
+.debateContent {
+    white-space: pre-line;
+}
+
+.debateTitle {
+    min-height: 225px;
+    text-align: left;
+    background: #00798C;
+}
+
+.debateTitle:nth-child(3){
+    background: #EDAE49;
+}
+.debateTitle:nth-child(3) h3{
+    color: #00798C;
+}
+.debateTitle:nth-child(3) h3:hover {
+    color: #fff;
+}
+
+.debateTitle:hover {
+    text-decoration: none;
+    color: #fff;
+}
+.caption {
+    font-size: 50px;
+    text-align: left;
+    padding-top: auto;
+}
+
+.caption:hover {
+    color: #fff;
+}
+
 #joinDiscBtn {
     color:white;
 }

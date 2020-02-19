@@ -24,11 +24,6 @@ app.use(methodOverride("_method"));
 seedDB();
 mongoose.connect("mongodb://localhost:27017/debateDB", {useNewUrlParser: true});
 
-// const topicScema = new mongoose.Schema({
-//     title: String,
-//     debateArgs: []
-// });
-
 
 // ROUTES 
 
