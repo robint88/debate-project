@@ -35,6 +35,23 @@
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
             </form>
+            <div class="navbar-nav">
+                <% if(!currentUser) { %>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/register">register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">login</a>
+                    </li>
+                <% } else { %>
+                    <li class="nav-item">
+                        <a class="nav-link">Hi, <%= currentUser.username %></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">logout</a>
+                    </li>
+                <% } %>
+            </div>
         </div>
     </nav>
     <div class="container-fluid">

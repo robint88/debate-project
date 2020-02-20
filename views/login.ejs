@@ -1,0 +1,23 @@
+<%- include('./partials/header') %>
+
+<h1>Login</h1>
+
+<div class="row justify-content-sm-center">
+    <div class="col-md-4">
+        <form action="/login" method="post">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input class="form-control" type="text" name="username" id="username" placeholder="username">
+                <label for="passord">Password:</label>
+                <input class="form-control" type="password" name="password" placeholder="password">
+            </div>
+            <button class="btn btn-outline-info" type="submit">login</button>
+        </form>
+        <p class="text-center">Not registered? <a href="/register"> Register here!</a></p>
+    </div>
+</div>
+
+
+
+<%- include('./partials/footer') %>
+

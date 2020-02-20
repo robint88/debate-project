@@ -4,9 +4,12 @@ const methodOverride = require('method-override');
 const ejs = require('ejs');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const passport = require('passport');
+const localStrategy = require('passport-local');
 
 const Debate = require("./models/debate");
 const Comment = require("./models/comment");
+const User = require("./models/user");
 
 const seedDB = require("./seeds");
 
@@ -24,6 +27,23 @@ app.use(methodOverride("_method"));
 seedDB();
 mongoose.connect("mongodb://localhost:27017/debateDB", {useNewUrlParser: true});
 
+// Configure Passport
+app.use(require("express-session")({
+    secret: "Lando is a barky boy!",
+    resave: false,
+    saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new localStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+// Pass in current user
+app.use(function(req, res, next){
+    res.locals.currentUser = req.user;
+    next();
+});
 
 // ROUTES 
 
@@ -115,7 +135,7 @@ app.delete("/debates/:id", function(req,res){
 //************************************** 
 
 //New
-app.get("/debates/:id/discussion/new", function(req, res){
+app.get("/debates/:id/discussion/new", isLoggedIn, function(req, res){
     Debate.findById(req.params.id, function(err, foundDebate){
         if(err){
             console.log(err);
@@ -126,7 +146,7 @@ app.get("/debates/:id/discussion/new", function(req, res){
 });
 
 //Create
-app.post("/debates/:id/discussion", function(req, res){
+app.post("/debates/:id/discussion", isLoggedIn, function(req, res){
     Debate.findById(req.params.id, function(err, foundDebate){
         if(err){
             console.log(err);
@@ -144,6 +164,54 @@ app.post("/debates/:id/discussion", function(req, res){
         }
     });
 });
+
+// Authentication Routes
+//  Register
+app.get("/register", function(req, res){
+    res.render("register");
+});
+
+// Signup logic
+app.post('/register', function(req, res){
+    const newUser = new User({username: req.body.username});
+
+    User.register(newUser, req.body.password, function(err, user){
+        if(err){
+            console.log(err);
+            return res.render('register');
+        }
+        passport.authenticate("local")(req,res, function(){
+            res.redirect("/debates");
+        });
+    });
+});
+
+// Login
+app.get("/login", function(req,res){
+    res.render("login");
+});
+// Login Logic
+app.post("/login", passport.authenticate("local", {
+        successRedirect: "/debates",
+        failureRedirect: "/login"
+    }), function(req, res){
+        // Can actually delete this function - kept just to show middleware
+});
+
+
+// Logout
+app.get("/logout", function(req,res){
+    req.logout();
+    res.redirect("/debates");
+});
+
+function isLoggedIn(req, res, next){
+    if(req.isAuthenticated()){
+        return next();
+    } else {
+        res.redirect("/login");
+    }
+};
 
 //server
 app.listen(3000, function(){
