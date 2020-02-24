@@ -60,7 +60,7 @@
     <div id="commentSect" class="col-sm-12">
         <% debate.comments.forEach(function(comment){ %>
             <p class="col-sm-12 comment">
-                <%= comment.author %> - <em><%= comment.text %></em>
+                <%= comment.author.username %> - <em><%= comment.text %></em>
             </p>
         <% }) %>
     </div>

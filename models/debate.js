@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const debateSchema = new mongoose.Schema({
     topic: String,
     summary: String,
+    image: String,
     for: {
         author: String,
         content: String,
