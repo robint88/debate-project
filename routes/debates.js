@@ -13,15 +13,20 @@ router.get("/", function(req,res){
     });
 });
 //NEW
-router.get("/new", function(req,res){
+router.get("/new", isLoggedIn,function(req,res){
     res.render("debates/compose");
 });
 //CREATE
-router.post("/", function(req,res){
+router.post("/", isLoggedIn, function(req,res){
     Debate.create(req.body.debate, function(err, newArg){
         if(err){
             res.render('compose');
         } else {
+            newArg.moderator.username = req.user.username;
+            newArg.moderator.id = req.user._id;
+            newArg.save();
+
+            console.log(newArg);
             res.redirect("/debates/" + newArg._id);
         }
     });
@@ -71,5 +76,14 @@ router.delete("/:id", function(req,res){
         
     });
 });
+
+
+function isLoggedIn(req, res, next){
+    if(req.isAuthenticated()){
+        return next();
+    } else {
+        res.redirect("/login");
+    }
+};
 
 module.exports = router;

@@ -21,6 +21,13 @@ const debateSchema = new mongoose.Schema({
             type: mongoose.Schema.Types.ObjectId,
             ref: "Comment"
         }
-    ]
+    ],
+    moderator: {
+        id: {
+            type: mongoose.Schema.ObjectId,
+            ref: "User"
+        },
+        username: String
+    }
 });
 module.exports = mongoose.model("Debate", debateSchema);
