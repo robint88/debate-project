@@ -41,52 +41,52 @@ function seedDB(){
         }
         console.log("Removed Debates");
 
-        // CREATE DEBATES
-        data.forEach(function(seed){
-            Debate.create(seed, function(err, debate){
-                if(err){
-                    console.log(err);
-                } else {
-                    console.log("Added debate");
-                    // Create Comment
-                    Argument.create({
-                        author: "Mr Bones",
-                        content: "There is a lot to argue about this topic!",
-                    }, function(err, arg){
-                        if(err){
-                            console.log(err);
-                        } else {
-                            debate.for = arg;
-                            console.log("Argument created");
-                        }
-                    });
-                    Argument.create({
-                        author: "Mrs Bones",
-                        content: "There isn't a lot to argue about this topic!",
-                    }, function(err, arg){
-                        if(err){
-                            console.log(err);
-                        } else {
-                            debate.against = arg;
-                            console.log("Argument created");
-                        }
-                    });
-                    Comment.create({
-                        text: "That's so true! You won me over. That other guy however...",
-                        author: "Mr Sillybones"
-                    }, function(err, comment){
-                        if(err){
-                            console.log(err);
-                        } else {
-                            debate.comments.push(comment);
-                            debate.save()
-                            console.log('Created a comment');
-                            // console.log(debate);
-                        }
-                    });
-                }
-            }); 
-        });
+        // // CREATE DEBATES
+        // data.forEach(function(seed){
+        //     Debate.create(seed, function(err, debate){
+        //         if(err){
+        //             console.log(err);
+        //         } else {
+        //             console.log("Added debate");
+        //             // Create Comment
+        //             Argument.create({
+        //                 author: "Mr Bones",
+        //                 content: "There is a lot to argue about this topic!",
+        //             }, function(err, arg){
+        //                 if(err){
+        //                     console.log(err);
+        //                 } else {
+        //                     debate.for = arg;
+        //                     console.log("Argument created");
+        //                 }
+        //             });
+        //             Argument.create({
+        //                 author: "Mrs Bones",
+        //                 content: "There isn't a lot to argue about this topic!",
+        //             }, function(err, arg){
+        //                 if(err){
+        //                     console.log(err);
+        //                 } else {
+        //                     debate.against = arg;
+        //                     console.log("Argument created");
+        //                 }
+        //             });
+        //             Comment.create({
+        //                 text: "That's so true! You won me over. That other guy however...",
+        //                 author: "Mr Sillybones"
+        //             }, function(err, comment){
+        //                 if(err){
+        //                     console.log(err);
+        //                 } else {
+        //                     debate.comments.push(comment);
+        //                     debate.save()
+        //                     console.log('Created a comment');
+        //                     // console.log(debate);
+        //                 }
+        //             });
+        //         }
+        //     }); 
+        // });
     });
 }
 

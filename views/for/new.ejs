@@ -1,0 +1,22 @@
+<%- include("../partials/header") %>
+
+<h2 class="pageHeaders"><%= debate.topic %></h2>
+
+<div class="row justify-content-sm-center">
+    <div class="col-md-10">
+        <form action="/debates/<%= debate._id%>/for" method="POST">
+            <div class="form-group">
+
+                <h4>For</h4>
+                
+
+                <label for="debateForContent">Content</label>
+                <textarea class="form-control" name="for[content]" id="debateForContent" cols="30" rows="10" placeholder="Write your argument here"></textarea>
+                
+            </div>
+            <button class="btn btn-outline-info" type="submit" name="createPost">publish</button>
+        </form> 
+    </div>  
+</div>
+
+<%- include("../partials/footer") %>

@@ -9,10 +9,11 @@
 
 <div class="row">
 
+    <% if(debate.for && debate.against) { %>
         <div class="col-sm-12" id="forContent">
             <h4 class="col-md-12">The Case FOR</h4>
             <p class="col-md-12">
-                <em>by - <%= debate.for.author %></em>
+                <em>by - <%= debate.for.author.username %></em>
             </p>
             <div class="col-md-12 row">
                     
@@ -22,12 +23,11 @@
                     <img class="img-fluid col-md-6" src="https://loremflickr.com/320/240" alt="">
             </div>
         </div>
-
-          
+        
         <div class="col-md-12" id="againstContent">
             <h4 class="col-md-12">The Case AGAINST</h4>
             <p class="col-md-12">
-                <em>by - <%= debate.against.author %></em>
+                <em>by - <%= debate.against.author.username %></em>
             </p>
             <div class="col-md-12 row">
                 <img class="col-md-6" src="https://loremflickr.com/320/240" alt="">
@@ -36,10 +36,15 @@
                 </p>
             </div>
         </div>
-      
         
+    <% } else { %>
+        <div class="col-md-12 text-center">
+            <p class="lead">Debate to come soon</p>
+        </div>
+    <% } %>
     
 </div>
+<p>moderator - <%= debate.moderator.username %></p>
  <br>
 <div class="row justify-content-md-center">
     <div class="col text-center">

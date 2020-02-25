@@ -14,6 +14,8 @@ const User = require("./models/user");
 const debateRoutes = require("./routes/debates");
 const commentRoutes = require("./routes/comments");
 const indexRoutes = require("./routes/index");
+const forRoutes = require("./routes/for");
+const againstRoutes = require("./routes/against");
 
 const seedDB = require("./seeds");
 
@@ -28,7 +30,7 @@ app.use(methodOverride("_method"));
 
 
 // Set up DB
-seedDB();
+// seedDB();
 mongoose.connect("mongodb://localhost:27017/debateDB", {useNewUrlParser: true});
 
 // Configure Passport
@@ -53,6 +55,8 @@ app.use(function(req, res, next){
 app.use(indexRoutes);
 app.use("/debates/:id/discussion",commentRoutes);
 app.use("/debates", debateRoutes);
+app.use("/debates/:id/for", forRoutes);
+app.use("/debates/:id/against", againstRoutes);
 
 
 //server

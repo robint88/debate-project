@@ -20,7 +20,8 @@ router.get("/new", isLoggedIn,function(req,res){
 router.post("/", isLoggedIn, function(req,res){
     Debate.create(req.body.debate, function(err, newArg){
         if(err){
-            res.render('compose');
+            res.render('debates/compose');
+            console.log(err);
         } else {
             newArg.moderator.username = req.user.username;
             newArg.moderator.id = req.user._id;
