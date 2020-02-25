@@ -33,12 +33,13 @@ router.post("/", isLoggedIn, function(req,res){
 });
 // SHOW
 router.get("/:id", function(req, res){
-    Debate.findById(req.params.id).populate("comments").exec(function(err, foundArg){
+    Debate.findById(req.params.id).populate('comments for against').exec(function(err, foundDebate){
         if(err){
             res.redirect("/debates");
             console.log(err);
         } else {
-            res.render("debates/show", {debate: foundArg});
+            // console.log(foundDebate);
+            res.render("debates/show", {debate: foundDebate});
         }
     });
 });

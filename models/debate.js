@@ -4,17 +4,13 @@ const debateSchema = new mongoose.Schema({
     topic: String,
     summary: String,
     image: String,
-    for: {
-        author: String,
-        content: String,
-        factScore: Number,
-        votes: Number
+    for:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Argument"
     },
     against: {
-        author: String,
-        content: String,
-        factScore: Number,
-        votes: Number
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Argument"
     },
     comments: [
         {
@@ -30,4 +26,5 @@ const debateSchema = new mongoose.Schema({
         username: String
     }
 });
+
 module.exports = mongoose.model("Debate", debateSchema);

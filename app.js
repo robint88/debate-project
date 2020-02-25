@@ -28,7 +28,7 @@ app.use(methodOverride("_method"));
 
 
 // Set up DB
-// seedDB();
+seedDB();
 mongoose.connect("mongodb://localhost:27017/debateDB", {useNewUrlParser: true});
 
 // Configure Passport
