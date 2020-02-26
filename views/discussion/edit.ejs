@@ -1,0 +1,17 @@
+<%- include('../partials/header') %>
+<h3>Edit comment</h3>
+
+<div class="row justify-content-sm-center">
+    <div class="col-md-10">
+        <form action="/debates/<%= debate_id %>/discussion/<%= comment._id%>?_method=PUT" method="post">
+            <div class="form-group">
+                <label for="debateContent">Discuss</label>
+                <textarea class="form-control" name="comment[text]" id="debateContent" cols="30" rows="10" placeholder="Write your argument here"><%= comment.text %></textarea>
+            </div>
+            <button class="btn btn-outline-info" type="submit" name="createPost">update</button>
+        </form>
+    </div>
+</div>
+
+
+<%- include('../partials/footer') %>

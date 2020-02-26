@@ -71,6 +71,7 @@
             <p class="col-sm-12 comment">
                 <%= comment.author.username %> - <em><%= comment.text %></em>
             </p>
+            <a href="/debates/<%=debate._id%>/discussion/<%=comment._id%>/edit" class="btn btn-sm btn-warning">EDIT</a>
         <% }) %>
     </div>
 </div>
