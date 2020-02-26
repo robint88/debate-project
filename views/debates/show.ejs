@@ -22,6 +22,7 @@
                     </p>
                     <img class="img-fluid col-md-6" src="https://loremflickr.com/320/240" alt="">
             </div>
+            <a href="/debates/<%=debate._id%>/for/<%=debate.for._id%>/edit" class="btn btn-warning">EDIT</a>
         </div>
         
         <div class="col-md-12" id="againstContent">
@@ -35,6 +36,7 @@
                     <%= debate.against.content %>
                 </p>
             </div>
+            <a href="/debates/<%=debate._id%>/against/<%=debate.against._id%>/edit" class="btn btn-warning">EDIT</a>
         </div>
         
     <% } else { %>
