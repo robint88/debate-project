@@ -45,7 +45,7 @@ router.get("/:id", function(req, res){
     });
 });
 // EDIT
-router.get("/:id/edit", function(req,res){
+router.get("/:id/edit", checkDebateOwnership, function(req,res){
     Debate.findById(req.params.id, function(err, foundArg){
         if(err){
             res.redirect("/debates");
@@ -56,7 +56,7 @@ router.get("/:id/edit", function(req,res){
     });
 });
 // UPDATE
-router.put("/:id", function(req,res){
+router.put("/:id", checkDebateOwnership, function(req,res){
     Debate.findByIdAndUpdate(req.params.id, req.body.debate, function(err, updatedArg){
         if(err){
             res.redirect("/debates");
@@ -67,7 +67,7 @@ router.put("/:id", function(req,res){
     });
 });
 // DESTROY
-router.delete("/:id", function(req,res){
+router.delete("/:id", checkDebateOwnership, function(req,res){
     Debate.findByIdAndRemove(req.params.id, function(err){
         if(err){
             res.redirect("/debates");
@@ -87,5 +87,23 @@ function isLoggedIn(req, res, next){
         res.redirect("/login");
     }
 };
+
+function checkDebateOwnership(req, res, next){
+    if(req.isAuthenticated()){
+        Debate.findById(req.params.id, function(err, foundDebate){
+            if(err){
+                res.redirect("back");
+            } else {
+                if(foundDebate.moderator.id.equals(req.user._id)){
+                    next();
+                } else {
+                    res.redirect("back");
+                }
+            }
+        });
+    } else {
+        res.redirect("back");
+    }
+}
 
 module.exports = router;

@@ -22,7 +22,7 @@
                     </p>
                     <img class="img-fluid col-md-6" src="https://loremflickr.com/320/240" alt="">
             </div>
-            <a href="/debates/<%=debate._id%>/for/<%=debate.for._id%>/edit" class="btn btn-warning">EDIT</a>
+            <!-- <a href="/debates/<%=debate._id%>/for/<%=debate.for._id%>/edit" class="btn btn-outline-warning">EDIT</a> -->
         </div>
         
         <div class="col-md-12" id="againstContent">
@@ -36,26 +36,38 @@
                     <%= debate.against.content %>
                 </p>
             </div>
-            <a href="/debates/<%=debate._id%>/against/<%=debate.against._id%>/edit" class="btn btn-warning">EDIT</a>
+            <a href="/debates/<%=debate._id%>/against/<%=debate.against._id%>/edit" class="btn btn-outline-warning">EDIT</a>
         </div>
         
     <% } else { %>
         <div class="col-md-12 text-center">
             <p class="lead">Debate to come soon</p>
         </div>
+        <% if(currentUser && debate.moderator.id.equals(currentUser._id)) { %>
+            <div class="row text-center col-md-12">
+                    <p class="col-sm-12">Add new arguments</p>
+                    <a href="/debates/<%=debate._id%>/for/new" class="col btn btn-outline-warning">For</a>
+                    <a href="/debates/<%=debate._id%>/against/new" class="col btn btn-outline-warning">Against</a>
+            </div>
+        <% }%>
     <% } %>
     
 </div>
 <p>moderator - <%= debate.moderator.username %></p>
- <br>
-<div class="row justify-content-md-center">
-    <div class="col text-center">
-        <a class="btn btn-outline-info" href="/debates/<%= debate._id %>/edit"> edit </a>
+
+<% if(currentUser && debate.moderator.id.equals(currentUser._id)) { %>
+    <br>
+    <div class="row">
+        <div class="col text-center">
+            <a class="btn btn-outline-info" href="/debates/<%= debate._id %>/edit"> edit </a>
+        </div>
+        <form class="col text-center delete-form" action="/debates/<%= debate._id %>?_method=DELETE" method="POST">
+            <button class="btn btn-outline-danger"> delete </button>
+        </form>
     </div>
-    <form class="col text-center" action="/debates/<%= debate._id %>?_method=DELETE" method="POST">
-        <button class="btn btn-outline-danger"> delete </button>
-    </form>
-</div>
+<% } %>
+
+
 <br>
 <hr>
 <br>
@@ -68,10 +80,21 @@
     </p>
     <div id="commentSect" class="col-sm-12">
         <% debate.comments.forEach(function(comment){ %>
-            <p class="col-sm-12 comment">
-                <%= comment.author.username %> - <em><%= comment.text %></em>
-            </p>
-            <a href="/debates/<%=debate._id%>/discussion/<%=comment._id%>/edit" class="btn btn-sm btn-warning">EDIT</a>
+            <div class="col-sm-12 row comment">
+                    <p class="col">
+                            <%= comment.author.username %> - <em><%= comment.text %></em>
+                        </p>
+            
+                        <% if(currentUser && comment.author.id.equals(currentUser._id)|| currentUser && debate.moderator.id.equals(currentUser._id)){ %>
+                            <div class="col">
+                                <a href="/debates/<%=debate._id%>/discussion/<%=comment._id%>/edit" class="btn btn-sm btn-outline-warning">EDIT</a>
+                                <form class="delete-form" action="/debates/<%=debate._id%>/discussion/<%=comment._id%>?_method=DELETE" method="POST">
+                                    <input class="btn btn-sm btn-outline-danger" type="submit" value="DELETE">
+                                </form>
+                            </div>
+                        <% } %>
+                        
+            </div>
         <% }) %>
     </div>
 </div>

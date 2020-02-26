@@ -2,10 +2,17 @@ const express = require("express");
 const router = express.Router();
 const passport = require('passport');
 const User = require("../models/user");
+const Debate = require("../models/debate");
 
 // LANDING
 router.get("/", function(req, res){
-    res.render('index');
+    Debate.find(function(err, foundDebates){
+        if(err){
+            console.log(err);
+        } else {
+            res.render('index',{debates: foundDebates});
+        }
+    });
 });
 
 // Authentication Routes

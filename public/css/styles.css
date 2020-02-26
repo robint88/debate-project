@@ -149,6 +149,10 @@ hr {
     font-size: 0.9rem;
 }
 
+.delete-form {
+    display: inline;
+}
+
 #discussionSection {
     padding-bottom: 2.5%;
 }
