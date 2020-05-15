@@ -1,0 +1,15 @@
+<%- include("../partials/header") %>
+
+<h2 class="pageHeaders">
+    Categories
+</h2>
+<div class="debate-grid">
+    <% categories.forEach(function(category){ %>
+        <a href="/categories/<%= category.id %>" class="debate-item">
+            <h3>
+                <%= category.name %>
+            </h3>
+        </a>
+    <% }) %>
+</div>
+<%- include("../partials/footer") %>

@@ -16,6 +16,7 @@ const commentRoutes = require("./routes/comments");
 const indexRoutes = require("./routes/index");
 const forRoutes = require("./routes/for");
 const againstRoutes = require("./routes/against");
+const categoryRoutes = require("./routes/category");
 
 const seedDB = require("./seeds");
 
@@ -57,6 +58,7 @@ app.use("/debates/:id/discussion",commentRoutes);
 app.use("/debates", debateRoutes);
 app.use("/debates/:id/for", forRoutes);
 app.use("/debates/:id/against", againstRoutes);
+app.use("/categories", categoryRoutes);
 
 
 //server
