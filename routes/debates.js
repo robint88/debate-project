@@ -45,8 +45,9 @@ router.get("/:id", function(req, res){
     });
 });
 // EDIT
+// POPULATING THE DEBATE ARGUMENTS WITH FOR AND AGAINST DATA - NEED TO FIX USER INFO THOUGH
 router.get("/:id/edit", checkDebateOwnership, function(req,res){
-    Debate.findById(req.params.id, function(err, foundArg){
+    Debate.findById(req.params.id).populate('for against').exec(function(err, foundArg){
         if(err){
             res.redirect("/debates");
             console.log(err);
@@ -58,6 +59,7 @@ router.get("/:id/edit", checkDebateOwnership, function(req,res){
 // UPDATE
 router.put("/:id", checkDebateOwnership, function(req,res){
     Debate.findByIdAndUpdate(req.params.id, req.body.debate, function(err, updatedArg){
+        console.log(updatedArg);
         if(err){
             res.redirect("/debates");
             console.log(err);

@@ -24,7 +24,6 @@ router.post("/", isLoggedIn, function(req,res){
                 if(err){
                     console.log(err);
                 } else {
-                    
                     forArg.author._id = req.user._id;
                     forArg.author.username = req.user.username;
                     forArg.save()

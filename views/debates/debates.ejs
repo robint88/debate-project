@@ -3,12 +3,10 @@
 <h2 class="pageHeaders">
     Current Debates
 </h2>
-<div class="row" id="debateTopics">
+<div class="debate-grid">
     <% debates.forEach(function(debate){ %>
-        <a href="debates/<%=debate._id%>" class=" col-md-6 col-lg-4 col d-flex debateTitle">
-            <h4 class="caption d-flex align-items-center">
-                <%= debate.topic %>
-            </h4>        
+        <a href="debates/<%= debate._id %>" class="debate-item">
+            <h3><%= debate.topic %></h3>
         </a>
     <% }) %>
 </div>

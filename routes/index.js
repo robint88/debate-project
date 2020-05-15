@@ -31,7 +31,7 @@ router.post('/register', function(req, res){
             return res.render('register');
         }
         passport.authenticate("local")(req,res, function(){
-            res.redirect("/debates");
+            res.redirect("/");
         });
     });
 });
@@ -52,7 +52,7 @@ router.post("/login", passport.authenticate("local", {
 // Logout
 router.get("/logout", function(req,res){
     req.logout();
-    res.redirect("/debates");
+    res.redirect("/");
 });
 
 function isLoggedIn(req, res, next){

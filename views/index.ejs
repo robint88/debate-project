@@ -39,19 +39,13 @@
           </a>
         </div>
       </div>
-<div class="row">
   <h4>Latest Debates:</h4>
-  <div class="col-sm-12">
-      <div class="row" id="debateTopics">
-          <% debates.forEach(function(debate){ %>
-              <a href="debates/<%=debate._id%>" class=" col-md-6 col-lg-4 col d-flex debateTitle">
-                  <h4 class="caption d-flex align-items-center">
-                      <%= debate.topic %>
-                  </h4>        
-              </a>
-          <% }) %>
-      </div>
+  <div class="debate-grid">
+      <% debates.forEach(function(debate){ %>
+          <a href="debates/<%= debate._id %>" class="debate-item">
+              <h3><%= debate.topic %></h3>
+          </a>
+      <% }) %>
   </div>
-</div>
 
 <%- include('partials/footer') %>
