@@ -4,7 +4,7 @@ const Debate = require("../models/debate");
 
 // INDEX OF DEBATES
 router.get("/", function(req,res){
-    Debate.find(function(err, foundDebates){
+    Debate.find({}).sort({createdAt: 'desc'}).exec(function(err, foundDebates){
         if(err){
             console.log(err);
         } else {

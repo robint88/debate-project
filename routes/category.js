@@ -3,7 +3,7 @@ const router = express.Router();
 const Category = require('../models/categories');
 
 router.get("/", function(req, res){
-    Category.find(function(err, foundCat){
+    Category.find({}).sort({name: 1}).exec(function(err, foundCat){
         if(err){
             console.log(err);
             res.redirect("/");

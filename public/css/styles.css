@@ -1,4 +1,3 @@
-
 body{
     background: #2E294E;
     color: white;
@@ -34,13 +33,17 @@ h2, h3 {
     color:#EDAE49;
 }
 
-h4 {
+h4, h5 {
     color: #fff;
 }
 
 hr {
     background: #00798C;
     width: 75%;
+}
+
+a {
+    text-decoration: none;
 }
 
 .carousel-item {
@@ -268,6 +271,19 @@ hr {
     padding: 10px 25px;
     border-top: 1px solid #00798C;
     
+}
+
+#debates-link {
+    text-align: center;
+    padding: 10px;
+}
+
+#debates-link a:hover {
+    color: #EDAE49;
+    text-decoration: none;
+}
+#debates-link h5:hover {
+    color: #EDAE49;
 }
 
 .comment-author {

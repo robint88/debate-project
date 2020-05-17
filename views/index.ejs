@@ -41,11 +41,18 @@
       </div>
   <h4>Latest Debates:</h4>
   <div class="debate-grid">
-      <% debates.forEach(function(debate){ %>
-          <a href="debates/<%= debate._id %>" class="debate-item">
-              <h3><%= debate.topic %></h3>
-          </a>
-      <% }) %>
+
+    <% for(let i =0; i< 8; i++){ %>
+      <a href="debates/<%= debates[i]._id %>" class="debate-item">
+        <h3><%= debates[i].topic %></h3>
+      </a>
+    <% } %>
+
+  </div>
+  <div id="debates-link">
+      <a href="/debates">
+        <h5>view all debates</h5>
+      </a>
   </div>
 
 <%- include('partials/footer') %>
