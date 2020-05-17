@@ -3,7 +3,22 @@
 <h1 class="display-2">
     <%= category.name %>
 </h1>
+<% if(category.debates.length < 1) {%>
+    <div class="centred-text">
+        <h3>NO DEBATES YET</h3>
+    </div>
+<%} else {%>
 
+    <div class="debate-grid">
+        <% category.debates.forEach(function(debate){ %>
+            <a href="/debates/<%= debate._id %>" class="debate-item">
+                <h3>
+                    <%= debate.topic %>
+                </h3>
+            </a>
+        <% }) %>
+    </div>
+<%}%>
 
 
 

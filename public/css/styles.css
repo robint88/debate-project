@@ -46,6 +46,10 @@ a {
     text-decoration: none;
 }
 
+.centred-text {
+    text-align: center;
+}
+
 .carousel-item {
     height: 500px;
     padding-top: 0;

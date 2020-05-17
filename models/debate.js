@@ -25,6 +25,7 @@ const debateSchema = new mongoose.Schema({
         },
         username: String
     },
+    category: String,
     createdAt: {type: Date, default: Date.now}
 });
 

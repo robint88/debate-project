@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Debate = require("../models/debate");
+const Category = require("../models/categories");
 
 // INDEX OF DEBATES
 router.get("/", function(req,res){
@@ -14,7 +15,15 @@ router.get("/", function(req,res){
 });
 //NEW
 router.get("/new", isLoggedIn,function(req,res){
-    res.render("debates/compose");
+    Category.find({}).sort({name: 1}).exec(function(err, foundCategories){
+        if(err){
+            console.log(err);
+        } else {
+            res.render("debates/compose", {categories: foundCategories});
+
+        }
+    });
+    
 });
 //CREATE
 router.post("/", isLoggedIn, function(req,res){
@@ -27,7 +36,11 @@ router.post("/", isLoggedIn, function(req,res){
             newArg.moderator.id = req.user._id;
             newArg.save();
 
-            console.log(newArg);
+            Category.findOne({name: newArg.category}, function(err, foundCat){
+                foundCat.debates.push(newArg);
+                foundCat.save();
+            });
+
             res.redirect("/debates/" + newArg._id);
         }
     });

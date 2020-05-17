@@ -42,10 +42,14 @@
   <h4>Latest Debates:</h4>
   <div class="debate-grid">
 
-    <% for(let i =0; i< 8; i++){ %>
-      <a href="debates/<%= debates[i]._id %>" class="debate-item">
-        <h3><%= debates[i].topic %></h3>
-      </a>
+    <% if(debates.length > 0){ %>
+      <% for(let i =0; i < 8; i++){ %>
+        <a href="debates/<%= debates[i]._id %>" class="debate-item">
+          <h3><%= debates[i].topic %></h3>
+        </a>
+      <% } %>
+    <% } else { %>
+      <h3>NO DEBATES</h3>
     <% } %>
 
   </div>

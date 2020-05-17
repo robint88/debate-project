@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Category = require('../models/categories');
+const Debate = require('../models/debate');
 
 router.get("/", function(req, res){
     Category.find({}).sort({name: 1}).exec(function(err, foundCat){
@@ -28,7 +29,7 @@ router.post("/", function(req, res){
     });
 });
 router.get("/:categoryId", function(req, res){
-    Category.findById(req.params.categoryId, function(err, foundCat){
+    Category.findById(req.params.categoryId).populate('debates').exec(function(err, foundCat){
         if(err){
             console.log(err);
             res.redirect('back');
