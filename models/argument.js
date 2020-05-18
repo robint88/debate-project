@@ -1,13 +1,7 @@
 const mongoose = require('mongoose');
 
 const argumentSchema = new mongoose.Schema({
-    author: {
-        id: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "User"
-        },
-        username: String
-    },
+    author: String,
     content: String,
     factScore: Number,
     votes: Number,

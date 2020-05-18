@@ -24,8 +24,6 @@ router.post("/", isLoggedIn, function(req,res){
                 if(err){
                     console.log(err);
                 } else {
-                    forArg.author._id = req.user._id;
-                    forArg.author.username = req.user.username;
                     forArg.save()
                     foundDebate.for = forArg; 
                     foundDebate.save();
@@ -51,10 +49,8 @@ router.put("/:for_id", function(req, res){
         if(err){
             res.redirect("back");
         } else {
-            console.log("Updated For arg");
             res.redirect("/debates/" + req.params.id);  
         }
-        
     });
 });
 function isLoggedIn(req, res, next){

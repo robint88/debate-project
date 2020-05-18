@@ -23,8 +23,6 @@ router.post("/", isLoggedIn, function(req,res){
                 if(err){
                     console.log(err);
                 } else {
-                    againstArg.author._id = req.user._id;
-                    againstArg.author.username = req.user.username;
                     againstArg.save()
                     foundDebate.against = againstArg; 
                     foundDebate.save();
@@ -50,7 +48,6 @@ router.put("/:against_id", function(req, res){
         if(err){
             res.redirect("back");
         } else {
-            console.log("Updated against arg");
             res.redirect("/debates/" + req.params.id);  
         }
         

@@ -64,4 +64,16 @@ router.put("/:categoryId", function(req, res){
         }
     });
 });
+
+router.delete("/:catid", function(req,res){
+    Category.findByIdAndRemove(req.params.catid, function(err){
+        if(err){
+            res.redirect("/debates");
+            console.log(err);
+        } else {
+            res.redirect("/categories");
+        }
+        
+    });
+});
 module.exports = router;

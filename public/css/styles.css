@@ -312,4 +312,7 @@ a {
         padding: 10px;
         width: 90%;
     }
+    h1 {
+        font-size: 35px !important;
+    }
 }

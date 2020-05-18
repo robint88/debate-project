@@ -38,9 +38,8 @@ router.post("/", isLoggedIn, function(req,res){
 
             Category.findOne({name: newArg.category}, function(err, foundCat){
                 foundCat.debates.push(newArg);
-                foundCat.save();
+                foundCat.save();   
             });
-
             res.redirect("/debates/" + newArg._id);
         }
     });

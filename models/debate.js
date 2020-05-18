@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const slugify = require('slugify');
 
 const debateSchema = new mongoose.Schema({
     topic: String,
@@ -26,7 +27,19 @@ const debateSchema = new mongoose.Schema({
         username: String
     },
     category: String,
-    createdAt: {type: Date, default: Date.now}
+    createdAt: {type: Date, default: Date.now},
+    slug: {
+        type: String,
+        required: true,
+        unique: true
+    }
+});
+
+debateSchema.pre('validate', function(next){
+    if(this.topic){
+        this.slug = slugify(this.topic, {lower: true, strict: true});
+    }
+    next();
 });
 
 module.exports = mongoose.model("Debate", debateSchema);

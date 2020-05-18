@@ -56,10 +56,10 @@ app.use(function(req, res, next){
 
 // ROUTES 
 app.use(indexRoutes);
-app.use("/debates/:id/discussion",commentRoutes);
 app.use("/debates", debateRoutes);
 app.use("/debates/:id/for", forRoutes);
 app.use("/debates/:id/against", againstRoutes);
+app.use("/debates/:id/discussion",commentRoutes);
 app.use("/categories", categoryRoutes);
 
 

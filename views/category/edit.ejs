@@ -13,7 +13,11 @@
             </div>
             <button class="btn btn-outline-info" type="submit" name="createPost">update category</button>
         </form>
+        <form class="col text-center delete-form" action="/categories/<%= category._id %>?_method=DELETE" method="POST">
+            <button class="btn btn-outline-danger"> delete </button>
+        </form>
     </div>
 </div>
+
 
 <%- include("../partials/footer") %>
