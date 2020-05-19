@@ -26,7 +26,10 @@ const debateSchema = new mongoose.Schema({
         },
         username: String
     },
-    category: String,
+    category: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Category"
+    },
     createdAt: {type: Date, default: Date.now},
     slug: {
         type: String,

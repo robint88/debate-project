@@ -27,31 +27,35 @@ router.get("/new", isLoggedIn,function(req,res){
 });
 //CREATE
 router.post("/", isLoggedIn, function(req,res){
-    Debate.create(req.body.debate, function(err, newArg){
+    Debate.create(req.body.debate, function(err, newDebate){
         if(err){
             res.render('debates/compose');
             console.log(err);
         } else {
-            newArg.moderator.username = req.user.username;
-            newArg.moderator.id = req.user._id;
-            newArg.save();
+            
+            newDebate.moderator.username = req.user.username;
+            newDebate.moderator.id = req.user._id;
+            
 
-            Category.findOne({name: newArg.category}, function(err, foundCat){
-                foundCat.debates.push(newArg);
+            Category.findById(req.body.debate.category, function(err, foundCat){
+                foundCat.debates.push(newDebate);
                 foundCat.save();   
             });
-            res.redirect("/debates/" + newArg._id);
+            console.log(newDebate);
+            newDebate.save();
+            res.redirect("/debates/" + newDebate._id);
         }
     });
 });
 // SHOW
 router.get("/:id", function(req, res){
-    Debate.findById(req.params.id).populate('comments for against').exec(function(err, foundDebate){
+    Debate.findById(req.params.id).populate('comments for against category').exec(function(err, foundDebate){
         if(err){
             res.redirect("/debates");
             console.log(err);
         } else {
             // console.log(foundDebate);
+            // NEED TO FIND AND UPDATE CATEGORY TOO
             res.render("debates/show", {debate: foundDebate});
         }
     });
@@ -59,12 +63,19 @@ router.get("/:id", function(req, res){
 // EDIT
 // POPULATING THE DEBATE ARGUMENTS WITH FOR AND AGAINST DATA - NEED TO FIX USER INFO THOUGH
 router.get("/:id/edit", checkDebateOwnership, function(req,res){
-    Debate.findById(req.params.id).populate('for against').exec(function(err, foundArg){
+    Debate.findById(req.params.id, function(err, foundArg){
         if(err){
             res.redirect("/debates");
             console.log(err);
         } else {
-            res.render("debates/edit", {debate: foundArg});
+            Category.find({}).populate('categories').exec(function(err, foundCategories){
+                if(err){
+                    console.log(err);
+                } else {
+                    res.render("debates/edit", {debate: foundArg, categories: foundCategories});
+                }
+            })
+            
         }
     });
 });
@@ -76,6 +87,8 @@ router.put("/:id", checkDebateOwnership, function(req,res){
             res.redirect("/debates");
             console.log(err);
         } else {
+            // FIND CATEGORY AND PUSH NEW CATEGORY IN TO IT AND REMOVE OLD
+            // console.log(updatedArg);
             res.redirect("/debates/" + req.params.id);
         }
     });

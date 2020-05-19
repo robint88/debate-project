@@ -7,7 +7,7 @@
     <%= debate.summary %>
 </p>
 <p>
-    <%= debate.category %> - <em><%= moment(debate.createdAt).calendar() %></em>
+    <a href="/categories/<%= debate.category._id %>"> <%=debate.category.name %></a> - <em><%= moment(debate.createdAt).calendar() %></em>
 </p>
 
 <!-- NEW LAYOUT -->
@@ -15,11 +15,14 @@
     <div class="moderator-functions">
         <p>Moderator functions</p>
         <div class="moderator-buttons">
-            <a class="btn btn-outline-info" href="/debates/<%= debate._id %>/for/<%=debate.for._id %>/edit"> edit for </a>
-            <a class="btn btn-outline-info" href="/debates/<%= debate._id %>/for/<%=debate.against._id %>/edit"> edit against </a>
+            <a class="btn btn-outline-success" href="/debates/<%= debate._id %>/edit"> edit debate </a>
             <form class="col text-center delete-form" action="/debates/<%= debate._id %>?_method=DELETE" method="POST">
                 <button class="btn btn-outline-danger"> *** DELETE DEBATE *** </button>
             </form>
+            <% if(debate.for && debate.against) { %>
+                <a class="btn btn-outline-info" href="/debates/<%= debate._id %>/for/<%=debate.for._id %>/edit"> edit for </a>
+                <a class="btn btn-outline-info" href="/debates/<%= debate._id %>/against/<%=debate.against._id %>/edit"> edit against </a>
+            <% } %>
         </div>
     </div>
 <% } %>

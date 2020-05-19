@@ -3,6 +3,7 @@ const router = express.Router();
 const passport = require('passport');
 const User = require("../models/user");
 const Debate = require("../models/debate");
+const Category = require("../models/categories");
 
 // LANDING
 router.get("/", function(req, res){
@@ -14,6 +15,30 @@ router.get("/", function(req, res){
         }
     });
 });
+
+// TESTING NEW ROUTES
+// router.get("/cat/:slug", function(req, res){
+//     Category.findOne({slug: req.params.slug}).populate('debates').exec(function(err, foundCat){
+//         if(err) {
+//             res.send(err);
+//         } else {
+//             res.render('category/show', {category: foundCat});
+//         }
+//     });
+// });
+
+// ***** THIS IS HOW ROUTES NEED TO BE - NEED TO ASSOCIATE CATEGORIES TO MODELS
+// router.get("/cat/:slug/deb/:debateId", function(req, res){
+//     Debate.findById(req.params.debateId).populate('comments for against').exec(function(err, foundDeb){
+//         if(err) {
+//             console.log(err);
+//         } else {
+//             res.render('debates/show', {debate: foundDeb});
+//             console.log(foundDeb);
+//         }
+//     });
+// });
+
 
 // Authentication Routes
 //  Register
