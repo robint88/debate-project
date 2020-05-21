@@ -61,7 +61,8 @@ router.get("/:id", function(req, res){
     });
 });
 // EDIT
-// POPULATING THE DEBATE ARGUMENTS WITH FOR AND AGAINST DATA - NEED TO FIX USER INFO THOUGH
+
+// ADD AUTHENTICATION MIDDLEWARE TO EDIT AND UPDATE!
 router.get("/:id/edit", checkDebateOwnership, function(req,res){
     Debate.findById(req.params.id, function(err, foundArg){
         if(err){
@@ -81,14 +82,24 @@ router.get("/:id/edit", checkDebateOwnership, function(req,res){
 });
 // UPDATE
 router.put("/:id", checkDebateOwnership, function(req,res){
-    Debate.findByIdAndUpdate(req.params.id, req.body.debate, function(err, updatedArg){
-        console.log(updatedArg);
+    Debate.findByIdAndUpdate(req.params.id, req.body.debate, function(err, updatedDebate){
         if(err){
             res.redirect("/debates");
             console.log(err);
         } else {
             // FIND CATEGORY AND PUSH NEW CATEGORY IN TO IT AND REMOVE OLD
-            // console.log(updatedArg);
+            // Doesnt work properly - allows multiple entries of same debate in one category
+            console.log("first id " + req.body.debate.category);
+            console.log("updated id "+updatedDebate.category);
+            // const updatedCat = req.body.debate.category;
+            Category.findById(req.body.debate.category, function(err, foundCat){
+                if(err){
+                    console.log(err);
+                } else {
+                    foundCat.debates.push(updatedDebate);
+                    foundCat.save();
+                }
+            });
             res.redirect("/debates/" + req.params.id);
         }
     });

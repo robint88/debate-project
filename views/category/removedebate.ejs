@@ -1,0 +1,26 @@
+<%- include("../partials/header") %>
+
+<h2 class="pageHeaders">Remove debate for <%= category.name %></h2>
+
+<div class="row justify-content-sm-center">
+    <div class="col-md-10">
+        <form action="/categories/removedebate/<%=category._id %>?_method=PUT" method="post">
+            <div class="form-group">
+                
+                    <select class="form-control" data-style="btn-info" id="debateCategory" name="category[debates]">
+                        <optgroup label="debate category">
+                            <% category.debates.forEach(function(debate){ %>
+                                <option name="" value="<%= debate._id %>"><%= debate.topic %></option>
+                            <% }) %>
+                        </optgroup>
+                    </select>   
+            <br>
+            <button class="btn btn-outline-info" type="submit" name="update category">remove selected debate</button>
+        </form>
+    </div>
+</div>
+
+
+<%- include("../partials/footer") %>
+
+
