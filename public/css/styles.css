@@ -293,6 +293,11 @@ a {
     
 }
 
+.votingForms {
+    display: inline;
+    margin: auto 40px;
+}
+
 #debates-link {
     text-align: center;
     padding: 10px;

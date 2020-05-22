@@ -53,7 +53,7 @@ router.put("/:for_id", function(req, res){
         }
     });
 });
-router.put("/vote/:for_id", function(req,res){
+router.put("/vote/:for_id", isLoggedIn, function(req,res){
     Argument.updateOne({_id: req.params.for_id}, { $inc: {"votes": 1}}, function(err, upvotedArg){
         if(err) {
             console.log(err);

@@ -52,19 +52,27 @@
 <div class="row text-center">
     <% if(currentUser) { %>
         <div class="col">
-                <p>VOTES FOR: <%= debate.for.votes %></p>
-                <form action="/debates/<%= debate._id%>/for/vote/<%= debate.for._id%>?_method=PUT" id="votebox"  method="post">
-                    <button type="submit" class="btn btn-outline-success" name="for[votes]">VOTE FOR</button>
-                </form>
+            <h5>For</h5>
+                <% if(debate.for.usersVoted.includes(currentUser._id) || debate.against.usersVoted.includes(currentUser._id)){ %>
+                    <em>You have already voted.</em>
+                <% } else {%>
+                    <form action="/debates/<%= debate._id%>/for/vote/<%= debate.for._id%>?_method=PUT" id="votebox"  method="post">
+                        <button type="submit" class="btn btn-outline-success" name="for[votes]">VOTE FOR</button>
+                    </form>
+                <% } %>
                 <h4>
                     <%= Math.round((debate.for.votes / (debate.for.votes + debate.against.votes)) * 100) %>%
                 </h4>
             </div>
             <div class="col">
-                <p>VOTES AGAINST: <%= debate.against.votes %></p>
-                <form action="/debates/<%= debate._id%>/against/vote/<%= debate.against._id%>?_method=PUT" id="votebox"  method="post">
-                    <button type="submit" class="btn btn-outline-danger" name="against[votes]">VOTE FOR</button>
-                </form>
+                <h5>Against</h5>
+                <% if(debate.against.usersVoted.includes(currentUser._id) || debate.for.usersVoted.includes(currentUser._id)){ %>
+                    <em>You have already voted</em>
+                <% } else {%>
+                    <form action="/debates/<%= debate._id%>/against/vote/<%= debate.against._id%>?_method=PUT" id="votebox"  method="post">
+                        <button type="submit" class="btn btn-outline-danger" name="against[votes]">VOTE FOR</button>
+                    </form>
+                <% } %>
                 <h4>
                     <%= Math.round((debate.against.votes / (debate.for.votes + debate.against.votes)) * 100) %>%
                 </h4>
