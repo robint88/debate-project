@@ -27,8 +27,9 @@ router.get("/", function(req, res){
 //     });
 // });
 
-// ***** THIS IS HOW ROUTES NEED TO BE - NEED TO ASSOCIATE CATEGORIES TO MODELS
-// router.get("/cat/:slug/deb/:debateId", function(req, res){
+// ***** THIS IS HOW ROUTES NEED TO BE - NEED TO MERGEPARAMS IN 
+// THE ROUTE (SEE COMMENTS ROUTE AS EXAMPLE) AND ASSOCIATE CATEGORIES TO MODELS ***
+// router.get("/cat/:slug/:debateId", function(req, res){
 //     Debate.findById(req.params.debateId).populate('comments for against').exec(function(err, foundDeb){
 //         if(err) {
 //             console.log(err);

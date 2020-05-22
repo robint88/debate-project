@@ -46,6 +46,35 @@
                 <%= debate.against.content %>
             </p>
         </div>
+</div>
+<p class="moderator-title"><em>moderator - <%= debate.moderator.username %></em></p>
+<h3 class="text-center">VOTES</h3>
+<div class="row text-center">
+    <% if(currentUser) { %>
+        <div class="col">
+                <p>VOTES FOR: <%= debate.for.votes %></p>
+                <form action="/debates/<%= debate._id%>/for/vote/<%= debate.for._id%>?_method=PUT" id="votebox"  method="post">
+                    <button type="submit" class="btn btn-outline-success" name="for[votes]">VOTE FOR</button>
+                </form>
+                <h4>
+                    <%= Math.round((debate.for.votes / (debate.for.votes + debate.against.votes)) * 100) %>%
+                </h4>
+            </div>
+            <div class="col">
+                <p>VOTES AGAINST: <%= debate.against.votes %></p>
+                <form action="/debates/<%= debate._id%>/against/vote/<%= debate.against._id%>?_method=PUT" id="votebox"  method="post">
+                    <button type="submit" class="btn btn-outline-danger" name="against[votes]">VOTE FOR</button>
+                </form>
+                <h4>
+                    <%= Math.round((debate.against.votes / (debate.for.votes + debate.against.votes)) * 100) %>%
+                </h4>
+            </div>
+    <% } else { %> 
+        <h4 class="col">YOU MUST BE LOGGED IN TO VOTE</h4>
+    <% } %>
+</div>
+        
+        
     <% } else { %>
         <div class="coming-soon">
             <p>Debate coming soon.</p>
@@ -59,7 +88,7 @@
         </div>
     <% } %>
 </div>
-<p class="moderator-title"><em>moderator - <%= debate.moderator.username %></em></p>
+
 
 <div class="discussion">
     <h3>Discuss</h3>

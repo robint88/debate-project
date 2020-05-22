@@ -4,7 +4,7 @@ const argumentSchema = new mongoose.Schema({
     author: String,
     content: String,
     factScore: Number,
-    votes: Number,
+    votes: {type: Number, default: 0},
     usersVoted: []
 });
 

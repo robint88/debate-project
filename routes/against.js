@@ -53,6 +53,16 @@ router.put("/:against_id", function(req, res){
         
     });
 });
+router.put("/vote/:against_id", function(req,res){
+    Argument.updateOne({_id: req.params.against_id}, { $inc: {"votes": 1}}, function(err, upvotedArg){
+        if(err) {
+            console.log(err);
+        } else {
+            // upvotedArg.votes = req.body.for;
+            res.redirect('/debates/'  +req.params.id);
+        }
+    });
+});
 
 
 function isLoggedIn(req, res, next){

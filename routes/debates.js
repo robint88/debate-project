@@ -46,19 +46,19 @@ router.post("/", isLoggedIn, function(req,res){
             res.redirect("/debates/" + newDebate._id);
         }
     });
-});
+}); 
 // SHOW
 router.get("/:id", function(req, res){
-    Debate.findById(req.params.id).populate('comments for against category').exec(function(err, foundDebate){
-        if(err){
-            res.redirect("/debates");
-            console.log(err);
-        } else {
-            // console.log(foundDebate);
-            // NEED TO FIND AND UPDATE CATEGORY TOO
-            res.render("debates/show", {debate: foundDebate});
-        }
-    });
+        Debate.findById(req.params.id).populate('comments for against category').exec(function(err, foundDebate){
+            if(err){
+                res.redirect("/debates");
+                console.log(err);
+            } else {
+                // console.log(foundDebate);
+                // NEED TO FIND AND UPDATE CATEGORY TOO
+                res.render("debates/show", {debate: foundDebate});
+            }
+        });  
 });
 // EDIT
 
