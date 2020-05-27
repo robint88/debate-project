@@ -1,58 +1,65 @@
 <%- include("../partials/header") %>
-
-<h1 class="display-2">
-    <%= debate.topic %>
-</h1>
-<p class="lead">
-    <%= debate.summary %>
-</p>
-<p>
-    <a href="/categories/<%= debate.category._id %>"> <%=debate.category.name %></a> - <em><%= moment(debate.createdAt).calendar() %></em>
-</p>
-
-<!-- NEW LAYOUT -->
 <% if(currentUser && debate.moderator.id.equals(currentUser._id)) { %>
-    <div class="moderator-functions">
-        <p>Moderator functions</p>
-        <div class="moderator-buttons">
-            <a class="btn btn-outline-success" href="/debates/<%= debate._id %>/edit"> edit debate </a>
-            <form class="col text-center delete-form" action="/debates/<%= debate._id %>?_method=DELETE" method="POST">
-                <button class="btn btn-outline-danger"> *** DELETE DEBATE *** </button>
-            </form>
-            <% if(debate.for && debate.against) { %>
-                <a class="btn btn-outline-info" href="/debates/<%= debate._id %>/for/<%=debate.for._id %>/edit"> edit for </a>
-                <a class="btn btn-outline-info" href="/debates/<%= debate._id %>/against/<%=debate.against._id %>/edit"> edit against </a>
-            <% } %>
-        </div>
+<div class="moderator-functions">
+    <p class="mod-title">Moderator functions</p>
+    <div class="moderator-buttons">
+        <a class="pure-button edit-debate-button" href="/debates/<%= debate._id %>/edit"> edit debate </a>
+        <form class="delete-form" action="/debates/<%= debate._id %>?_method=DELETE" method="POST">
+            <button class="delete-button pure-button"> *** DELETE DEBATE *** </button>
+        </form>
+        <% if(debate.for && debate.against) { %>
+            <div class="edit-args">
+                <a class="pure-button edit-argument-button" href="/debates/<%= debate._id %>/for/<%=debate.for._id %>/edit"> edit for </a>
+                <a class="pure-button edit-argument-button" href="/debates/<%= debate._id %>/against/<%=debate.against._id %>/edit"> edit against </a>
+            </div>
+        <% } %>
     </div>
+</div>
 <% } %>
-<div class="debate-section">
+<section class="show-header">
+    <h1 class="">
+            <%= debate.topic %>
+    </h1>
+    <p class="debate-summary">
+        <%= debate.summary %>
+    </p>
+    <p>
+        <a href="/categories/<%= debate.category._id %>"> <%=debate.category.name %></a> - <em><%= moment(debate.createdAt).calendar() %></em>
+    </p>
+        
+</section>
+<section class="debate-section">
     <% if(debate.for && debate.against) { %>
-        <div class="argument">
-            <h3 class="argument-for">the case for...</h3>
-            <p class="argument-author">
-                <em>by <%= debate.for.author %></em>
-            </p>
+        <article class="argument">
+            <div class="argument-summary">
+                <h4 >the case for...</h4>
+                <p class="argument-author">
+                    <em>by <%= debate.for.author %></em>
+                </p>
+            </div>
             <p class="argument-content">
                 <%= debate.for.content %>
             </p>
-        </div>
-        <div class="argument">
-            <h3 class="argument-against">the case against...</h3>
-            <p class="argument-author">
-                <em>by <%= debate.against.author %></em>
-            </p>
+        </article>
+        <article class="argument argument-against">
+            <div class="argument-summary">
+                <h4>the case against...</h4>
+                <p>
+                    <em>by <%= debate.against.author %></em>
+                </p>
+            </div>
             <p class="argument-content">
                 <%= debate.against.content %>
             </p>
-        </div>
-</div>
+        </article>
+</section>
 <p class="moderator-title"><em>moderator - <%= debate.moderator.username %></em></p>
-<h3 class="text-center">VOTES</h3>
-<div class="row text-center">
+<div id="vote-section">
+    <h4>VOTES</h4>
     <% if(currentUser) { %>
-        <div class="col">
-            <h5>For</h5>
+        <div id="voting-buttons">
+            <div class="vote-button-section">
+                <h5>For</h5>
                 <% if(debate.for.usersVoted.includes(currentUser._id) || debate.against.usersVoted.includes(currentUser._id)){ %>
                     <em>You have already voted.</em>
                 <% } else {%>
@@ -64,7 +71,7 @@
                     <%= Math.round((debate.for.votes / (debate.for.votes + debate.against.votes)) * 100) %>%
                 </h4>
             </div>
-            <div class="col">
+            <div class="vote-button-section">
                 <h5>Against</h5>
                 <% if(debate.against.usersVoted.includes(currentUser._id) || debate.for.usersVoted.includes(currentUser._id)){ %>
                     <em>You have already voted</em>
@@ -77,6 +84,7 @@
                     <%= Math.round((debate.against.votes / (debate.for.votes + debate.against.votes)) * 100) %>%
                 </h4>
             </div>
+        </div>
     <% } else { %> 
         <h4 class="col">YOU MUST BE LOGGED IN TO VOTE</h4>
     <% } %>
@@ -99,7 +107,7 @@
 
 
 <div class="discussion">
-    <h3>Discuss</h3>
+    <h4>Discuss</h4>
     <div class="discussion-join">
         <a href="/debates/<%= debate._id %>/discussion/new" id="joinDiscBtn">Join the discussion</a>
     </div>

@@ -5,54 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,700,800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css" integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/grids-responsive-min.css" />
+    <link rel="stylesheet" href="/css/newstyle.css">
 
-    <title>DEBATE PROJECT</title>
+
+    <title>|thinky| debate and discuss</title>
 </head>
 <body>
-        
-    <nav class="navbar navbar-expand-lg navbar-dark">
-        <a class="navbar-brand" id="logo" href="/">|thynky|</a>
-        <button class="navbar-toggler text-light" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <!-- <span  class="navbar-toggler-icon"></span> -->
-            MENU
-        </button>
-        
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="/debates">CURRENT <span class="sr-only">(current)</span></a>
+    <nav class="pure-menu pure-menu-horizontal">
+            <a href="/" class="pure-menu-heading pure-menu-link">|thinky|</a>
+            <ul class="pure-menu-list">
+                <li class="pure-menu-item">
+                    <a href="/categories" class="pure-menu-link">categories</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/categories">CATEGORIES</a>
-                </li>                    
-                <li class="nav-item">
-                    <a class="nav-link" href="#">ABOUT</a>
-                </li>                    
+                <li class="pure-menu-item">
+                    <a href="/debates" class="pure-menu-link">debates</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="#" class="pure-menu-link">about</a>
+                </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
-            </form>
-            <div class="navbar-nav">
+            <ul class="pure-menu-list account-menu">
                 <% if(!currentUser) { %>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/register">register</a>
+                    <li class="pure-menu-item">
+                        <a href="/login" class="pure-menu-link">login</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/login">login</a>
+                    <li class="pure-menu-item">
+                        <a href="/register" class="pure-menu-link">register</a>
                     </li>
-                <% } else { %>
-                    <li class="nav-item">
-                        <a class="nav-link">Hi, <%= currentUser.username %></a>
+                <% } else {%>
+                    <li class="pure-menu-item">
+                        <a class="pure-menu-link">Hi, <%= currentUser.username %></a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/logout">logout</a>
+                    <li class="pure-menu-item">
+                        <a class="pure-menu-link" href="/logout">logout</a>
                     </li>
-                <% } %>
-            </div>
-        </div>
-    </nav>
+                <%}%>
+            </ul>
+        </nav>
+   
     <div class="container-fluid">

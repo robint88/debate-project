@@ -1,0 +1,187 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+}
+h1{
+    text-align: center;
+}
+h2 {
+    font-size: 60px;
+}
+
+h3 {
+    font-weight: 400;
+    font-size: 50px;
+}
+a {
+    text-decoration: none;
+}
+
+.pure-menu-horizontal{
+    font-size: 20px;
+    width: 100%;
+    height: 45px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.pure-menu-link{
+    color: #363636;
+    margin: 0;
+    padding: 5px;
+}
+
+
+.pure-menu-link:hover{
+    color: #cca43b;
+    background: none;
+}
+
+.debate-item {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+    height: 250px;
+    color: #363636;
+    filter: grayscale(100%);
+    
+}
+.debate-item:hover {
+    background: #363636;
+    cursor: pointer;
+    color: #cca43b;
+    filter: none;
+    transform: scale(0.97);
+}
+
+.debate-item p, h2 {
+    font-weight: 300;
+    color: #363636;
+}
+.debate-item:hover p {
+    font-weight: 300;
+    color: #cca43b;
+}
+
+.center-form {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form ,
+fieldset {
+    width:75%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+ input {
+     width: 100%;
+ }
+
+ /* DEBATE SHOW PAGES */
+ .mod-title {
+     color: #fff;
+     font-size: 20px;
+ }
+ .moderator-functions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: #cca43b;
+    padding: 20px;
+ }
+ .delete-form {
+    display: inline;
+}
+.edit-debate-button {
+    background: #fff;
+    color: #cca43b;
+}
+.delete-button {
+    background: #c54242;
+    color: #fff;
+}
+.edit-args {
+    margin-top: 5px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+.edit-argument-button {
+    background: #363636;
+    color: #fff;
+}
+
+ .debate-summary {
+     padding: 10px 50px;
+ }
+
+ .debate-section {
+     width: 100%;
+     height: auto;
+ }
+ .argument-against {
+     background:#363636;
+     color: #fff;
+ }
+
+ .argument {
+     padding: 40px;
+ }
+
+ .argument-summary h4{
+    text-align: center;
+ }
+
+ .argument-content {
+    white-space: pre-line;
+ }
+
+ #vote-section {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+ }
+ #voting-buttons {
+     display: flex;
+     width: 80%;
+     justify-content: space-around;
+ }
+
+ .vote-button-section {
+     text-align: center;
+ }
+ .votingForms {
+    display: inline;
+    margin: auto 40px;
+}
+
+@media screen and (max-width: 48em){
+    h2 {
+        font-size: 75px;
+    }
+    .pure-menu{
+        font-size: 15px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        height: 45px;
+    }
+}
+
+gold = #cca43b
+jet = #363636
+platinum = #E5E5E5
+gun metal = #242f40
+white = #fff

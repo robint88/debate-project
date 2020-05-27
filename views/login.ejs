@@ -2,19 +2,17 @@
 
 <h2 class="pageHeaders">Login</h2>
 
-<div class="row justify-content-sm-center">
-    <div class="col-md-4">
-        <form action="/login" method="post">
-            <div class="form-group">
-                <label for="username">Username:</label>
-                <input class="form-control" type="text" name="username" id="username" placeholder="username">
-                <label for="passord">Password:</label>
-                <input class="form-control" type="password" name="password" placeholder="password">
-            </div>
-            <button class="btn btn-outline-info" type="submit">login</button>
-        </form>
-        <p class="text-center userFormStrap">Not registered? <a href="/register"> Register here!</a></p>
-    </div>
+<div class="center-form">
+    <form action="/login" class="pure-form pure-form-stacked" method="post">
+        <fieldset>
+            <label for="username">Username:</label>
+            <input class="pure-input-rounded" type="text" name="username" id="username" placeholder="username" required>
+            <label for="passord">Password:</label>
+            <input class="pure-input-rounded" type="password" name="password" placeholder="password" required>
+            <button class="" type="submit">login</button>
+        </fieldset>
+    </form> 
+    <p class="userFormStrap">Not registered? <a href="/register"> Register here!</a></p>
 </div>
 
 

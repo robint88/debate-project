@@ -1,20 +1,18 @@
 <%- include('./partials/header') %>
 
-<h2 class="pageHeaders">Regisiter</h2>
+<h2 class="pageHeaders">Register</h2>
 
-<div class="row justify-content-sm-center">
-    <div class="col-md-4">
-        <form action="/register" method="post">
-            <div class="form-group">
-                <label for="username">Username:</label>
-                <input class="form-control" type="text" name="username" id="username" placeholder="username">
-                <label for="passord">Password:</label>
-                <input class="form-control" type="password" name="password" placeholder="password">
-            </div>
-            <button class="btn btn-outline-info" type="submit">register</button>
-        </form>
-        <p class="text-center userFormStrap">Already registered? <a href="/login"> Login here!</a></p>
-    </div>
+<div class="center-form">
+    <form action="/register" class ="pure-form pure-form-stacked" method="post">
+        <fieldset>
+            <label for="username">Username:</label>
+            <input class="pure-input-rounded" type="text" name="username" id="username" placeholder="username" required>
+            <label for="passord">Password:</label>
+            <input class="pure-input-rounded" type="password" name="password" placeholder="password" required>
+            <button class="" type="submit">register</button>
+        </fieldset>
+    </form>
+    <p class="text-center userFormStrap">Already registered? <a href="/login"> Login here!</a></p>
 </div>
 
 

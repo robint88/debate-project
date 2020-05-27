@@ -3,11 +3,18 @@
 <h2 class="pageHeaders">
     Current Debates
 </h2>
-<div class="debate-grid">
-    <% debates.forEach(function(debate){ %>
-        <a href="debates/<%= debate._id %>" class="debate-item">
-            <h3><%= debate.topic %></h3>
-        </a>
-    <% }) %>
+<div class="pure-g">
+    
+    <% for(let i=0; i < debates.length; i++){ %>
+        <% if(i > 0 && i % 6 == 0){ %>
+            <a href="debates/<%= debates[i]._id %>" class="pure-u-1 debate-item pure-u-md-1">
+                <h4><%= debates[i].topic %></h4>
+            </a>
+        <% } else { %>
+            <a href="debates/<%= debates[i]._id %>" class="pure-u-1 debate-item pure-u-md-1-3">
+                <h4><%= debates[i].topic %></h4>
+            </a>
+        <% }%>
+    <% } %>
 </div>
 <%- include("../partials/footer") %>
