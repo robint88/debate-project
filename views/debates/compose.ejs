@@ -2,28 +2,23 @@
 
 <h2 class="pageHeaders">New Debate</h2>
 
-<div class="row justify-content-sm-center">
-    <div class="col-md-10">
-        <form action="/debates" method="post">
-            <div class="form-group">
-                
-               <label for="debateTitle">Topic</label>
-                <input class="form-control" type="text" name="debate[topic]" id="debateTitle">
-               <label for="debateSummary">Summary</label>
-                <input class="form-control" type="text" name="debate[summary]" id="debateSummary">
-                <label for="debateCategory">Category</label>
-                <select class="form-control" data-style="btn-info" id="debateCategory" name="debate[category]">
-                    <optgroup label="debate category">
-                            <% categories.forEach(function(category){ %>
+<div class="center-form">
+    <form action="/debates" class="pure-form pure-form-stacked" method="post">
+        <fieldset>
+            <label for="debateTitle">Topic</label>
+            <input class="pure-input-rounded" type="text" name="debate[topic]" id="debateTitle">
+            <label for="debateSummary">Summary</label>
+            <input class="pure-input-rounded" type="text" name="debate[summary]" id="debateSummary">
+            <label for="debateCategory">Category</label>
+            <select class="" data-style="btn-info" id="debateCategory" name="debate[category]">
+                <optgroup label="debate category">
+                        <% categories.forEach(function(category){ %>
                                 <option name="" value="<%= category._id %>"><%= category.name %></option>
-                            <% }) %>
-                </select>
-
-                
-            </div>
-            <button class="btn btn-outline-info" type="submit" name="createPost">publish</button>
-        </form>
-    </div>
+                        <% }) %>
+            </select>
+            <button class="btn btn-outline-info" type="submit" name="createPost">create debate</button>
+        </fieldset>
+    </form>
 </div>
 
 <%- include("../partials/footer") %>

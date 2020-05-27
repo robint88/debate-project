@@ -41,6 +41,14 @@ a {
     background: none;
 }
 
+#index-more-debates {
+    text-align: center;
+    color: #cca43b;
+}
+#index-more-debates:hover {
+    color: #242f40;
+}
+
 .debate-item {
     display: flex;
     flex-direction: column;
@@ -122,6 +130,20 @@ fieldset {
     color: #fff;
 }
 
+#debate-c-and-d {
+    text-align: right;
+    margin-right: 10px;
+}
+
+.coming-soon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #cca43b;
+    height: 200px;
+}
+
  .debate-summary {
      padding: 10px 50px;
  }
@@ -160,12 +182,49 @@ fieldset {
 
  .vote-button-section {
      text-align: center;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
  }
  .votingForms {
     display: inline;
     margin: auto 40px;
 }
+.vote-button {
+    background: #cca43b;
+    color: #fff;
+}
+.discussion {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+}
+.discussion-join {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 15px;
+}
+.comment-item {
+    padding: 15px 25px;
+    border-top: 1px solid #cca43b;   
+}
+.comment-author {
+    text-align: right;
+}
+#edit-comment {
+    background: #e5e5e5;
+    color: #cca43b;
+}
 
+.delete-comment-form {
+    display: inline;
+}
+#delete-comment-button {
+    width: 100px;
+    background: #c54242;
+    color: #fff;
+}
 @media screen and (max-width: 48em){
     h2 {
         font-size: 75px;
@@ -177,6 +236,9 @@ fieldset {
         flex-direction: row;
         justify-content: space-between;
         height: 45px;
+    }
+    .argument {
+        padding: 25px;
     }
 }
 
