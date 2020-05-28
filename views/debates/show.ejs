@@ -32,7 +32,7 @@
     <% if(debate.for && debate.against) { %>
         <article class="argument">
             <div class="argument-summary">
-                <h4 >the case for...</h4>
+                <h4 class="case-header">the case for...</h4 class="case-header">
                 <p class="argument-author">
                     <em>by <%= debate.for.author %></em>
                 </p>
@@ -43,7 +43,7 @@
         </article>
         <article class="argument argument-against">
             <div class="argument-summary">
-                <h4>the case against...</h4>
+                <h4 class="case-header">the case against...</h4>
                 <p>
                     <em>by <%= debate.against.author %></em>
                 </p>
@@ -96,9 +96,9 @@
             <p>Debate coming soon.</p>
             <% if(currentUser && debate.moderator.id.equals(currentUser._id)) { %>
                 <div class="moderator-debate-content">
-                    <p class="col-sm-12">Add new arguments</p>
-                    <a href="/debates/<%=debate._id%>/for/new" class="pure-button">For</a>
-                    <a href="/debates/<%=debate._id%>/against/new" class="pure-button">Against</a>
+                    <p class="">Add new arguments</p>
+                    <a href="/debates/<%=debate._id%>/for/new" class="pure-button add-content-button">For</a>
+                    <a href="/debates/<%=debate._id%>/against/new" class="pure-button add-content-button">Against</a>
                 </div>
             <% } %>
         </div>
@@ -109,7 +109,7 @@
 <div class="discussion">
     <h4>Discuss</h4>
     <div class="discussion-join">
-        <a href="/debates/<%= debate._id %>/discussion/new" id="joinDiscBtn">Join the discussion</a>
+        <a href="/debates/<%= debate._id %>/discussion/new">Join the discussion</a>
     </div>
     <% debate.comments.forEach(function(comment){ %>
         <div class="comment-item">

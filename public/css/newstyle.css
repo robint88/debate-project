@@ -16,6 +16,10 @@ h3 {
     font-weight: 400;
     font-size: 50px;
 }
+
+h4 {
+    font-size: 25px;
+}
 a {
     text-decoration: none;
 }
@@ -163,6 +167,20 @@ fieldset {
     background: #cca43b;
     padding: 20px;
  }
+ .moderator-debate-content {
+     padding: 20px;
+     background: #242f40;
+     color: #e5e5e5;
+     text-align: center;
+     margin: 15px auto;
+ }
+
+ .add-content-button {
+     width: 90px;
+     margin: 10px 5px;
+     background: #e5e5e5;
+     color: #242f40;
+ }
  .delete-form {
     display: inline;
 }
@@ -230,10 +248,15 @@ fieldset {
     white-space: pre-line;
  }
 
+ .case-header {
+     padding: 20px;
+ }
+
  #vote-section {
      display: flex;
      flex-direction: column;
      align-items: center;
+     padding: 35px;
  }
  #voting-buttons {
      display: flex;
@@ -325,7 +348,7 @@ nav {
         width: 40%;
         transform: translateX(100%);
         transition: transform 0.7s ease-in;
-        z-index: 1;
+        z-index: 99;
     }
     .nav-links li {
         opacity: 0;
