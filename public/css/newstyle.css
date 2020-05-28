@@ -78,11 +78,6 @@ ul li {
     transition: all 0.3s ease;
 }
 
-
-
-
-
-
 #index-more-debates {
     text-align: center;
     color: #cca43b;
@@ -288,6 +283,10 @@ fieldset {
     display: flex;
     justify-content: flex-end;
     margin-bottom: 15px;
+}
+
+textarea {
+    width: 100%;
 }
 .comment-item {
     padding: 15px 25px;
