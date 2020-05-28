@@ -15,36 +15,43 @@
     <title>|thinky| debate and discuss</title>
 </head>
 <body>
-    <nav class="pure-menu pure-menu-horizontal">
-            <a href="/" class="pure-menu-heading pure-menu-link">|thinky|</a>
-            <ul class="pure-menu-list">
-                <li class="pure-menu-item">
-                    <a href="/categories" class="pure-menu-link">categories</a>
+    
+
+        <nav>
+            <a href="/" class="logo">
+                |thinky|
+            </a>
+            <ul class="nav-links">
+                <li>
+                    <a href="/categories">categories</a>
                 </li>
-                <li class="pure-menu-item">
-                    <a href="/debates" class="pure-menu-link">debates</a>
+                <li>
+                    <a href="debates">debates</a>
                 </li>
-                <li class="pure-menu-item">
-                    <a href="#" class="pure-menu-link">about</a>
+                <li>
+                    <a href="#">about</a>
                 </li>
+            <% if(!currentUser) { %>
+                <li>
+                    <a href="/login">login</a>
+                </li>
+                <li>
+                    <a href="/register">register</a>
+                </li>
+            <% } else {%>
+                <li>
+                    <a href="#"">Hi, <%= currentUser.username %></a>
+                </li>
+                <li>
+                    <a href="/logout">logout</a>
+                </li>
+            <% } %>
             </ul>
-            <ul class="pure-menu-list account-menu">
-                <% if(!currentUser) { %>
-                    <li class="pure-menu-item">
-                        <a href="/login" class="pure-menu-link">login</a>
-                    </li>
-                    <li class="pure-menu-item">
-                        <a href="/register" class="pure-menu-link">register</a>
-                    </li>
-                <% } else {%>
-                    <li class="pure-menu-item">
-                        <a class="pure-menu-link">Hi, <%= currentUser.username %></a>
-                    </li>
-                    <li class="pure-menu-item">
-                        <a class="pure-menu-link" href="/logout">logout</a>
-                    </li>
-                <%}%>
-            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
         </nav>
    
-    <div class="container-fluid">
+    

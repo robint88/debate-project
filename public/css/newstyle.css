@@ -1,4 +1,4 @@
-body {
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -9,7 +9,7 @@ h1{
     text-align: center;
 }
 h2 {
-    font-size: 60px;
+    font-size: 40px;
 }
 
 h3 {
@@ -19,27 +19,65 @@ h3 {
 a {
     text-decoration: none;
 }
+.pageHeaders {
+    margin: 15px auto;
+    text-align: center;
+    padding: 30px;
+}
+/* OWN NAV */
 
-.pure-menu-horizontal{
-    font-size: 20px;
-    width: 100%;
-    height: 45px;
+nav {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
+    font-size: 15px;
+    min-height: 8vh;
     align-items: center;
+    background: #242f40;
+    color: #fff;
+    padding: 19px;
 }
-.pure-menu-link{
-    color: #363636;
-    margin: 0;
-    padding: 5px;
-}
-
-
-.pure-menu-link:hover{
+.logo {
+    letter-spacing: 3px;
+    font-size: 25px;
     color: #cca43b;
-    background: none;
 }
+.nav-links {
+    display: flex;
+    justify-content: space-around;
+    margin: 0;
+}
+
+.nav-links {
+    width: 40%;
+}
+.nav-links a {
+    color: #e5e5e5;
+    text-decoration: none;
+    letter-spacing: 2px;
+}
+
+ul li {
+    list-style: none;
+}
+.nav-links a:hover {
+    color: #cca43b;
+}
+.burger {
+    display: none;
+}
+
+.burger div {
+    width: 25px;
+    background-color: #e5e5e5;
+    height: 2px;
+    margin: 5px;
+    transition: all 0.3s ease;
+}
+
+
+
+
+
 
 #index-more-debates {
     text-align: center;
@@ -78,7 +116,7 @@ a {
 }
 
 .center-form {
-    height: 100%;
+    height: 50vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -95,6 +133,23 @@ fieldset {
      width: 100%;
  }
 
+ .user-form {
+     margin: auto;
+ }
+
+ .submit-button {
+     background: #cca43b;
+     color: #e5e5e5;
+     padding: 5px;
+     margin: 15px auto;
+     border-radius: 3px;
+ }
+
+ .submit-button:hover {
+     background: #e5e5e5;
+     color: #cca43b;
+     cursor: pointer;
+ }
  /* DEBATE SHOW PAGES */
  .mod-title {
      color: #fff;
@@ -133,6 +188,12 @@ fieldset {
 #debate-c-and-d {
     text-align: right;
     margin-right: 10px;
+}
+#remove-debate-button {
+    color: #e5e5e5;
+    background: #242f40;
+    padding: 5px;
+    margin: 10px;
 }
 
 .coming-soon {
@@ -225,7 +286,81 @@ fieldset {
     background: #c54242;
     color: #fff;
 }
-@media screen and (max-width: 48em){
+
+select {
+    width: 100%;
+}
+
+@media screen and (max-width: 1024px){
+    /* OWN NAV */
+    .nav-links {
+        width: 50%;
+    }
+
+    .pageHeaders {
+        font-size: 25px;
+        margin: auto;
+        padding: 20px;
+    }
+}
+
+@media screen and (max-width: 768px){
+/* OWN NAV */
+body {
+    overflow-x: hidden;
+}
+
+nav {
+    padding: 0px;
+}
+    .nav-links {
+        position: absolute;
+        right: 0;
+        height: 92vh;
+        top: 8vh;
+        background: #242f40;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 40%;
+        transform: translateX(100%);
+        transition: transform 0.7s ease-in;
+        z-index: 1;
+    }
+    .nav-links li {
+        opacity: 0;
+    }
+
+    .burger {
+        display: block;
+        cursor: pointer;
+    }
+
+    .nav-active {
+        transform: translateX(0);
+    }
+
+    @keyframes navLinkFade {
+        from {
+            opacity: 0;
+            transform: translateX(50px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0px);
+        }
+    }
+    .burgertoggle .line1 {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+    .burgertoggle .line2 {
+        opacity: 0;
+    }
+    .burgertoggle .line3 {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+/* OWN NAV */
+
     h2 {
         font-size: 75px;
     }

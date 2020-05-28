@@ -2,18 +2,14 @@
 
 <h2 class="pageHeaders">New Category</h2>
 
-<div class="row justify-content-sm-center">
-    <div class="col-md-10">
-        <form action="/categories" method="post">
-            <div class="form-group">
-                
+<div class="center-form">
+        <form action="/categories" method="post" class="pure-form pure-form-stacked">
+            <fieldset>
                 <label for="categoryName">Category Name</label>
                 <input type="text" name="category[name]" id="categoryName" class="form-control">
-
-            </div>
-            <button class="btn btn-outline-info" type="submit" name="createPost">create new category</button>
+            </fieldset> 
+            <button class="submit-button" type="submit" name="createPost">create new category</button>
         </form>
-    </div>
 </div>
 
 <%- include("../partials/footer") %>
