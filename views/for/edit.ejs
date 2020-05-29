@@ -2,23 +2,18 @@
 
 <h2 class="pageHeaders">EDIT</p></h2>
 
-<div class="row justify-content-sm-center">
-    <div class="col-md-10">
-        <form action="/debates/<%= debate_id %>/for/<%= forArg._id %>?_method=PUT" method="POST">
-            <div class="form-group">
-
-                <h4>Editing FOR argument as <%= forArg.author %></h4>
-
+<div class="center-form">
+        <h4>Editing FOR argument as <%= forArg.author %></h4>
+        <form action="/debates/<%= debate_id %>/for/<%= forArg._id %>?_method=PUT" method="POST" class="pure-form pure-form-stacked">
+                <fieldset>
                 <label for="debateForAuthor">Content Author</label>
-                <input type="text" id="debateforAuthor" name="for[author]" class="form-control" value="<%= forArg.author %>">
+                <input type="text" id="debateforAuthor" name="for[author]" required value="<%= forArg.author %>">
 
                 <label for="debateForContent">Content</label>
-                <textarea class="form-control" name="for[content]" id="debateForContent" cols="30" rows="10" > <%= forArg.content %></textarea>
-                
-            </div>
-            <button class="btn btn-outline-info" type="submit" name="createPost">update</button>
+                <textarea required name="for[content]" id="debateForContent" cols="30" rows="10" > <%= forArg.content %></textarea>
+                <button class="submit-button" type="submit" name="createPost">update</button>
+            </fieldset>
         </form> 
-    </div>  
 </div>
 
 <%- include("../partials/footer") %>

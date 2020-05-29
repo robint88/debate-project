@@ -2,23 +2,20 @@
 
 <h2 class="pageHeaders"><%= debate.topic %></h2>
 
-<div class="row justify-content-sm-center">
-    <div class="col-md-10">
-        <form action="/debates/<%= debate._id%>/for" method="POST">
-            <div class="form-group">
-
-                <h4>For</h4>
-
+<div class="center-form">
+        <h4>For</h4>
+        <form action="/debates/<%= debate._id%>/for" method="POST" class="pure-form pure-form-stacked">
+            <fieldset>
                 <label for="debateForAuthor">Content Author</label>
-                <input type="text" id="debateforAuthor" name="for[author]" class="form-control" placeholder="Add author name">
+                <input type="text" id="debateforAuthor" name="for[author]" required placeholder="Add author name">
 
                 <label for="debateForContent">Content</label>
-                <textarea class="form-control" name="for[content]" id="debateForContent" cols="30" rows="10" placeholder="Write your argument here"></textarea>
+                <textarea required name="for[content]" id="debateForContent" cols="30" rows="10" placeholder="Write your argument here"></textarea>
                 
-            </div>
-            <button class="btn btn-outline-info" type="submit" name="createPost">publish</button>
-        </form> 
-    </div>  
+    
+                <button class="submit-button" type="submit" name="createPost">publish</button>
+            </fieldset>
+        </form>  
 </div>
 
 <%- include("../partials/footer") %>
