@@ -32,7 +32,8 @@ router.post("/", isLoggedIn, function(req, res){
                     foundDebate.comments.push(comment);
                     foundDebate.save();
                     
-                    res.redirect("/debates/"+ foundDebate._id);
+                    res.json(comment);
+                    // res.redirect("/debates/"+ foundDebate._id);
                 }
             })
         }

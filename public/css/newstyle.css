@@ -86,6 +86,10 @@ ul li {
     color: #242f40;
 }
 
+.debate-header {
+    padding: 70px;
+}
+
 .debate-item {
     margin: 0;
     display: flex;
@@ -104,7 +108,7 @@ ul li {
     cursor: pointer;
     color: #cca43b;
     filter: none;
-    transform: scale(0.97);
+    transform: scale(0.96);
 }
 
 .debate-item p, h2 {
@@ -287,12 +291,18 @@ fieldset {
     margin-bottom: 15px;
 }
 
+#comment-login {
+    text-align: center;
+    padding: 30px;
+}
+
 textarea {
     width: 100%;
 }
 .comment-item {
     padding: 15px 25px;
-    border-top: 1px solid #cca43b;   
+    border-top: 1px solid #cca43b;
+    white-space: pre-line;  
 }
 .comment-author {
     text-align: right;
