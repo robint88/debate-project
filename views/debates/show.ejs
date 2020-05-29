@@ -126,25 +126,33 @@
      <% } else { %>
         <div id="comment-login">
             <h4>YOU MUST BE LOGGED IN TO LEAVE A COMMENT</h4>
-            <a href="/login">log in here</a>
+            <a href="/login">log in here to join the discussion</a>
         </div>
         
      <% } %>
 
     <div id="comment-list">
         <% debate.comments.forEach(function(comment){ %>
-            <div class="comment-item">
+            <div class="comment-item" id="comment-item">
                 <div class="comment-body">
                     <%= comment.text %>
                 </div>
                 <div class="comment-author">
                     - <em><%= comment.author.username %></em>
                 </div>
+                <form action="/debates/<%= debate._id %>/discussion/<%= comment._id%>" method="POST" class="pure-form pure-form-stacked edit-comment-form">
+                    <fieldset>
+                        <label for="debateContent">Discuss</label>
+                        <textarea class="form-control" name="comment[text]" id="debateContent" cols="30" rows="10" placeholder="Write your argument here"><%= comment.text %></textarea>
+        
+                        <button class="submit-button" type="submit" name="createPost">update</button>
+                    </fieldset>
+                </form>
                 <% if(currentUser && comment.author.id.equals(currentUser._id)|| currentUser && debate.moderator.id.equals(currentUser._id)){ %>
-                    <a href="/debates/<%=debate._id%>/discussion/<%=comment._id%>/edit" class="pure-button" id="edit-comment">EDIT COMMENT</a>
-                    <form class="delete-comment-form" action="/debates/<%=debate._id%>/discussion/<%=comment._id%>?_method=DELETE" method="POST">
-                        <input class="pure-button" id="delete-comment-button" type="submit" value="DELETE">
-                    </form>
+                <button class="pure-button edit-button" id="edit-comment">EDIT COMMENT</button>
+                <form class="delete-comment-form" action="/debates/<%=debate._id%>/discussion/<%=comment._id%>?_method=DELETE" method="POST">
+                    <input class="pure-button" id="delete-comment-button" type="submit" value="DELETE">
+                </form>
                 <% } %>
             </div>
         <%})%>

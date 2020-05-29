@@ -89,8 +89,7 @@ router.put("/:id", checkDebateOwnership, function(req,res){
         } else {
             // FIND CATEGORY AND PUSH NEW CATEGORY IN TO IT AND REMOVE OLD
             // Doesnt work properly - allows multiple entries of same debate in one category
-            console.log("first id " + req.body.debate.category);
-            console.log("updated id "+updatedDebate.category);
+           
             // const updatedCat = req.body.debate.category;
             Category.findById(req.body.debate.category, function(err, foundCat){
                 if(err){
