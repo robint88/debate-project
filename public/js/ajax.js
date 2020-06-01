@@ -64,3 +64,24 @@ $('#comment-list').on('submit', '.edit-comment-form', function(e){
         }
     });
 });
+
+// Delete comment
+$("#comment-list").on('submit', ".delete-comment-form", function(e){
+    e.preventDefault();
+    const confirmResponse = confirm('Are you sure you want to delete this comment?');
+
+    if(confirmResponse){
+        const actionUrl = $(this).attr('action');
+        $commentToDelete = $(this).closest('.comment-item');
+        $.ajax({
+            url: actionUrl,
+            type: 'Delete',
+            commentToDelete: $commentToDelete,
+            success: function(data){
+                this.commentToDelete.remove();
+            }
+        })
+    } else {
+
+    }
+});

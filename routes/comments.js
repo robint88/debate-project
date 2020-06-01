@@ -65,12 +65,13 @@ router.put("/:comment_id", checkCommentOwnership, function(req, res){
 
 // Destroy
 router.delete("/:comment_id", checkCommentOwnership, function(req, res){
-    Comment.findByIdAndRemove(req.params.comment_id, function(err){
+    Comment.findByIdAndRemove(req.params.comment_id, function(err, commentToDelete){
         if(err){
             res.redirect("back");
         } else {
-            console.log("DELETED COMMENT");
-            res.redirect("/debates/" + req.params.id);
+            // console.log("DELETED COMMENT");
+            // res.redirect("/debates/" + req.params.id);
+            res.json(commentToDelete);
         }
     })
 });

@@ -23,6 +23,7 @@ h4 {
 a {
     text-decoration: none;
 }
+
 .pageHeaders {
     margin: 15px auto;
     text-align: center;
@@ -65,6 +66,7 @@ ul li {
 }
 .nav-links a:hover {
     color: #cca43b;
+    cursor: pointer;
 }
 .burger {
     display: none;
@@ -87,6 +89,7 @@ ul li {
 }
 
 .debate-header {
+    font-size: 80px;
     padding: 70px;
 }
 
@@ -224,6 +227,13 @@ fieldset {
     height: 200px;
 }
 
+.show-header {
+    height:75vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
  .debate-summary {
      padding: 10px 50px;
  }
@@ -238,7 +248,7 @@ fieldset {
  }
 
  .argument {
-     padding: 40px;
+     padding: 60px;
  }
 
  .argument-summary h4{
@@ -351,70 +361,63 @@ body {
 nav {
     padding: 0px;
 }
-    .nav-links {
-        position: absolute;
-        right: 0;
-        height: 92vh;
-        top: 8vh;
-        background: #242f40;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 40%;
-        transform: translateX(100%);
-        transition: transform 0.7s ease-in;
-        z-index: 99;
-    }
-    .nav-links li {
-        opacity: 0;
-    }
-
-    .burger {
-        display: block;
-        cursor: pointer;
-    }
-
-    .nav-active {
-        transform: translateX(0);
-    }
-
-    @keyframes navLinkFade {
-        from {
-            opacity: 0;
-            transform: translateX(50px);
-        }
-        to {
-            opacity: 1;
-            transform: translateX(0px);
-        }
-    }
-    .burgertoggle .line1 {
-        transform: rotate(-45deg) translate(-5px, 6px);
-    }
-    .burgertoggle .line2 {
-        opacity: 0;
-    }
-    .burgertoggle .line3 {
-        transform: rotate(45deg) translate(-5px, -6px);
-    }
-/* OWN NAV */
-
-    h2 {
-        font-size: 75px;
-    }
-    .pure-menu{
-        font-size: 15px;
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        height: 45px;
-    }
-    .argument {
-        padding: 25px;
-    }
+.nav-links {
+    position: absolute;
+    right: 0;
+    height: 92vh;
+    top: 8vh;
+    background: #242f40;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    transform: translateX(100%);
+    transition: transform 0.7s ease-in;
+    z-index: 99;
+}
+.nav-links li {
+    opacity: 0;
 }
 
+.burger {
+    display: block;
+    cursor: pointer;
+}
+
+.nav-active {
+    transform: translateX(0);
+}
+
+@keyframes navLinkFade {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+.burgertoggle .line1 {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+.burgertoggle .line2 {
+    opacity: 0;
+}
+.burgertoggle .line3 {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+.show-header {
+    height: 50vh;
+}
+
+.debate-header {
+    font-size: 40px;
+}
+
+.argument {
+    padding: 25px;
+}
 gold = #cca43b
 jet = #363636
 platinum = #E5E5E5
