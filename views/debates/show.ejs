@@ -58,14 +58,16 @@ background-position: center center; background-size: cover;">
 <p class="moderator-title"><em>moderator - <%= debate.moderator.username %></em></p>
 <section id="vote-section">
     <h4>VOTES</h4>
-
-    <h5>
+    <div class="center-form">
+        <canvas id="debatePie" width="100px" height="100px"></canvas>
+    </div>
+    <!-- <h5>
         FOR - <%= Math.round((debate.for.votes / (debate.for.votes + debate.against.votes)) * 100) %>%
     </h5>
 
     <h5>
         AGAINST- <%= Math.round((debate.against.votes / (debate.for.votes + debate.against.votes)) * 100) %>%
-    </h5>
+    </h5> -->
     <% if(currentUser) { %>
         <div id="voting-buttons">
             <div class="vote-button-section">
@@ -90,8 +92,9 @@ background-position: center center; background-size: cover;">
             </div>
         </div>
     <% } else { %> 
-        <h4>YOU MUST BE LOGGED IN TO VOTE</h4>
+        <h5>YOU MUST BE LOGGED IN TO VOTE</h5>
     <% } %>
+    
 </section>
 <section class="discussion">
         <h4>Discuss</h4>
@@ -162,5 +165,29 @@ background-position: center center; background-size: cover;">
 
 
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+<script>
+<% if(debate.for && debate.against) { %>
+    var ctx = document.getElementById('debatePie').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: ['For', 'Against'],
+            datasets: [{
+                label: '# of Votes',
+                data: [<%= debate.for.votes %>, <%= debate.against.votes%>],
+                backgroundColor: [
+                    'rgb(204, 164, 59)',
+                    'rgb(36, 47, 64)'
+            ]
+            }]
+        }
+    });
+<% } else {%>
+    console.log('No data');
+<% } %>
+myChart.canvas.parentNode.style.height = '400px';
+myChart.canvas.parentNode.style.width = '400px';
+</script>
 
 <%- include("../partials/footer") %>
