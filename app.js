@@ -38,7 +38,7 @@ mongoose.connect("mongodb://localhost:27017/debateDB", {useNewUrlParser: true});
 
 // Configure Passport
 app.use(require("express-session")({
-    secret: "Lando is a barky boy!",
+    secret: process.env.PASSPORT_SECRET,
     resave: false,
     saveUninitialized: false
 }));
