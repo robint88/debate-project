@@ -54,11 +54,12 @@ router.put("/:for_id", function(req, res){
     });
 });
 router.put("/vote/:for_id", isLoggedIn, function(req,res){
-    Argument.updateOne({_id: req.params.for_id}, { $inc: {"votes": 1}}, function(err, upvotedArg){
+    Argument.updateOne({_id: req.params.for_id}, { $inc: {"votes": 1},  $push: {"usersVoted": req.user._id}}, function(err, upvotedArg){
         if(err) {
             console.log(err);
         } else {
             // upvotedArg.votes = req.body.for;
+            console.log(upvotedArg);
             res.redirect('/debates/'  +req.params.id);
         }
     });

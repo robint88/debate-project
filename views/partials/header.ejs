@@ -31,17 +31,17 @@
                 </li>
             <% if(!currentUser) { %>
                 <li>
-                    <a href="/login">login</a>
+                    <a class="user-buttons" href="/login">login</a>
                 </li>
                 <li>
-                    <a href="/register">register</a>
+                    <a class="user-buttons" href="/register">register</a>
                 </li>
             <% } else {%>
                 <li>
-                    <a href="#"">Hi, <%= currentUser.username %></a>
+                    <a class="user-buttons" href="#">Hi, <%= currentUser.username %></a>
                 </li>
                 <li>
-                    <a href="/logout">logout</a>
+                    <a class="user-buttons" href="/logout">logout</a>
                 </li>
             <% } %>
             </ul>

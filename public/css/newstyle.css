@@ -24,6 +24,10 @@ a {
     text-decoration: none;
 }
 
+a:hover {
+    cursor: pointer;
+}
+
 .pageHeaders {
     margin: 15px auto;
     text-align: center;
@@ -68,6 +72,13 @@ ul li {
     color: #cca43b;
     cursor: pointer;
 }
+
+.user-buttons {
+    color: #cca43b !important;
+}
+.user-buttons:hover {
+    color: #c54242 !important;
+}
 .burger {
     display: none;
 }
@@ -92,6 +103,7 @@ ul li {
     font-size: 80px;
     padding: 70px;
 }
+
 
 .debate-item {
     margin: 0;
@@ -285,9 +297,33 @@ fieldset {
     display: inline;
     margin: auto 40px;
 }
-.vote-button {
+/* .vote-button {
     background: #cca43b;
     color: #fff;
+} */
+
+.vote-button {    
+    margin: 5px;
+    display: inline-block;
+    text-decoration: none;
+    font-size: 40px;
+    color: #cca43b;
+    width: 120px;
+    height: 120px;
+    line-height: 120px;
+    border-radius: 50%;
+    border: solid 2px #cca43b;
+    text-align: center;
+    vertical-align: middle;
+    overflow: hidden;
+    font-weight: bold;
+    transition: .4s;
+}
+      
+      .vote-button:hover {
+          background: #c54242;
+          cursor: pointer;
+      }
 }
 .discussion {
     margin-top: 20px;
@@ -314,7 +350,7 @@ textarea {
     width: 100%;
 }
 .comment-item {
-    padding: 15px 25px;
+    padding: 1px 25px;
     border-top: 1px solid #cca43b;
     white-space: pre-line;  
 }

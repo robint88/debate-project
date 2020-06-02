@@ -58,6 +58,14 @@ background-position: center center; background-size: cover;">
 <p class="moderator-title"><em>moderator - <%= debate.moderator.username %></em></p>
 <section id="vote-section">
     <h4>VOTES</h4>
+
+    <h5>
+        FOR - <%= Math.round((debate.for.votes / (debate.for.votes + debate.against.votes)) * 100) %>%
+    </h5>
+
+    <h5>
+        AGAINST- <%= Math.round((debate.against.votes / (debate.for.votes + debate.against.votes)) * 100) %>%
+    </h5>
     <% if(currentUser) { %>
         <div id="voting-buttons">
             <div class="vote-button-section">
@@ -66,12 +74,9 @@ background-position: center center; background-size: cover;">
                     <em>You have already voted.</em>
                 <% } else {%>
                     <form action="/debates/<%= debate._id%>/for/vote/<%= debate.for._id%>?_method=PUT" id="votebox"  method="post">
-                        <button type="submit" class="pure-button vote-button" name="for[votes]">VOTE FOR</button>
+                        <button type="submit" class=" vote-button" name="for[votes]">+</button>
                     </form>
                 <% } %>
-                <h4>
-                    <%= Math.round((debate.for.votes / (debate.for.votes + debate.against.votes)) * 100) %>%
-                </h4>
             </div>
             <div class="vote-button-section">
                 <h5>Against</h5>
@@ -79,19 +84,66 @@ background-position: center center; background-size: cover;">
                     <em>You have already voted</em>
                 <% } else {%>
                     <form action="/debates/<%= debate._id%>/against/vote/<%= debate.against._id%>?_method=PUT" id="votebox"  method="post">
-                        <button type="submit" class="pure-button vote-button" name="against[votes]">VOTE AGAINST</button>
+                        <button type="submit" class=" vote-button" name="against[votes]">-</button>
                     </form>
                 <% } %>
-                <h4>
-                    <%= Math.round((debate.against.votes / (debate.for.votes + debate.against.votes)) * 100) %>%
-                </h4>
             </div>
         </div>
     <% } else { %> 
         <h4>YOU MUST BE LOGGED IN TO VOTE</h4>
     <% } %>
 </section>
+<section class="discussion">
+        <h4>Discuss</h4>
+        <!-- <div class="discussion-join">
+            <a href="/debates/<%= debate._id %>/discussion/new">Join the discussion</a>
+        </div> -->
+         <% if(currentUser) { %>
+            <div class="center-form">
+                <form action="/debates/<%= debate._id %>/discussion" method="post" id="new-comment-form" class="pure-form pure-form-stacked">
+                    <fieldset>
         
+                        <label for="debateContent">Your comment:</label>
+                        <textarea name="comment[text]" id="commentContent" cols="30" rows="10" placeholder="Write your comment here"></textarea>
+            
+                        <button class="submit-button" type="submit" name="createPost">submit comment</button>
+                    </fieldset>
+                </form>
+            </div>
+         <% } else { %>
+            <div id="comment-login">
+                <a href="/login">log in here to join the discussion</a>
+            </div>
+            
+         <% } %>
+    
+        <div id="comment-list">
+            <% debate.comments.forEach(function(comment){ %>
+                <div class="comment-item" id="comment-item">
+                    <div class="comment-body">
+                        <%= comment.text %>
+                    </div>
+                    <div class="comment-author">
+                        - <em><%= comment.author.username %></em>
+                    </div>
+                    <form action="/debates/<%= debate._id %>/discussion/<%= comment._id%>" method="POST" class="pure-form pure-form-stacked edit-comment-form">
+                        <fieldset>
+                            <label for="debateContent">Discuss</label>
+                            <textarea class="form-control" name="comment[text]" id="debateContent" cols="30" rows="10" placeholder="Write your argument here"><%= comment.text %></textarea>
+            
+                            <button class="submit-button" type="submit" name="createPost">update</button>
+                        </fieldset>
+                    </form>
+                    <% if(currentUser && comment.author.id.equals(currentUser._id)|| currentUser && debate.moderator.id.equals(currentUser._id)){ %>
+                    <button class="pure-button edit-button" id="edit-comment">EDIT COMMENT</button>
+                    <form class="delete-comment-form" action="/debates/<%=debate._id%>/discussion/<%=comment._id%>?_method=DELETE" method="POST">
+                        <input class="pure-button" id="delete-comment-button" type="submit" value="DELETE">
+                    </form>
+                    <% } %>
+                </div>
+            <%})%>
+        </div>
+    </section>        
         
     <% } else { %>
         <div class="coming-soon">
@@ -108,58 +160,7 @@ background-position: center center; background-size: cover;">
 </div>
 
 
-<section class="discussion">
-    <h4>Discuss</h4>
-    <!-- <div class="discussion-join">
-        <a href="/debates/<%= debate._id %>/discussion/new">Join the discussion</a>
-    </div> -->
-     <% if(currentUser) { %>
-        <div class="center-form">
-            <form action="/debates/<%= debate._id %>/discussion" method="post" id="new-comment-form" class="pure-form pure-form-stacked">
-                <fieldset>
-    
-                    <label for="debateContent">Your comment:</label>
-                    <textarea name="comment[text]" id="commentContent" cols="30" rows="10" placeholder="Write your comment here"></textarea>
-        
-                    <button class="submit-button" type="submit" name="createPost">submit comment</button>
-                </fieldset>
-            </form>
-        </div>
-     <% } else { %>
-        <div id="comment-login">
-            <h4>YOU MUST BE LOGGED IN TO LEAVE A COMMENT</h4>
-            <a href="/login">log in here to join the discussion</a>
-        </div>
-        
-     <% } %>
 
-    <div id="comment-list">
-        <% debate.comments.forEach(function(comment){ %>
-            <div class="comment-item" id="comment-item">
-                <div class="comment-body">
-                    <%= comment.text %>
-                </div>
-                <div class="comment-author">
-                    - <em><%= comment.author.username %></em>
-                </div>
-                <form action="/debates/<%= debate._id %>/discussion/<%= comment._id%>" method="POST" class="pure-form pure-form-stacked edit-comment-form">
-                    <fieldset>
-                        <label for="debateContent">Discuss</label>
-                        <textarea class="form-control" name="comment[text]" id="debateContent" cols="30" rows="10" placeholder="Write your argument here"><%= comment.text %></textarea>
-        
-                        <button class="submit-button" type="submit" name="createPost">update</button>
-                    </fieldset>
-                </form>
-                <% if(currentUser && comment.author.id.equals(currentUser._id)|| currentUser && debate.moderator.id.equals(currentUser._id)){ %>
-                <button class="pure-button edit-button" id="edit-comment">EDIT COMMENT</button>
-                <form class="delete-comment-form" action="/debates/<%=debate._id%>/discussion/<%=comment._id%>?_method=DELETE" method="POST">
-                    <input class="pure-button" id="delete-comment-button" type="submit" value="DELETE">
-                </form>
-                <% } %>
-            </div>
-        <%})%>
-    </div>
-</section>
 
 
 <%- include("../partials/footer") %>

@@ -5,7 +5,12 @@ const argumentSchema = new mongoose.Schema({
     content: String,
     factScore: Number,
     votes: {type: Number, default: 0},
-    usersVoted: []
+    usersVoted: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User"
+        }
+    ]
 });
 
 module.exports = mongoose.model("Argument", argumentSchema);
