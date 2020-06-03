@@ -30,6 +30,9 @@ background-position: center center; background-size: cover;">
     </p>
         
 </section>
+
+<!-------------------- DEBATES -------------------->
+
 <section class="debate-section">
     <% if(debate.for && debate.against) { %>
         <article class="argument">
@@ -56,6 +59,9 @@ background-position: center center; background-size: cover;">
         </article>
 </section>
 <p class="moderator-title"><em>moderator - <%= debate.moderator.username %></em></p>
+
+<!-------------------- VOTES -------------------->
+
 <section id="vote-section">
     <h4>VOTES</h4>
     <div class="center-form">
@@ -91,11 +97,25 @@ background-position: center center; background-size: cover;">
                 <% } %>
             </div>
         </div>
+        <% if(debate.against.usersVoted.includes(currentUser._id) || debate.for.usersVoted.includes(currentUser._id)){ %>
+            <% if(debate.for.usersVoted.includes(currentUser._id)){ %>
+                <form action="/debates/<%= debate._id%>/for/changevote/<%= debate.for._id%>?_method=PUT" id="votebox"  method="post">
+                    <button type="submit" class="pure-button" name="for[votes]">Change my vote</button>
+                </form>
+            <% } else { %>
+                <form action="/debates/<%= debate._id%>/against/changevote/<%= debate.against._id%>?_method=PUT" id="votebox"  method="post">
+                    <button type="submit" class="pure-button" name="against[votes]">Change my vote</button>
+                </form>
+            <% } %>
+        <% } %>
     <% } else { %> 
         <h5>YOU MUST BE LOGGED IN TO VOTE</h5>
     <% } %>
     
 </section>
+
+<!-------------------- DISCUSSION -------------------->
+
 <section class="discussion">
         <h4>Discuss</h4>
         <!-- <div class="discussion-join">
@@ -169,7 +189,7 @@ background-position: center center; background-size: cover;">
 <script>
 <% if(debate.for && debate.against) { %>
     var ctx = document.getElementById('debatePie').getContext('2d');
-    var myChart = new Chart(ctx, {
+    var pieChart = new Chart(ctx, {
         type: 'pie',
         data: {
             labels: ['For', 'Against'],
@@ -179,15 +199,15 @@ background-position: center center; background-size: cover;">
                 backgroundColor: [
                     'rgb(204, 164, 59)',
                     'rgb(36, 47, 64)'
-            ]
+                ]
             }]
         }
     });
 <% } else {%>
     console.log('No data');
 <% } %>
-myChart.canvas.parentNode.style.height = '400px';
-myChart.canvas.parentNode.style.width = '400px';
+pieChart.canvas.parentNode.style.height = '400px';
+pieChart.canvas.parentNode.style.width = '400px';
 </script>
 
 <%- include("../partials/footer") %>

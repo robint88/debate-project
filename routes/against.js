@@ -63,6 +63,17 @@ router.put("/vote/:against_id", isLoggedIn, function(req,res){
         }
     });
 });
+// Change vote
+router.put("/changevote/:against_id", isLoggedIn, function(req,res){
+    Argument.updateOne({_id: req.params.against_id}, { $inc: {"votes": -1}, $pull: {"usersVoted": req.user._id}}, function(err, upvotedArg){
+        if(err) {
+            console.log(err);
+        } else {
+            // upvotedArg.votes = req.body.for;
+            res.redirect('/debates/'  +req.params.id);
+        }
+    });
+});
 
 
 function isLoggedIn(req, res, next){
