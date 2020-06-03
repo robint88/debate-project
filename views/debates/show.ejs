@@ -16,18 +16,20 @@
     </div>
 </div>
 <% } %>
-<section class="show-header" style="background-image: URL(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQHmQDhOCKdu7M8LQHxiw8xGY77jw7V4srwBcn4K19QwyPGb6NJ&usqp=CAU);background-repeat: no-repeat;
+<section class="show-header" style="background-image: URL(<%= debate.image %>>);background-repeat: no-repeat;
 background-size: auto auto;
 background-position: center center; background-size: cover;">
-    <h1 class="debate-header">
-            <%= debate.topic %>
-    </h1>
-    <p class="debate-summary">
-        <%= debate.summary %>
-    </p>
-    <p id="debate-c-and-d">
-        <a href="/categories/<%= debate.category._id %>"> <%=debate.category.name %></a> - <em><%= moment(debate.createdAt).calendar() %></em>
-    </p>
+    <div class="header-content">
+        <h1 class="debate-header">
+                <%= debate.topic %>
+        </h1>
+        <p class="debate-summary">
+            <%= debate.summary %>
+        </p>
+        <p id="debate-c-and-d">
+            <a href="/categories/<%= debate.category._id %>"> <%=debate.category.name %></a> - <em><%= moment(debate.createdAt).calendar() %></em>
+        </p>
+    </div>
         
 </section>
 
@@ -109,7 +111,7 @@ background-position: center center; background-size: cover;">
             <% } %>
         <% } %>
     <% } else { %> 
-        <h5>YOU MUST BE LOGGED IN TO VOTE</h5>
+        <h5 class="login-notification">YOU MUST BE LOGGED IN TO VOTE</h5>
     <% } %>
     
 </section>
@@ -190,7 +192,7 @@ background-position: center center; background-size: cover;">
 <% if(debate.for && debate.against) { %>
     var ctx = document.getElementById('debatePie').getContext('2d');
     var pieChart = new Chart(ctx, {
-        type: 'pie',
+        type: 'doughnut',
         data: {
             labels: ['For', 'Against'],
             datasets: [{

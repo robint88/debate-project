@@ -30,8 +30,8 @@ a:hover {
 
 .pageHeaders {
     margin: 15px auto;
-    text-align: center;
-    padding: 30px;
+    text-align: left;
+    font-size: 20px;
 }
 /* OWN NAV */
 
@@ -49,6 +49,12 @@ nav {
     letter-spacing: 3px;
     font-size: 25px;
     color: #cca43b;
+}
+.logo:hover{
+    color: #fff;
+    background: -webkit-linear-gradient(#fff, #cca43b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 .nav-links {
     display: flex;
@@ -99,13 +105,11 @@ ul li {
     color: #242f40;
 }
 
-.debate-header {
-    font-size: 80px;
-    padding: 70px;
-}
+
 
 
 .debate-item {
+    color: #fff !important;
     margin: 0;
     display: flex;
     flex-direction: column;
@@ -114,9 +118,23 @@ ul li {
     text-align: center;
     height: 250px;
     color: #363636;
-    filter: grayscale(100%);
-    background: #fff;
+    filter: grayscale(70%);
+    background: #cca43b;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     
+}
+.debate-item:nth-child(even) {
+    background: #cca43b;
+    filter: sepia(70%);
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.debate-item h4 {
+    background: #242f40;
 }
 .debate-item:hover {
     background: #363636;
@@ -124,6 +142,9 @@ ul li {
     color: #cca43b;
     filter: none;
     transform: scale(0.96);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .debate-item p, h2 {
@@ -240,14 +261,25 @@ fieldset {
 }
 
 .show-header {
-    height:75vh;
+    /* height:75vh; */
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
+.header-content {
+    background: rgba(36, 47, 64,0.5);
+
+}
+.debate-header {
+    font-size: 80px;
+    padding: 70px;
+    color: #fff;
+
+}
  .debate-summary {
      padding: 10px 50px;
+     color: #fff;
  }
 
  .debate-section {
@@ -324,7 +356,9 @@ fieldset {
     background: #c54242;
     cursor: pointer;
 }
-
+.login-notification {
+    padding: 40px;
+}
 .discussion {
     margin-top: 20px;
     display: flex;
@@ -384,7 +418,6 @@ select {
     .pageHeaders {
         font-size: 25px;
         margin: auto;
-        padding: 20px;
     }
 }
 
@@ -443,12 +476,9 @@ nav {
 .burgertoggle .line3 {
     transform: rotate(45deg) translate(-5px, -6px);
 }
-.show-header {
-    height: 50vh;
-}
-
 .debate-header {
     font-size: 40px;
+    padding: 20px;
 }
 
 .argument {

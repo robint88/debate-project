@@ -3,15 +3,18 @@
 <h2 class="pageHeaders">
     Current Debates
 </h2>
+<% if(currentUser){ %>
+    <a href="/debates/new">New Debate</a>
+<% } %>
 <div class="pure-g">
     
     <% for(let i=0; i < debates.length; i++){ %>
         <% if(i > 0 && i % 6 == 0){ %>
-            <a href="debates/<%= debates[i]._id %>" class="pure-u-1 debate-item pure-u-md-1">
+            <a href="debates/<%= debates[i]._id %>" class="pure-u-1 debate-item pure-u-md-1" style="background-image: URL(<%= debates[i].image %>)">
                 <h4><%= debates[i].topic %></h4>
             </a>
         <% } else { %>
-            <a href="debates/<%= debates[i]._id %>" class="pure-u-1 debate-item pure-u-md-1-3">
+            <a href="debates/<%= debates[i]._id %>" class="pure-u-1 debate-item pure-u-md-1-3" style="background-image: URL(<%= debates[i].image %>)">
                 <h4><%= debates[i].topic %></h4>
             </a>
         <% }%>

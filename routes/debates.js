@@ -69,7 +69,7 @@ router.get("/:id/edit", checkDebateOwnership, function(req,res){
             res.redirect("/debates");
             console.log(err);
         } else {
-            Category.find({}).populate('categories').exec(function(err, foundCategories){
+            Category.find({}).populate('categories').sort({name: 1}).exec(function(err, foundCategories){
                 if(err){
                     console.log(err);
                 } else {
