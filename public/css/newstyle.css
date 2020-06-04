@@ -255,11 +255,18 @@ fieldset {
 #debate-c-and-d {
     text-align: right;
     margin-right: 10px;
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.2);
     margin-left: 50%;
     width:50%;
     padding: 5px;
 }
+#debate-c-and-d a {
+    color: #cca43b;
+}
+#debate-c-and-d a:hover {
+    color: #c54242;
+}
+
 #remove-debate-button {
     color: #e5e5e5;
     background: #242f40;
@@ -308,7 +315,7 @@ fieldset {
  }
 
  .argument {
-     padding: 60px;
+     padding: 100px;
  }
 
  .argument-summary h4{
@@ -380,6 +387,9 @@ fieldset {
     display: flex;
     flex-direction: column;
     padding: 15px;
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
 }
 .discussion-join {
     display: flex;
@@ -404,7 +414,11 @@ textarea {
     border-top: 1px solid #cca43b;
     white-space: pre-line;  
 }
+.comment-body{
+    padding-top: 0;
+}
 .comment-author {
+    padding-top: 0;
     text-align: right;
 }
 #edit-comment {
