@@ -2,9 +2,10 @@ const express = require("express");
 const router = express.Router({mergeParams: true});
 const Debate = require('../models/debate');
 const Comment = require('../models/comment');
+const middleware = require("../middleware");
 
 //New
-router.get("/new", isLoggedIn, function(req, res){
+router.get("/new", middleware.isLoggedIn, function(req, res){
     Debate.findById(req.params.id, function(err, foundDebate){
         if(err){
             console.log(err);
@@ -15,7 +16,7 @@ router.get("/new", isLoggedIn, function(req, res){
 });
 
 //Create
-router.post("/", isLoggedIn, function(req, res){
+router.post("/", middleware.isLoggedIn, function(req, res){
     Debate.findById(req.params.id, function(err, foundDebate){
         if(err){
             console.log(err);
@@ -23,7 +24,8 @@ router.post("/", isLoggedIn, function(req, res){
         } else {
             Comment.create(req.body.comment, function(err, comment){
                 if(err){
-                    console.log(err);
+                    req.flash('error', 'Something went wrong');
+                    res.redirect('back');
                 } else {
                     comment.author.username = req.user.username;
                     comment.author.id = req.user._id;
@@ -32,6 +34,7 @@ router.post("/", isLoggedIn, function(req, res){
                     foundDebate.comments.push(comment);
                     foundDebate.save();
                     
+                    req.flash('success', 'Added new comment');
                     res.json(comment);
                     // res.redirect("/debates/"+ foundDebate._id);
                 }
@@ -40,7 +43,7 @@ router.post("/", isLoggedIn, function(req, res){
     });
 });
 // Edit
-router.get("/:comment_id/edit", checkCommentOwnership, function(req,res){
+router.get("/:comment_id/edit", middleware.checkCommentOwnership, function(req,res){
     Comment.findById(req.params.comment_id, function(err, foundComment){
         if(err){
             res.redirect("back");
@@ -50,13 +53,14 @@ router.get("/:comment_id/edit", checkCommentOwnership, function(req,res){
     });
 });
 //Update
-router.put("/:comment_id", checkCommentOwnership, function(req, res){
+router.put("/:comment_id", middleware.checkCommentOwnership, function(req, res){
     Comment.findByIdAndUpdate(req.params.comment_id, req.body.comment, {new: true}, function(err, updatedComment){
         if(err){
             res.redirect("back");
         } else {
             // console.log("Updated comment");
             // res.redirect("/debates/" + req.params.id);  
+            req.flash('success', 'Updated comment');
             res.json(updatedComment);
         }
         
@@ -64,13 +68,14 @@ router.put("/:comment_id", checkCommentOwnership, function(req, res){
 });
 
 // Destroy
-router.delete("/:comment_id", checkCommentOwnership, function(req, res){
+router.delete("/:comment_id", middleware.checkCommentOwnership, function(req, res){
     Comment.findByIdAndRemove(req.params.comment_id, function(err, commentToDelete){
         if(err){
             res.redirect("back");
         } else {
             // console.log("DELETED COMMENT");
             // res.redirect("/debates/" + req.params.id);
+            req.flash('success', 'Comment deleted');
             res.json(commentToDelete);
         }
     })

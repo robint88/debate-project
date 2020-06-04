@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Debate = require("../models/debate");
 const Category = require("../models/categories");
+const middleware = require("../middleware");
 
 // INDEX OF DEBATES
 router.get("/", function(req,res){
@@ -14,10 +15,10 @@ router.get("/", function(req,res){
     });
 });
 //NEW
-router.get("/new", isLoggedIn,function(req,res){
+router.get("/new", middleware.isLoggedIn,function(req,res){
     Category.find({}).sort({name: 1}).exec(function(err, foundCategories){
         if(err){
-            console.log(err);
+            res.res('back');
         } else {
             res.render("debates/compose", {categories: foundCategories});
 
@@ -26,11 +27,10 @@ router.get("/new", isLoggedIn,function(req,res){
     
 });
 //CREATE
-router.post("/", isLoggedIn, function(req,res){
+router.post("/", middleware.isLoggedIn, function(req,res){
     Debate.create(req.body.debate, function(err, newDebate){
         if(err){
             res.render('debates/compose');
-            console.log(err);
         } else {
             
             newDebate.moderator.username = req.user.username;
@@ -63,7 +63,7 @@ router.get("/:id", function(req, res){
 // EDIT
 
 // ADD AUTHENTICATION MIDDLEWARE TO EDIT AND UPDATE!
-router.get("/:id/edit", checkDebateOwnership, function(req,res){
+router.get("/:id/edit", middleware.checkDebateOwnership, function(req,res){
     Debate.findById(req.params.id, function(err, foundArg){
         if(err){
             res.redirect("/debates");
@@ -81,7 +81,7 @@ router.get("/:id/edit", checkDebateOwnership, function(req,res){
     });
 });
 // UPDATE
-router.put("/:id", checkDebateOwnership, function(req,res){
+router.put("/:id", middleware.checkDebateOwnership, function(req,res){
     Debate.findByIdAndUpdate(req.params.id, req.body.debate, function(err, updatedDebate){
         if(err){
             res.redirect("/debates");
@@ -104,7 +104,7 @@ router.put("/:id", checkDebateOwnership, function(req,res){
     });
 });
 // DESTROY
-router.delete("/:id", checkDebateOwnership, function(req,res){
+router.delete("/:id", middleware.checkDebateOwnership, function(req,res){
     Debate.findByIdAndRemove(req.params.id, function(err){
         if(err){
             res.redirect("/debates");
@@ -116,31 +116,5 @@ router.delete("/:id", checkDebateOwnership, function(req,res){
     });
 });
 
-
-function isLoggedIn(req, res, next){
-    if(req.isAuthenticated()){
-        return next();
-    } else {
-        res.redirect("/login");
-    }
-};
-
-function checkDebateOwnership(req, res, next){
-    if(req.isAuthenticated()){
-        Debate.findById(req.params.id, function(err, foundDebate){
-            if(err){
-                res.redirect("back");
-            } else {
-                if(foundDebate.moderator.id.equals(req.user._id)){
-                    next();
-                } else {
-                    res.redirect("back");
-                }
-            }
-        });
-    } else {
-        res.redirect("back");
-    }
-}
 
 module.exports = router;

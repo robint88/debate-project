@@ -13,7 +13,8 @@ const categorySchema = new mongoose.Schema({
         type: String,
         required: true,
         unique: true
-    }
+    },
+    image: String
 });
 
 categorySchema.pre('validate', function(next){

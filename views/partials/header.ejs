@@ -52,4 +52,14 @@
             </div>
         </nav>
    
+        <% if(error && error.length > 0){ %>
+            <div class="flash-message-error">
+                    <h4><%= error %></h4>
+            </div>
+        <% } %>
+        <% if(success && success.length > 0){ %>
+            <div class="flash-message-success">
+                    <h4><%= success %></h4>
+            </div>
+        <% } %>
     

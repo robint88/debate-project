@@ -14,7 +14,7 @@ h2 {
 
 h3 {
     font-weight: 400;
-    font-size: 50px;
+    font-size: 40px;
 }
 
 h4 {
@@ -97,6 +97,25 @@ ul li {
     transition: all 0.3s ease;
 }
 
+.flash-message-error {
+    background: rgba(197, 66, 66,0.8);
+    width: 66%;
+    text-align: center;
+    margin: 15px auto;
+    padding: 8px;
+    color: #fff;
+    border-radius: 5px;
+}
+.flash-message-success {
+    background: #e5e5e5;
+    width: 66%;
+    text-align: center;
+    margin: 15px auto;
+    padding: 8px;
+    color: #cca43b;
+    border-radius: 5px;
+}
+
 #index-more-debates {
     text-align: center;
     color: #cca43b;
@@ -125,14 +144,7 @@ ul li {
     background-size: cover;
     
 }
-.debate-item:nth-child(even) {
-    background: #cca43b;
-    filter: sepia(70%);
 
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
 .debate-item h4 {
     background: #242f40;
 }
@@ -243,6 +255,10 @@ fieldset {
 #debate-c-and-d {
     text-align: right;
     margin-right: 10px;
+    background: rgba(255, 255, 255, 0.7);
+    margin-left: 50%;
+    width:50%;
+    padding: 5px;
 }
 #remove-debate-button {
     color: #e5e5e5;
@@ -484,8 +500,8 @@ nav {
 .argument {
     padding: 25px;
 }
-gold = #cca43b
+/* gold = #cca43b
 jet = #363636
 platinum = #E5E5E5
 gun metal = #242f40
-white = #fff
+white = #fff */
