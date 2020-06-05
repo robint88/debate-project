@@ -5,7 +5,7 @@
 </h2>
 <div class="pure-g">
     <% categories.forEach(function(category){ %>
-        <a href="/categories/<%= category.id %>" class="debate-item pure-u-1 pure-u-md-1-4" style="background-image: url(<%= category.image %>);">
+        <a href="/category/<%= category.slug %>" class="debate-item pure-u-1 pure-u-md-1-4" style="background-image: url(<%= category.image %>);">
             <h4>
                 <%= category.name %>
             </h4>
