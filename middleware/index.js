@@ -45,6 +45,27 @@ middlewareObj.checkDebateOwnership = function(req, res, next){
     }
 };
 
+middlewareObj.checkDebateOwnershipNew = function(req, res, next){
+    if(req.isAuthenticated()){
+        Debate.findOne({slug: req.params.slug}, function(err, foundDebate){
+            if(err){
+                req.flash('error', 'Could not find debate');
+                res.redirect("back");
+            } else {
+                if(foundDebate.moderator.id.equals(req.user._id)){
+                    next();
+                } else {
+                    req.flash('error', "You don't have permission to do that");
+                    res.redirect("back");
+                }
+            }
+        });
+    } else {
+        req.flash('error', 'You need to be logged in to do that');
+        res.redirect("back");
+    }
+};
+
 middlewareObj.checkCommentOwnership = function(req, res, next){
     if(req.isAuthenticated()){
         Comment.findById(req.params.comment_id, function(err, foundComment){

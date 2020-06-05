@@ -18,6 +18,8 @@ const indexRoutes = require("./routes/index");
 const forRoutes = require("./routes/for");
 const againstRoutes = require("./routes/against");
 const categoryRoutes = require("./routes/category");
+const newCategory = require("./routes/newCategory");
+const newDebate = require("./routes/newDebate");
 
 const seedDB = require("./seeds");
 
@@ -65,6 +67,12 @@ app.use("/debates/:id/for", forRoutes);
 app.use("/debates/:id/against", againstRoutes);
 app.use("/debates/:id/discussion",commentRoutes);
 app.use("/categories", categoryRoutes);
+// Clearer routes
+app.use("/category/", newCategory);
+app.use("/category/:categorySlug", newDebate);
+// app.use("/category/:categorySlug/:id/for", newForRoutes); // Not yet done.
+// app.use("/category/:categorySlug/:id/against", newAgainstRoutes); // Not yet done.
+// app.use("/category/:categorySlug/:id/discussion",newCommentRoutes); // Not yet done.
 
 
 //server
