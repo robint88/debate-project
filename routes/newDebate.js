@@ -58,7 +58,7 @@ router.get("/:slug", function(req, res){
             } else {
                 // console.log(foundDebate);
                 // NEED TO FIND AND UPDATE CATEGORY TOO
-                res.render("debates/show", {debate: foundDebate});
+                res.render("debates/show", {debate: foundDebate, category_slug: req.params.categorySlug});
             }
         });  
 });
@@ -107,7 +107,7 @@ router.put("/:slug", middleware.checkDebateOwnershipNew, function(req,res){
     });
 });
 // DESTROY
-router.delete("/:slug", middleware.checkDebateOwnership, function(req,res){
+router.delete("/:slug", middleware.checkDebateOwnershipNew, function(req,res){
     Debate.findOneAndRemove({slug: req.params.slug}, function(err){
         if(err){
             res.redirect("/category/" + req.params.categorySlug);

@@ -4,7 +4,7 @@
 
 <div class="center-form">
         <h4>Editing FOR argument as <%= againstArg.author %></h4>
-        <form action="/debates/<%= debate_id %>/against/<%= againstArg._id %>?_method=PUT" method="POST" class="pure-form pure-form-stacked">
+        <form action="/category/<%= category_slug %>/<%= debate_slug %>/against/<%= againstArg._id %>?_method=PUT" method="POST" class="pure-form pure-form-stacked">
             <fieldset>
                 <label for="debateAgainstAuthor">Content Author</label>
                 <input type="text" id="debateAgainstAuthor" name="against[author]" required value="<%= againstArg.author %>">

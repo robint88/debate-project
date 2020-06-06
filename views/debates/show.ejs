@@ -3,14 +3,14 @@
 <div class="moderator-functions">
     <p class="mod-title">Moderator functions</p>
     <div class="moderator-buttons">
-        <a class="pure-button edit-debate-button" href="/debates/<%= debate._id %>/edit"> edit debate </a>
-        <form class="delete-form" action="/debates/<%= debate._id %>?_method=DELETE" method="POST">
+        <a class="pure-button edit-debate-button" href="/category/<%= category_slug %>/<%= debate.slug %>/edit"> edit debate </a>
+        <form class="delete-form" action="/category/<%= category_slug %>/<%= debate.slug %>?_method=DELETE" method="POST">
             <button class="delete-button pure-button"> *** DELETE DEBATE *** </button>
         </form>
         <% if(debate.for && debate.against) { %>
             <div class="edit-args">
-                <a class="pure-button edit-argument-button" href="/debates/<%= debate._id %>/for/<%=debate.for._id %>/edit"> edit for </a>
-                <a class="pure-button edit-argument-button" href="/debates/<%= debate._id %>/against/<%=debate.against._id %>/edit"> edit against </a>
+                <a class="pure-button edit-argument-button" href="/category/<%= category_slug %>/<%= debate.slug %>/for/<%=debate.for._id %>/edit"> edit for </a>
+                <a class="pure-button edit-argument-button" href="/category/<%= category_slug %>/<%= debate.slug %>/against/<%=debate.against._id %>/edit"> edit against </a>
             </div>
         <% } %>
     </div>
@@ -37,138 +37,131 @@ background-position: center center; background-size: cover;">
 
 <section class="debate-section">
     <% if(debate.for && debate.against) { %>
-        <article class="argument">
-            <div class="argument-summary">
-                <h4 class="case-header">the case for...</h4 class="case-header">
-                <p class="argument-author">
-                    <em>by <%= debate.for.author %></em>
-                </p>
-            </div>
-            <p class="argument-content">
-                <%= debate.for.content %>
-            </p>
-        </article>
-        <article class="argument argument-against">
-            <div class="argument-summary">
-                <h4 class="case-header">the case against...</h4>
-                <p>
-                    <em>by <%= debate.against.author %></em>
-                </p>
-            </div>
-            <p class="argument-content">
-                <%= debate.against.content %>
-            </p>
-        </article>
-</section>
-<p class="moderator-title"><em>moderator - <%= debate.moderator.username %></em></p>
+                <article class="argument">
+                    <div class="argument-summary">
+                        <h4 class="case-header">the case for...</h4 class="case-header">
+                        <p class="argument-author">
+                            <em>by <%= debate.for.author %></em>
+                        </p>
+                    </div>
+                    <p class="argument-content">
+                        <%= debate.for.content %>
+                    </p>
+                </article>
+                <article class="argument argument-against">
+                    <div class="argument-summary">
+                        <h4 class="case-header">the case against...</h4>
+                        <p>
+                            <em>by <%= debate.against.author %></em>
+                        </p>
+                    </div>
+                    <p class="argument-content">
+                        <%= debate.against.content %>
+                    </p>
+                </article>
+        </section>
+        <p class="moderator-title"><em>moderator - <%= debate.moderator.username %></em></p>
 
-<!-------------------- VOTES -------------------->
+        <!-------------------- VOTES -------------------->
 
-<section id="vote-section">
-    <h4>VOTES</h4>
-    <div class="center-form">
-        <canvas id="debatePie" width="100px" height="100px"></canvas>
-    </div>
-    <!-- <h5>
-        FOR - <%= Math.round((debate.for.votes / (debate.for.votes + debate.against.votes)) * 100) %>%
-    </h5>
-
-    <h5>
-        AGAINST- <%= Math.round((debate.against.votes / (debate.for.votes + debate.against.votes)) * 100) %>%
-    </h5> -->
-    <% if(currentUser) { %>
-        <div id="voting-buttons">
-            <div class="vote-button-section">
-                <h5>For</h5>
-                <% if(debate.for.usersVoted.includes(currentUser._id) || debate.against.usersVoted.includes(currentUser._id)){ %>
-                    <em>You have already voted.</em>
-                <% } else {%>
-                    <form action="/debates/<%= debate._id%>/for/vote/<%= debate.for._id%>?_method=PUT" id="votebox"  method="post">
-                        <button type="submit" class=" vote-button" name="for[votes]">+</button>
-                    </form>
-                <% } %>
-            </div>
-            <div class="vote-button-section">
-                <h5>Against</h5>
-                <% if(debate.against.usersVoted.includes(currentUser._id) || debate.for.usersVoted.includes(currentUser._id)){ %>
-                    <em>You have already voted</em>
-                <% } else {%>
-                    <form action="/debates/<%= debate._id%>/against/vote/<%= debate.against._id%>?_method=PUT" id="votebox"  method="post">
-                        <button type="submit" class=" vote-button" name="against[votes]">-</button>
-                    </form>
-                <% } %>
-            </div>
-        </div>
-        <% if(debate.against.usersVoted.includes(currentUser._id) || debate.for.usersVoted.includes(currentUser._id)){ %>
-            <% if(debate.for.usersVoted.includes(currentUser._id)){ %>
-                <form action="/debates/<%= debate._id%>/for/changevote/<%= debate.for._id%>?_method=PUT" id="votebox"  method="post">
-                    <button type="submit" class="pure-button" name="for[votes]">Change my vote</button>
-                </form>
-            <% } else { %>
-                <form action="/debates/<%= debate._id%>/against/changevote/<%= debate.against._id%>?_method=PUT" id="votebox"  method="post">
-                    <button type="submit" class="pure-button" name="against[votes]">Change my vote</button>
-                </form>
-            <% } %>
-        <% } %>
-    <% } else { %> 
-        <h5 class="login-notification">YOU MUST BE LOGGED IN TO VOTE</h5>
-    <% } %>
-    
-</section>
-
-<!-------------------- DISCUSSION -------------------->
-
-<section class="discussion">
-        <h4>Discuss</h4>
-        <!-- <div class="discussion-join">
-            <a href="/debates/<%= debate._id %>/discussion/new">Join the discussion</a>
-        </div> -->
-         <% if(currentUser) { %>
+        <section id="vote-section">
+            <h4>VOTES</h4>
             <div class="center-form">
-                <form action="/debates/<%= debate._id %>/discussion" method="post" id="new-comment-form" class="pure-form pure-form-stacked">
-                    <fieldset>
-        
-                        <label for="debateContent">Your comment:</label>
-                        <textarea name="comment[text]" id="commentContent" cols="30" rows="10" placeholder="Write your comment here"></textarea>
-            
-                        <button class="submit-button" type="submit" name="createPost">submit comment</button>
-                    </fieldset>
-                </form>
+                <canvas id="debatePie" width="100px" height="100px"></canvas>
             </div>
-         <% } else { %>
-            <div id="comment-login">
-                <a href="/login">log in here to join the discussion</a>
-            </div>
-            
-         <% } %>
-    
-        <div id="comment-list">
-            <% debate.comments.forEach(function(comment){ %>
-                <div class="comment-item" id="comment-item">
-                    <div class="comment-body">
-                        <%= comment.text %>
+            <% if(currentUser) { %>
+                <div id="voting-buttons">
+                    <div class="vote-button-section">
+                        <h5>For</h5>
+                        <% if(debate.for.usersVoted.includes(currentUser._id) || debate.against.usersVoted.includes(currentUser._id)){ %>
+                            <em>You have already voted.</em>
+                        <% } else {%>
+                            <form action="/category/<%= category_slug %>/<%= debate.slug %>/for/vote/<%= debate.for._id%>?_method=PUT" id="votebox"  method="post">
+                                <button type="submit" class=" vote-button" name="for[votes]">+</button>
+                            </form>
+                        <% } %>
                     </div>
-                    <div class="comment-author">
-                        - <em><%= comment.author.username %></em>
+                    <div class="vote-button-section">
+                        <h5>Against</h5>
+                        <% if(debate.against.usersVoted.includes(currentUser._id) || debate.for.usersVoted.includes(currentUser._id)){ %>
+                            <em>You have already voted</em>
+                        <% } else {%>
+                            <form action="/category/<%= category_slug %>/<%= debate.slug %>/against/vote/<%= debate.against._id%>?_method=PUT" id="votebox"  method="post">
+                                <button type="submit" class=" vote-button" name="against[votes]">-</button>
+                            </form>
+                        <% } %>
                     </div>
-                    <form action="/debates/<%= debate._id %>/discussion/<%= comment._id%>" method="POST" class="pure-form pure-form-stacked edit-comment-form">
-                        <fieldset>
-                            <label for="debateContent">Discuss</label>
-                            <textarea class="form-control" name="comment[text]" id="debateContent" cols="30" rows="10" placeholder="Write your argument here"><%= comment.text %></textarea>
-            
-                            <button class="submit-button" type="submit" name="createPost">update</button>
-                        </fieldset>
-                    </form>
-                    <% if(currentUser && comment.author.id.equals(currentUser._id)|| currentUser && debate.moderator.id.equals(currentUser._id)){ %>
-                    <button class="pure-button edit-button" id="edit-comment">EDIT COMMENT</button>
-                    <form class="delete-comment-form" action="/debates/<%=debate._id%>/discussion/<%=comment._id%>?_method=DELETE" method="POST">
-                        <input class="pure-button" id="delete-comment-button" type="submit" value="DELETE">
-                    </form>
-                    <% } %>
                 </div>
-            <%})%>
-        </div>
-    </section>        
+                <% if(debate.against.usersVoted.includes(currentUser._id) || debate.for.usersVoted.includes(currentUser._id)){ %>
+                    <% if(debate.for.usersVoted.includes(currentUser._id)){ %>
+                        <form action="/category/<%= category_slug %>/<%= debate.slug %>/for/changevote/<%= debate.for._id%>?_method=PUT" id="votebox"  method="post">
+                            <button type="submit" class="pure-button" name="for[votes]">Change my vote</button>
+                        </form>
+                    <% } else { %>
+                        <form action="/category/<%= category_slug %>/<%= debate.slug %>/against/changevote/<%= debate.against._id%>?_method=PUT" id="votebox"  method="post">
+                            <button type="submit" class="pure-button" name="against[votes]">Change my vote</button>
+                        </form>
+                    <% } %>
+                <% } %>
+            <% } else { %> 
+                <h5 class="login-notification">YOU MUST BE LOGGED IN TO VOTE</h5>
+            <% } %>
+            
+        </section>
+
+        <!-------------------- DISCUSSION -------------------->
+
+        <section class="discussion">
+                <h4>Discuss</h4>
+                <!-- <div class="discussion-join">
+                    <a href="/debates/<%= debate._id %>/discussion/new">Join the discussion</a>
+                </div> -->
+                <% if(currentUser) { %>
+                    <div class="center-form">
+                        <form action="/debates/<%= debate._id %>/discussion" method="post" id="new-comment-form" class="pure-form pure-form-stacked">
+                            <fieldset>
+                
+                                <label for="debateContent">Your comment:</label>
+                                <textarea name="comment[text]" id="commentContent" cols="30" rows="10" placeholder="Write your comment here"></textarea>
+                    
+                                <button class="submit-button" type="submit" name="createPost">submit comment</button>
+                            </fieldset>
+                        </form>
+                    </div>
+                <% } else { %>
+                    <div id="comment-login">
+                        <a href="/login">log in here to join the discussion</a>
+                    </div>
+                    
+                <% } %>
+            
+                <div id="comment-list">
+                    <% debate.comments.forEach(function(comment){ %>
+                        <div class="comment-item" id="comment-item">
+                            <div class="comment-body">
+                                <%= comment.text %>
+                            </div>
+                            <div class="comment-author">
+                                - <em><%= comment.author.username %></em>
+                            </div>
+                            <form action="/debates/<%= debate._id %>/discussion/<%= comment._id%>" method="POST" class="pure-form pure-form-stacked edit-comment-form">
+                                <fieldset>
+                                    <label for="debateContent">Discuss</label>
+                                    <textarea class="form-control" name="comment[text]" id="debateContent" cols="30" rows="10" placeholder="Write your argument here"><%= comment.text %></textarea>
+                    
+                                    <button class="submit-button" type="submit" name="createPost">update</button>
+                                </fieldset>
+                            </form>
+                            <% if(currentUser && comment.author.id.equals(currentUser._id)|| currentUser && debate.moderator.id.equals(currentUser._id)){ %>
+                            <button class="pure-button edit-button" id="edit-comment">EDIT COMMENT</button>
+                            <form class="delete-comment-form" action="/debates/<%=debate._id%>/discussion/<%=comment._id%>?_method=DELETE" method="POST">
+                                <input class="pure-button" id="delete-comment-button" type="submit" value="DELETE">
+                            </form>
+                            <% } %>
+                        </div>
+                    <%})%>
+                </div>
+            </section>        
         
     <% } else { %>
         <div class="coming-soon">
@@ -176,8 +169,8 @@ background-position: center center; background-size: cover;">
             <% if(currentUser && debate.moderator.id.equals(currentUser._id)) { %>
                 <div class="moderator-debate-content">
                     <p class="">Add new arguments</p>
-                    <a href="/debates/<%=debate._id%>/for/new" class="pure-button add-content-button">For</a>
-                    <a href="/debates/<%=debate._id%>/against/new" class="pure-button add-content-button">Against</a>
+                    <a href="/category/<%= category_slug %>/<%= debate.slug %>/for/new" class="pure-button add-content-button">For</a>
+                    <a href="/category/<%= category_slug %>/<%= debate.slug %>/against/new" class="pure-button add-content-button">Against</a>
                 </div>
             <% } %>
         </div>

@@ -4,7 +4,7 @@
 
 <div class="center-form">
         <h4>For</h4>
-        <form action="/debates/<%= debate._id%>/for" method="POST" class="pure-form pure-form-stacked">
+        <form action="/category/<%= category.slug %>/<%= debate.slug %>/for/" method="POST" class="pure-form pure-form-stacked">
             <fieldset>
                 <label for="debateForAuthor">Content Author</label>
                 <input type="text" id="debateforAuthor" name="for[author]" required placeholder="Add author name">
