@@ -19,7 +19,7 @@ h3 {
 }
 
 h4 {
-    font-size: 25px;
+    font-size: 20px;
 }
 a {
     text-decoration: none;
@@ -125,7 +125,29 @@ ul li {
     color: #242f40;
 }
 
+#index-banner {
+    height: 75vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 
+.index-debate-item {
+    color: #fff !important;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+    height: 150px;
+    color: #363636;
+    filter: grayscale(70%);
+    background: #cca43b;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; 
+}
 
 
 .debate-item {
@@ -142,13 +164,14 @@ ul li {
     background: #cca43b;
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
-    
+    background-size: cover; 
 }
 
+.index-debate-item h4,
 .debate-item h4 {
     background: #242f40;
 }
+.index-debate-item:hover,
 .debate-item:hover {
     background: #363636;
     cursor: pointer;

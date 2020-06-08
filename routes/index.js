@@ -7,13 +7,20 @@ const Category = require("../models/categories");
 
 // LANDING
 router.get("/", function(req, res){
-    Debate.find({}).sort({createdAt: 'desc'}).exec(function(err, foundDebates){
+    // Debate.find({}).sort({createdAt: 'desc'}).exec(function(err, foundDebates){
+    //     if(err){
+    //         console.log(err);
+    //     } else {
+    //         res.render('index',{debates: foundDebates});
+    //     }
+    // });
+    Category.find({}).populate('debates').sort({name: 1}).exec(function(err, foundCats){
         if(err){
-            console.log(err);
+            req.flash('error', "Oops! Something went wrong");
         } else {
-            res.render('index',{debates: foundDebates});
+            res.render('index',{categories: foundCats});
         }
-    });
+    })
 });
 
 // TESTING NEW ROUTES
@@ -69,7 +76,7 @@ router.get("/login", function(req,res){
 });
 // Login Logic
 router.post("/login", passport.authenticate("local", {
-        successRedirect: "/debates",
+        successRedirect: "/",
         failureRedirect: "/login"
     }), function(req, res){
         // Can actually delete this function - kept just to show middleware

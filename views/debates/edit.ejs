@@ -3,7 +3,7 @@
 <h2 class="pageHeaders">Edit - <em><%= debate.topic %></em></h2>
 
 <div class="center-form">
-    <form action="/debates/<%= debate._id%>?_method=PUT" class="pure-form pure-form-stacked" method="post">
+    <form action="/category/<%= category_slug%>/<%= debate.slug %>?_method=PUT" class="pure-form pure-form-stacked" method="post">
         <fieldset>
             <label for="debateTitle">Topic</label>
             <input class="pure-input-rounded" type="text" name="debate[topic]" id="debateTitle" value="<%= debate.topic %>">

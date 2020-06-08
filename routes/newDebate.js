@@ -76,7 +76,7 @@ router.get("/:slug/edit", middleware.checkDebateOwnershipNew, function(req,res){
                 if(err){
                     console.log(err);
                 } else {
-                    res.render("debates/edit", {debate: foundArg, categories: foundCategories});
+                    res.render("debates/edit", {debate: foundArg, categories: foundCategories, category_slug: req.params.categorySlug});
                 }
             })
             

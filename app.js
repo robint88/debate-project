@@ -23,6 +23,7 @@ const newCategory = require("./routes/newCategory");
 const newDebate = require("./routes/newDebate");
 const newForRoutes = require("./routes/newFor");
 const newAgainstRoutes = require("./routes/newAgainst");
+const newCommentRoutes = require("./routes/newComment");
 
 const seedDB = require("./seeds");
 
@@ -63,19 +64,19 @@ app.use(function(req, res, next){
     next();
 });
 
-// ROUTES 
+// // ROUTES 
 app.use(indexRoutes);
-app.use("/debates", debateRoutes);
-app.use("/debates/:id/for", forRoutes);
-app.use("/debates/:id/against", againstRoutes);
-app.use("/debates/:id/discussion",commentRoutes);
-app.use("/categories", categoryRoutes);
+// app.use("/debates", debateRoutes);
+// app.use("/debates/:id/for", forRoutes);
+// app.use("/debates/:id/against", againstRoutes);
+// app.use("/debates/:id/discussion",commentRoutes);
+// app.use("/categories", categoryRoutes);
 // Clearer routes
 app.use("/category/", newCategory);
 app.use("/category/:categorySlug", newDebate);
 app.use("/category/:categorySlug/:slug/for", newForRoutes); 
-app.use("/category/:categorySlug/:slug/against", newAgainstRoutes); // Not yet done.
-// app.use("/category/:categorySlug/:slug/discussion",newCommentRoutes); // Not yet done.
+app.use("/category/:categorySlug/:slug/against", newAgainstRoutes); 
+app.use("/category/:categorySlug/:slug/discussion",newCommentRoutes); 
 
 
 //server

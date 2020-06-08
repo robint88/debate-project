@@ -2,7 +2,7 @@
 <h3 class="pageHeaders">Edit comment</h3>
 
 <div class="center-form">
-        <form action="/debates/<%= debate_id %>/discussion/<%= comment._id%>?_method=PUT" method="post" class="pure-form pure-form-stacked">
+        <form action="category/<%= category_slug%>/<%= debate_slug %>/discussion/<%= comment._id%>?_method=PUT" method="post" class="pure-form pure-form-stacked">
             <fieldset>
                 <label for="debateContent">Discuss</label>
                 <textarea class="form-control" name="comment[text]" id="debateContent" cols="30" rows="10" placeholder="Write your argument here"><%= comment.text %></textarea>
