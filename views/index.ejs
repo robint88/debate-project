@@ -9,23 +9,48 @@
 <!-- *********************************************************************** -->
 
 
-
+<!-- 
 <section id="index-banner">
     <H1>Show latest debates here</H1>
-</section>
+</section> -->
 
-<h4>Categories</h4>
+<div class="carousel-container">
+  <a id="p-btn">←</a>
+  <a id="n-btn">→</a>
+  <div class="carousel-slide">
+    <!-- <img id="last-clone" src="https://images.unsplash.com/photo-1578318774420-677a96c0cf8c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1045&q=80" alt="">
+    <img src="https://images.unsplash.com/photo-1479142506502-19b3a3b7ff33?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" alt="">
+    <img src="https://images.unsplash.com/photo-1447727214830-cbcbf097b52c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1158&q=80" alt="">
+    <img src="https://images.pexels.com/photos/4452702/pexels-photo-4452702.jpeg?cs=srgb&dl=brown-leather-belt-on-white-printer-paper-4452702.jpg&fm=jpg" alt="">
+    <img src="https://images.pexels.com/photos/4262185/pexels-photo-4262185.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
+    <img src="https://images.unsplash.com/photo-1578318774420-677a96c0cf8c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1045&q=80" alt="">
+    <img id="first-clone" src="https://images.unsplash.com/photo-1479142506502-19b3a3b7ff33?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" alt="">
+  </div> -->
+  <% debates.forEach(function(debate){ %>
+    <!-- CANNOT ACCESS CATEGORYSLUG THROUGH REQ.PARAMS ON INDEX ROUTE SO LINK WONT WORK -->
+    <div  class="carousel-item" style="background-image: url(<%= debate.image %>)">
+      <a href="#" class="carousel-content">
+          <h4>
+              <%= debate.topic %>
+          </h4>
+          <p class="debate-summary">
+            <%= debate.summary %>
+          </p>
+      </a>
+    </div>
+  <% }) %>
+  </div>
+</div>
+
+<h4 class="index-category-header">Categories</h4>
   <section class="pure-g">
       <% categories.forEach(function(category){ %>
-        <a  href="/category/<%= category.slug %>" class="pure-u-1-3 index-debate-item pure-u-md-1-5" style="background-image: url(<%= category.image %>)">
+        <a  href="/category/<%= category.slug %>" class="pure-u-1-3 index-cat-item pure-u-md-1-5" style="background-image: url(<%= category.image %>)">
           <h4>
               <%= category.name %>
           </h4>
         </a>
       <% }) %>
   </section>
-  <a href="/debates" id="index-more-debates">
-      <h4>MORE DEBATES</h4>
-  </a>
 
 <%- include('partials/footer') %>

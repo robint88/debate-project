@@ -132,7 +132,81 @@ ul li {
     justify-content: center;
 }
 
-.index-debate-item {
+#p-btn{
+    position: absolute;
+    top: 40%;
+    z-index: 10;
+    left: 5%;
+    font-size: 30px;
+    opacity: 0.6;
+    color: #cca43b;
+    background: rgba(36, 47, 64, 0.8);
+    padding: 8px;
+    border-radius: 50%;
+}
+#n-btn{
+    position: absolute;
+    top: 40%;
+    z-index: 10;
+    right: 5%;
+    font-size: 30px;
+    opacity: 0.6;
+    color: #cca43b;
+    background: rgba(36, 47, 64, 0.8);
+    padding: 8px;
+    border-radius: 50%;
+}
+
+#n-btn:hover,
+#p-btn:hover {
+    color:#242f40;
+    background: rgba(204, 164, 59, 0.8);
+}
+
+.carousel-container {
+    width: 100%;
+    
+    overflow: hidden;
+    text-align: center;
+    
+}
+
+.carousel-slide {
+    display: flex;
+    width: 100%;
+    height: 85vh;
+}
+.carousel-item {
+    min-width: 100%;
+    color: #fff;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    /* height: 500px; */
+}
+
+.carousel-content {
+    background: rgba(36, 47, 64, 0.5);
+    width: 100%;
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.carousel-content h4 {
+    color: #cca43b;
+    font-size: 30px;
+}
+
+.index-category-header {
+    padding: 10px;
+}
+.index-cat-item {
     color: #fff !important;
     margin: auto;
     display: flex;
@@ -167,11 +241,11 @@ ul li {
     background-size: cover; 
 }
 
-.index-debate-item h4,
+.index-cat-item h4,
 .debate-item h4 {
     background: #242f40;
 }
-.index-debate-item:hover,
+.index-cat-item:hover,
 .debate-item:hover {
     background: #363636;
     cursor: pointer;
@@ -213,7 +287,10 @@ fieldset {
  .user-form {
      margin: auto;
  }
-
+ button:focus {
+     outline:0;
+}
+ 
  .submit-button {
      background: #cca43b;
      color: #e5e5e5;
@@ -463,17 +540,7 @@ select {
     width: 100%;
 }
 
-@media screen and (max-width: 1024px){
-    /* OWN NAV */
-    .nav-links {
-        width: 50%;
-    }
 
-    .pageHeaders {
-        font-size: 25px;
-        margin: auto;
-    }
-}
 
 @media screen and (max-width: 768px){
 /* OWN NAV */
@@ -511,6 +578,17 @@ nav {
     transform: translateX(0);
 }
 
+.pageHeaders {
+    font-size: 25px;
+    margin: auto;
+}
+.debate-header {
+    font-size: 40px;
+    padding: 20px;
+}
+.carousel-slide {
+    height: 60vh;
+}
 @keyframes navLinkFade {
     from {
         opacity: 0;
@@ -530,10 +608,7 @@ nav {
 .burgertoggle .line3 {
     transform: rotate(45deg) translate(-5px, -6px);
 }
-.debate-header {
-    font-size: 40px;
-    padding: 20px;
-}
+
 
 .argument {
     padding: 25px;

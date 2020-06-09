@@ -18,7 +18,14 @@ router.get("/", function(req, res){
         if(err){
             req.flash('error', "Oops! Something went wrong");
         } else {
-            res.render('index',{categories: foundCats});
+            // res.render('index',{categories: foundCats});
+            Debate.find({}).sort({createdAt: 'desc'}).exec(function(err, foundDebates){
+                if(err){
+                    console.log(err);
+                } else {
+                    res.render('index',{debates: foundDebates,categories: foundCats});
+                }
+            });
         }
     })
 });
