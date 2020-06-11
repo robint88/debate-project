@@ -243,6 +243,15 @@ ul li {
     background-size: cover; 
 }
 
+.debate-item-date {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: #242f40;
+    /* color: #fff !important; */
+    padding: 5px;
+}
+
 .index-cat-item h4,
 .debate-item h4 {
     background: #242f40;
@@ -259,15 +268,9 @@ ul li {
     background-size: cover;
 }
 
-.unpublished {
-    color: #cca43b;
-    width: 100%;
-    background: #c54242
-}
-
 .debate-item p, h2 {
     font-weight: 300;
-    color: #363636;
+    color: #fff;
 }
 .debate-item:hover p {
     font-weight: 300;
@@ -440,7 +443,9 @@ fieldset {
  .argument-summary h4{
     text-align: center;
  }
-
+.argument-author {
+    color: #c54242;
+}
  .argument-content {
     white-space: pre-line;
  }

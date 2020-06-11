@@ -14,6 +14,9 @@
                 <h4>
                     <%= debate.topic %>
                 </h4>
+                <p class="debate-item-date">
+                    <%= moment(debate.createdAt).calendar() %>
+                </p>
             </a>
         <% }) %>
     </div>
