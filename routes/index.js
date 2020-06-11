@@ -19,7 +19,7 @@ router.get("/", function(req, res){
             req.flash('error', "Oops! Something went wrong");
         } else {
             // res.render('index',{categories: foundCats});
-            Debate.find({}).sort({createdAt: 'desc'}).populate('category').exec(function(err, foundDebates){
+            Debate.find({isPublished: true}).sort({createdAt: 'desc'}).populate('category').exec(function(err, foundDebates){
                 if(err){
                     console.log(err);
                 } else {

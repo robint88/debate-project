@@ -35,7 +35,8 @@ const debateSchema = new mongoose.Schema({
         type: String,
         required: true,
         unique: true
-    }
+    },
+    isPublished: {type: Boolean, deafult: false}
 });
 
 debateSchema.pre('validate', function(next){

@@ -13,6 +13,9 @@
                 <a class="pure-button edit-argument-button" href="/category/<%= category_slug %>/<%= debate.slug %>/against/<%=debate.against._id %>/edit"> edit against </a>
             </div>
         <% } %>
+        <p>
+            Debate published: <strong><%= debate.isPublished %></strong>
+        </p>
     </div>
 </div>
 <% } %>

@@ -119,13 +119,6 @@ ul li {
     border-radius: 5px;
 }
 
-#index-more-debates {
-    text-align: center;
-    color: #cca43b;
-}
-#index-more-debates:hover {
-    color: #242f40;
-}
 
 #index-banner {
     height: 75vh;
@@ -199,15 +192,71 @@ ul li {
     flex-direction: column;
     justify-content: center;
 }
-
+.carousel-content:hover {
+    background: rgba(36, 47, 64, 0.8);
+}
 .carousel-content h4 {
     color: #cca43b;
     font-size: 30px;
 }
 
+.index-section {
+    margin-top: 30px;
+}
+
 .index-category-header {
     padding: 10px;
 }
+
+#index-debates {
+    background: #242f40;
+    /* height: 80vh; */
+    padding: 50px 20px;
+}
+
+.index-debate-item {
+    display: flex;
+    margin: 10px;
+    background: #fff;
+    color: #363636;
+    height: 200px;
+}
+
+.index-debate-header {
+    color: #302828;
+    font-size: 30px;
+}
+
+.index-debate-content {
+    padding: 30px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.index-debate-summary {
+    padding: 10px;
+}
+.index-debate-img {
+    height: 200px;
+    max-width: 300px;
+}
+.index-debate-item:hover {
+    background: #cca43b;
+    color: #363636;
+    transform: scale(0.97);
+}
+
+#index-all-debates {
+    color: #e5e5e5;
+    position: absolute;
+    right: 20px;
+}
+
+#index-all-debates:hover {
+    color: #cca43b;
+}
+
 .index-cat-item {
     color: #fff !important;
     margin: auto;
@@ -295,8 +344,13 @@ fieldset {
      width: 100%;
  }
 
+
  .user-form {
      margin: auto;
+ }
+
+ .publish-buttons {
+     
  }
  button:focus {
      outline:0;

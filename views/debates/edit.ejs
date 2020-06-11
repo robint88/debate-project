@@ -8,10 +8,19 @@
             <label for="debateTitle">Topic</label>
             <input class="pure-input-rounded" type="text" name="debate[topic]" id="debateTitle" value="<%= debate.topic %>">
             <label for="debateSummary">Summary</label>
-            <input class="pure-input-rounded" type="text" name="debate[summary]" id="debateSummary" value="<%= debate.summary %>">
+            <textarea class="pure-input-rounded" cols="30" rows="10"type="text" name="debate[summary]" id="debateSummary"><%= debate.summary %></textarea>
             <label for="debateImage">Image</label>
             <input class="pure-input-rounded" type="text" name="debate[image]" id="debateImage" value="<%= debate.image %>">
-            
+        
+            <div class="publish-buttons">
+                    <% if(debate.isPublished){ %>
+                        <input type="radio" id="publishDebate" name="debate[isPublished]" value="true" checked> <label for="publishDebate">Publish</label>
+                    <input type="radio" id="unpublishDebate" name  ="debate[isPublished]" value="false"> <label for="unpublishDebate">Unpublish</label>
+                    <% } else { %>
+                        <input type="radio" id="publishDebate" name="debate[isPublished]" value="true"> <label for="publishDebate">Publish</label>
+                    <input type="radio" id="unpublishDebate" name  ="debate[isPublished]" value="false" checked> <label for="unpublishDebate">Unpublish</label>
+                    <%} %>
+            </div>
             <button class="pure-button submit-button" type="submit" name="createPost">update debate</button>
         </fieldset>
     </form>

@@ -98,16 +98,7 @@ router.put("/:slug", middleware.checkDebateOwnershipNew, function(req,res){
         }
     });
 });
-// Publish Debate
-router.put("/:slug/publish", middleware.checkDebateOwnershipNew, function(req, res){
-    Debate.updateOne({slug: req.params.slug},{$set: {isPublished: req.body.debate.isPublished}}, function(err, foundDebate){
-        if(err){
-            console.log(err);
-        } else {
-            res.redirect('/category' + req.params.categorySlug);
-        }
-    });
-});
+
 
 // DESTROY
 router.delete("/:slug", middleware.checkDebateOwnershipNew, function(req,res){

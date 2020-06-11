@@ -38,13 +38,33 @@
           </a>
         </div>
   <%}%>
-
-  
   </div>
 </div>
+<section class="index-section">
+  <h4 class="index-category-header">Recent</h4>
+  <article id="index-debates">
+    <% for(let i=0; i< 6; i++){ %>
+      <% if(debates[i].isPublished){ %>
+        <a href="/category/<%=debates[i].category.slug%>/<%=debates[i].slug%>" class="index-debate-item">
+          <img src="<%= debates[i].image%>" class="index-debate-img" alt="">
+          <div class="index-debate-content">
+            <h5 class="index-debate-header">
+              <%= debates[i].topic %>
+            </h5 class="index-debate-header">
+            <p class="index-debate-summary">
+              <%= debates[i].summary %>
+            </p>
+          </div>
+        </a>
+      <% } %>
+    <% } %>
+    <a href="#" id="index-all-debates">view all debates</a>
+  </article>
+</section>
 
-<h4 class="index-category-header">Categories</h4>
-  <section class="pure-g">
+<section class="index-section">
+  <h4 class="index-category-header">Categories</h4>
+  <div class="pure-g">
       <% categories.forEach(function(category){ %>
         <a  href="/category/<%= category.slug %>" class="pure-u-1-3 index-cat-item pure-u-md-1-5" style="background-image: url(<%= category.image %>)">
           <h4>
@@ -52,6 +72,7 @@
           </h4>
         </a>
       <% }) %>
-  </section>
+  </div>
+</section>
 
 <%- include('partials/footer') %>
