@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const Category = require('../models/categories');
-const Debate = require('../models/debate');
-const middleware = require("../middleware");
+const Category = require('../../models/categories');
+const Debate = require('../../models/debate');
+const middleware = require("../../middleware");
 
 router.get("/", function(req, res){
     Category.find({}).sort({name: 1}).exec(function(err, foundCat){

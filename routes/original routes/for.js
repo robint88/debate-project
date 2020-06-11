@@ -1,15 +1,16 @@
 const express = require("express");
+const mongoose = require('mongoose');
 const router = express.Router({mergeParams: true});
-const Debate = require('../models/debate');
-const Argument = require("../models/argument");
-const middleware = require("../middleware");
+const Debate = require('../../models/debate');
+const Argument = require("../../models/argument");
+const middleware = require("../../middleware");
 
 router.get("/new", middleware.checkDebateOwnership, function(req, res){
     Debate.findById(req.params.id, function(err, foundDebate){
         if(err){
             console.log(err);
         } else {
-            res.render("against/new", {debate: foundDebate});
+            res.render("for/new", {debate: foundDebate});
         }
     }); 
 });
@@ -20,53 +21,53 @@ router.post("/", middleware.checkDebateOwnership, function(req,res){
             console.log(err);
             res.redirect("/debates");
         } else {
-            Argument.create(req.body.against, function(err, againstArg){
+            Argument.create(req.body.for, function(err, forArg){
                 if(err){
                     console.log(err);
                 } else {
-                    againstArg.save()
-                    foundDebate.against = againstArg; 
+                    forArg.save()
+                    foundDebate.for = forArg; 
                     foundDebate.save();
-                    res.redirect("/debates/" +  foundDebate._id )
+                    res.redirect("/debates/" +  foundDebate._id );
                 }
             });
         }
     });
 });
-// Edit
-router.get("/:against_id/edit", middleware.checkDebateOwnership, function(req, res){
-    Argument.findById(req.params.against_id, function(err, foundArg){
+
+router.get("/:for_id/edit", middleware.checkDebateOwnership, function(req, res){
+    Argument.findById(req.params.for_id, function(err, foundArg){
         if(err){
             res.redirect("back");
         } else {
-            res.render("against/edit", {debate_id: req.params.id, againstArg: foundArg});
+            res.render("for/edit", {debate_id: req.params.id, forArg: foundArg});
         }
     });
 });
 
-router.put("/:against_id", middleware.checkDebateOwnership, function(req, res){
-    Argument.findByIdAndUpdate(req.params.against_id, req.body.against, function(err, updateArg){
+router.put("/:for_id", middleware.checkDebateOwnership, function(req, res){
+    Argument.findByIdAndUpdate(req.params.for_id, req.body.for, function(err, updateArg){
         if(err){
             res.redirect("back");
         } else {
             res.redirect("/debates/" + req.params.id);  
         }
-        
     });
 });
-router.put("/vote/:against_id", middleware.isLoggedIn, function(req,res){
-    Argument.updateOne({_id: req.params.against_id}, { $inc: {"votes": 1}, $push: {"usersVoted": req.user._id}}, function(err, upvotedArg){
+router.put("/vote/:for_id", middleware.isLoggedIn, function(req,res){
+    Argument.updateOne({_id: req.params.for_id}, { $inc: {"votes": 1},  $push: {"usersVoted": req.user._id}}, function(err, upvotedArg){
         if(err) {
             console.log(err);
         } else {
             // upvotedArg.votes = req.body.for;
+            console.log(upvotedArg);
             res.redirect('/debates/'  +req.params.id);
         }
     });
 });
 // Change vote
-router.put("/changevote/:against_id", middleware.isLoggedIn, function(req,res){
-    Argument.updateOne({_id: req.params.against_id}, { $inc: {"votes": -1}, $pull: {"usersVoted": req.user._id}}, function(err, upvotedArg){
+router.put("/changevote/:for_id", middleware.isLoggedIn, function(req,res){
+    Argument.updateOne({_id: req.params.for_id}, { $inc: {"votes": -1}, $pull: {"usersVoted": req.user._id}}, function(err, upvotedArg){
         if(err) {
             console.log(err);
         } else {

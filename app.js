@@ -12,18 +12,14 @@ const Debate = require("./models/debate");
 const Comment = require("./models/comment");
 const User = require("./models/user");
 // Routes
-const debateRoutes = require("./routes/debates");
-const commentRoutes = require("./routes/comments");
 const indexRoutes = require("./routes/index");
-const forRoutes = require("./routes/for");
-const againstRoutes = require("./routes/against");
-const categoryRoutes = require("./routes/category");
 // New Routes
 const newCategory = require("./routes/newCategory");
 const newDebate = require("./routes/newDebate");
 const newForRoutes = require("./routes/newFor");
 const newAgainstRoutes = require("./routes/newAgainst");
 const newCommentRoutes = require("./routes/newComment");
+const debateRoutes = require("./routes/debates");
 
 const seedDB = require("./seeds");
 
@@ -67,12 +63,8 @@ app.use(function(req, res, next){
 
 // // ROUTES 
 app.use(indexRoutes);
-// app.use("/debates", debateRoutes);
-// app.use("/debates/:id/for", forRoutes);
-// app.use("/debates/:id/against", againstRoutes);
-// app.use("/debates/:id/discussion",commentRoutes);
-// app.use("/categories", categoryRoutes);
-// Clearer routes
+// New routes
+app.use("/debates/", debateRoutes)
 app.use("/category/", newCategory);
 app.use("/category/:categorySlug", newDebate);
 app.use("/category/:categorySlug/:slug/for", newForRoutes); 
