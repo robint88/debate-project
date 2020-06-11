@@ -3,7 +3,7 @@
 <h2 class="pageHeaders">Edit <%=category.name%></h2>
 
 <div class="center-form">
-        <form action="/categories/<%=category._id %>?_method=PUT" method="post" class="pure-form pure-form-stacked">
+        <form action="/category/<%=category.slug %>?_method=PUT" method="post" class="pure-form pure-form-stacked">
             <fieldset>
                 <label for="categoryName">Category Name</label>
                 <input type="text" name="category[name]" id="categoryName" class="form-control" value="<%= category.name %>">
@@ -14,10 +14,10 @@
         </fieldset>
         </form>
         <div class="center-form">
-                <form class="delete-form" action="/categories/<%= category._id %>?_method=DELETE" method="POST">
+                <form class="delete-form" action="/category/<%=category.slug %>?_method=DELETE" method="POST">
                     <button class="delete-button"> delete category </button>
                 </form>
-                <a href="/categories/<%=category._id%>/removedebate" id="remove-debate-button">Remove a debate</a>
+                <a href="/category/<%= category.slug %>/removedebate" id="remove-debate-button">Remove a debate</a>
         </div>
     
 </div>

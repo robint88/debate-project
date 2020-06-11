@@ -43,6 +43,7 @@ app.locals.moment = require('moment');
 // Set up DB
 // seedDB();
 mongoose.connect("mongodb://localhost:27017/debateDB", {useNewUrlParser: true});
+mongoose.set('useFindAndModify', false);
 
 // Configure Passport
 app.use(require("express-session")({

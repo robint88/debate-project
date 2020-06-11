@@ -82,6 +82,8 @@ ul li {
 
 .user-buttons {
     color: #cca43b !important;
+    font-size: 13px;
+    margin-left: 10px;
 }
 .user-buttons:hover {
     color: #c54242 !important;
@@ -257,6 +259,12 @@ ul li {
     background-size: cover;
 }
 
+.unpublished {
+    color: #cca43b;
+    width: 100%;
+    background: #c54242
+}
+
 .debate-item p, h2 {
     font-weight: 300;
     color: #363636;
@@ -351,6 +359,16 @@ fieldset {
 .edit-argument-button {
     background: #363636;
     color: #fff;
+}
+
+.publish-debate {
+    margin: 10px;
+}
+
+.publish-button {
+    background: #242f40;
+    color: #cca43b;
+    width: 100%;
 }
 
 #debate-c-and-d {

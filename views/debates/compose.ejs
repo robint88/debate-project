@@ -3,7 +3,7 @@
 <h2 class="pageHeaders">New Debate</h2>
 
 <div class="center-form">
-    <form action="/debates" class="pure-form pure-form-stacked" method="post">
+    <form action="/category/<%= category_slug %>" class="pure-form pure-form-stacked" method="post">
         <fieldset>
             <label for="debateTitle">Topic</label>
             <input class="pure-input-rounded" type="text" name="debate[topic]" id="debateTitle">
@@ -15,9 +15,17 @@
             <select class="" data-style="btn-info" id="debateCategory" name="debate[category]">
                 <optgroup label="debate category">
                         <% categories.forEach(function(category){ %>
+
+                            <% if(category.slug == category_slug){ %>
+                                <option name="" selected="selected" value="<%= category._id %>"><%= category.name %></option>
+                            <% } else { %>
                                 <option name="" value="<%= category._id %>"><%= category.name %></option>
+                            <% } %>
+                                
                         <% }) %>
+                </optgroup>
             </select>
+            
             <button class="pure-button submit-button" type="submit" name="createPost">create debate</button>
         </fieldset>
     </form>

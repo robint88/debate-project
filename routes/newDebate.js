@@ -22,7 +22,7 @@ router.get("/new", middleware.isLoggedIn,function(req,res){
         if(err){
             res.res('back');
         } else {
-            res.render("debates/compose", {categories: foundCategories});
+            res.render("debates/compose", {categories: foundCategories, category_slug: req.params.categorySlug});
 
         }
     });
@@ -37,15 +37,13 @@ router.post("/", middleware.isLoggedIn, function(req,res){
             
             newDebate.moderator.username = req.user.username;
             newDebate.moderator.id = req.user._id;
-            
 
             Category.findById(req.body.debate.category, function(err, foundCat){
                 foundCat.debates.push(newDebate);
                 foundCat.save();   
             });
-            console.log(newDebate);
             newDebate.save();
-            res.redirect("/category/:categorySlug/debates/" + newDebate.slug);
+            res.redirect("/category/"+ req.params.categorySlug + "/" + newDebate.slug);
         }
     });
 }); 
@@ -87,25 +85,30 @@ router.get("/:slug/edit", middleware.checkDebateOwnershipNew, function(req,res){
 router.put("/:slug", middleware.checkDebateOwnershipNew, function(req,res){
     Debate.findOneAndUpdate({slug: req.params.slug}, req.body.debate, function(err, updatedDebate){
         if(err){
+            req.flash('error', 'Something went wrong.');
             res.redirect("/category/" + req.params.categorySlug);
             console.log(err);
         } else {
             // FIND CATEGORY AND PUSH NEW CATEGORY IN TO IT AND REMOVE OLD
             // Doesnt work properly - allows multiple entries of same debate in one category
-           
-            // const updatedCat = req.body.debate.category;
-            Category.findById(req.body.debate.category, function(err, foundCat){
-                if(err){
-                    console.log(err);
-                } else {
-                    foundCat.debates.push(updatedDebate);
-                    foundCat.save();
-                }
-            });
-            res.redirect("/category/" + req.params.categorySlug);
+            req.flash('success', 'Debate updated');
+            res.redirect("/category/" + req.params.categorySlug + "/" + updatedDebate.slug);
+            
+            
         }
     });
 });
+// Publish Debate
+router.put("/:slug/publish", middleware.checkDebateOwnershipNew, function(req, res){
+    Debate.updateOne({slug: req.params.slug},{$set: {isPublished: req.body.debate.isPublished}}, function(err, foundDebate){
+        if(err){
+            console.log(err);
+        } else {
+            res.redirect('/category' + req.params.categorySlug);
+        }
+    });
+});
+
 // DESTROY
 router.delete("/:slug", middleware.checkDebateOwnershipNew, function(req,res){
     Debate.findOneAndRemove({slug: req.params.slug}, function(err){

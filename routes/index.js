@@ -14,12 +14,12 @@ router.get("/", function(req, res){
     //         res.render('index',{debates: foundDebates});
     //     }
     // });
-    Category.find({}).populate('debates').sort({name: 1}).exec(function(err, foundCats){
+    Category.find({}).sort({name: 1}).exec(function(err, foundCats){
         if(err){
             req.flash('error', "Oops! Something went wrong");
         } else {
             // res.render('index',{categories: foundCats});
-            Debate.find({}).sort({createdAt: 'desc'}).exec(function(err, foundDebates){
+            Debate.find({}).populate('category').exec(function(err, foundDebates){
                 if(err){
                     console.log(err);
                 } else {

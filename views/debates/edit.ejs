@@ -11,13 +11,7 @@
             <input class="pure-input-rounded" type="text" name="debate[summary]" id="debateSummary" value="<%= debate.summary %>">
             <label for="debateImage">Image</label>
             <input class="pure-input-rounded" type="text" name="debate[image]" id="debateImage" value="<%= debate.image %>">
-            <label for="debateCategory">Category</label>
-            <select class="" data-style="btn-info" id="debateCategory" name="debate[category]">
-                <optgroup label="debate category">
-                        <% categories.forEach(function(category){ %>
-                                <option name="" value="<%= category._id %>"><%= category.name %></option>
-                        <% }) %>
-            </select>
+            
             <button class="pure-button submit-button" type="submit" name="createPost">update debate</button>
         </fieldset>
     </form>
