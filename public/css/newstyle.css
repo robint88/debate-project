@@ -156,6 +156,7 @@ ul li {
 #p-btn:hover {
     color:#242f40;
     background: rgba(204, 164, 59, 0.8);
+    box-shadow: 0 5px 15px #363636;
 }
 
 .carousel-container {
@@ -245,6 +246,7 @@ ul li {
     background: #cca43b;
     color: #363636;
     transform: scale(0.97);
+    box-shadow: 0 5px 15px #363636;
 }
 
 #index-all-debates {
@@ -315,6 +317,7 @@ ul li {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    box-shadow: 0 5px 15px #363636;
 }
 
 .debate-item p, h2 {
@@ -665,6 +668,17 @@ nav {
 }
 .carousel-slide {
     height: 60vh;
+}
+
+.index-debate-img {
+    width: 40%;
+}
+
+.index-debate-header {
+    font-size: 25px;
+}
+.index-debate-summary {
+    display: none;
 }
 @keyframes navLinkFade {
     from {
