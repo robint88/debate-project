@@ -239,6 +239,10 @@ ul li {
     flex-direction: column;
     justify-content: center;
 }
+
+.index-debate-content:hover p{
+    color: #242f40;
+}
 .index-debate-summary {
     padding: 10px;
 }
@@ -341,10 +345,18 @@ ul li {
     background: #242f40;
     padding: 10px;
 }
-.debate-page-item:hover p {
+
+#unpublished-debates {
+    padding: 10px;
+    background: #cca43b;
+    /* display: hidden; */
+}
+.debate-page-item:hover p,
+.index-debate-item:hover p {
     color: #fff;
 }
-.debate-page-cat {
+.debate-page-cat,
+.index-page-cat {
     color: #cca43b;
 }
 
@@ -688,15 +700,20 @@ nav {
     font-size: 40px;
     padding: 20px;
 }
+.debate-summary {
+    display: none;
+}
 .carousel-slide {
     height: 60vh;
 }
 
-.index-debate-img {
+.index-debate-img,
+.debate-page-img {
     width: 40%;
 }
 
-.index-debate-header {
+.index-debate-header,
+.debate-page-header {
     font-size: 25px;
 }
 .index-debate-summary {

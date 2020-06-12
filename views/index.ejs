@@ -48,6 +48,9 @@
         <a href="/category/<%=debates[i].category.slug%>/<%=debates[i].slug%>" class="index-debate-item">
           <img src="<%= debates[i].image%>" class="index-debate-img" alt="">
           <div class="index-debate-content">
+            <p class="index-page-cat">
+              <%= debates[i].category.name %>
+            </p>
             <h5 class="index-debate-header">
               <%= debates[i].topic %>
             </h5 class="index-debate-header">
