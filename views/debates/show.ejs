@@ -1,5 +1,5 @@
 <%- include("../partials/header") %>
-<% if(currentUser && debate.moderator.id.equals(currentUser._id)) { %>
+<% if((currentUser && debate.moderator.id.equals(currentUser._id))|| (currentUser && currentUser.isAdmin)) { %>
 <div class="moderator-functions">
     <p class="mod-title">Moderator functions</p>
     <div class="moderator-buttons">
@@ -161,7 +161,7 @@ background-position: center center; background-size: cover;">
                                     <button class="submit-button" type="submit" name="createPost">update</button>
                                 </fieldset>
                             </form>
-                            <% if(currentUser && comment.author.id.equals(currentUser._id)|| currentUser && debate.moderator.id.equals(currentUser._id)){ %>
+                            <% if((currentUser && comment.author.id.equals(currentUser._id)) || (currentUser && debate.moderator.id.equals(currentUser._id)) || (currentUser && currentUser.isAdmin)){ %>
                             <button class="pure-button edit-button" id="edit-comment">EDIT COMMENT</button>
                             <form class="delete-comment-form" action="/category/<%= category_slug %>/<%= debate.slug %>sdiscussion/<%=comment._id%>?_method=DELETE" method="POST">
                                 <input class="pure-button" id="delete-comment-button" type="submit" value="DELETE">

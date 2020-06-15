@@ -3,7 +3,7 @@
 <h3 class="pageHeaders">
     Current Debates
 </h3>
-<% if(currentUser){ %>
+<% if(currentUser && currentUser.isAdmin){ %>
     <h4>Unpublished debates</h4>
     <button class="pure-button submit-button" id="unpublished-button">VIEW UNPUBLISHED DEBATES</button>
     <section id="unpublished-debates">

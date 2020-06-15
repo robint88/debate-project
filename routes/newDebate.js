@@ -7,7 +7,6 @@ const middleware = require("../middleware");
 // INDEX OF DEBATES
 router.get("/", function(req,res){
     Category.findOne({slug: req.params.categorySlug}).populate('debates').exec(function(err, foundCat){
-        console.log(foundCat);
         if(err){
             console.log(err);
             res.redirect('back');
@@ -17,7 +16,7 @@ router.get("/", function(req,res){
     });
 });
 //NEW
-router.get("/new", middleware.isLoggedIn,function(req,res){
+router.get("/new", middleware.hasAdminAbility,function(req,res){
     Category.find({}).sort({name: 1}).exec(function(err, foundCategories){
         if(err){
             res.res('back');
@@ -29,7 +28,7 @@ router.get("/new", middleware.isLoggedIn,function(req,res){
     
 });
 //CREATE
-router.post("/", middleware.isLoggedIn, function(req,res){
+router.post("/", middleware.hasAdminAbility, function(req,res){
     Debate.create(req.body.debate, function(err, newDebate){
         if(err){
             res.render('debates/compose');
