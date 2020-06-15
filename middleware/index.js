@@ -52,7 +52,7 @@ middlewareObj.checkDebateOwnershipNew = function(req, res, next){
                 req.flash('error', 'Could not find debate');
                 res.redirect("back");
             } else {
-                if(foundDebate.moderator.id.equals(req.user._id)){
+                if((foundDebate.moderator.id.equals(req.user._id) || req.user.isAdmin)){
                     next();
                 } else {
                     req.flash('error', "You don't have permission to do that");

@@ -6,18 +6,20 @@
 <% if(currentUser){ %>
     <h4>Unpublished debates</h4>
     <button class="pure-button submit-button" id="unpublished-button">VIEW UNPUBLISHED DEBATES</button>
-    <section class="pure-g" id="unpublished-debates">
-        <% debates.forEach(function(debate){ %>
-            <% if(!debate.isPublished){ %>
-                <a href="/category/<%= debate.category.slug %>/<%= debate.slug %>" class="debate-item pure-u-1 pure-u-md-1-5" style="background-image: url(<%= debate.image %>);">
-                    <h4>
-                        <%= debate.topic %>
-                    </h4>
-                </a>
-            <% } %>
-        <% }) %>
+    <section id="unpublished-debates">
+        <article class="pure-g">
+            <% debates.forEach(function(debate){ %>
+                <% if(!debate.isPublished){ %>
+                    <a href="/category/<%= debate.category.slug %>/<%= debate.slug %>" class="debate-item pure-u-1 pure-u-md-1-5" style="background-image: url(<%= debate.image %>);">
+                        <h4>
+                            <%= debate.topic %>
+                        </h4>
+                    </a>
+                <% } %>
+            <% }) %>
+        </article>
     </section>
-    <h4>published-debates</h4>
+<h4>published-debates</h4>
 <% } %>
 <section id="published-debates">
         <% debates.forEach(function(debate){ %>

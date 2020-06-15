@@ -14,7 +14,13 @@
             </div>
         <% } %>
         <p>
-            Debate published: <strong><%= debate.isPublished %></strong>
+            Publish status: <strong>
+                <% if(debate.isPublished){ %>
+                    Published
+                <% } else{ %>
+                    Unpublished
+                <% } %>
+            </strong>
         </p>
     </div>
 </div>

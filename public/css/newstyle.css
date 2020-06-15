@@ -223,6 +223,7 @@ ul li {
     background: #fff;
     color: #363636;
     height: 200px;
+    border-radius: 50px;
 }
 
 .index-debate-header,
@@ -349,8 +350,10 @@ ul li {
 #unpublished-debates {
     padding: 10px;
     background: #cca43b;
-    /* display: hidden; */
+    display: none;
 }
+
+
 .debate-page-item:hover p,
 .index-debate-item:hover p {
     color: #fff;
@@ -540,6 +543,10 @@ fieldset {
  .argument-content {
     white-space: pre-line;
  }
+ .argument-content::first-letter{
+     color: #cca43b;
+     font-size: 4rem;
+ }
 
  .case-header {
      padding: 20px;
@@ -656,7 +663,7 @@ select {
 
 
 
-@media screen and (max-width: 768px){
+@media screen and (max-width: 1080px){
 /* OWN NAV */
 body {
     overflow-x: hidden;

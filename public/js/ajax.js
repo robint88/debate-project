@@ -85,3 +85,8 @@ $("#comment-list").on('submit', ".delete-comment-form", function(e){
 
     }
 });
+
+// UNPUBLISHED DEBATES
+$('body').on('click', '#unpublished-button', function(){
+    $(this).siblings('#unpublished-debates').toggle();
+});
