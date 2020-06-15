@@ -46,7 +46,7 @@
     <% for(let i=0; i< 6; i++){ %>
       <% if(debates[i].isPublished){ %>
         <a href="/category/<%=debates[i].category.slug%>/<%=debates[i].slug%>" class="index-debate-item">
-          <img src="<%= debates[i].image%>" class="index-debate-img" alt="">
+          <img src="<%= debates[i].image%>" class="index-debate-img" alt="<%= debates[i].topic%>">
           <div class="index-debate-content">
             <p class="index-page-cat">
               <%= debates[i].category.name %>

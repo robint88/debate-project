@@ -14,10 +14,12 @@
         </fieldset>
         </form>
         <div class="center-form">
+                <a href="/category/<%= category.slug %>/removedebate" id="remove-debate-button">Remove a debate</a>
+                <br>
+                <br>
                 <form class="delete-form" action="/category/<%=category.slug %>?_method=DELETE" method="POST">
                     <button class="delete-button"> delete category </button>
                 </form>
-                <a href="/category/<%= category.slug %>/removedebate" id="remove-debate-button">Remove a debate</a>
         </div>
     
 </div>

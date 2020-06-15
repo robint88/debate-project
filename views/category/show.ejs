@@ -1,8 +1,23 @@
 <%- include("../partials/header") %>
 
-<h1 class="display-2">
-    <%= category.name %>
-</h1>
+<% if(currentUser && currentUser.isAdmin){ %>
+    <div class="moderator-functions">
+            <p class="mod-title">Admin functions</p>
+            <div class="moderator-buttons">
+                <a class="pure-button edit-debate-button" href="/category/<%= category.slug %>/edit"> edit category </a>
+            </div>
+        </div>
+<% } %>
+
+<section class="show-header" style="background-image: URL(<%= category.image %>>);background-repeat: no-repeat;
+        background-size: auto auto;
+        background-position: center center; background-size: cover;">
+    <div class="header-content">
+        <h1 class="debate-header">
+            <%= category.name %>
+        </h1>
+    </div>
+</section>
 <% if(category.debates.length < 1 ) {%>
     <div class="centred-text">
         <h3>NO DEBATES YET</h3>
@@ -23,7 +38,6 @@
         <% }) %>
     </div>
 <%}%>
-<hr>
 
 
 

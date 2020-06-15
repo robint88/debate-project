@@ -16,10 +16,10 @@ router.get('/', function(req, res){
 });
 
 // New and create
-router.get("/new", middleware.isLoggedIn, function(req, res){
+router.get("/new", middleware.hasAdminAbility, function(req, res){
     res.render("category/new");
 });
-router.post("/", middleware.isLoggedIn, function(req, res){
+router.post("/", middleware.hasAdminAbility, function(req, res){
     Category.create(req.body.category, function(err, newCategory){
         if(err){
             console.log(err);
@@ -46,7 +46,7 @@ router.get("/:categorySlug", function(req, res){
 // ******************************************
 // ADD MIDDLEWARE TO CHECK FOR CATEGORY ADMIN
 // ******************************************
-router.get("/:categorySlug/edit", middleware.isLoggedIn, function(req, res){
+router.get("/:categorySlug/edit", middleware.hasAdminAbility, function(req, res){
     Category.findOne({slug: req.params.categorySlug}, function(err, foundCat){
         if(err){
             console.log(err);
@@ -56,7 +56,7 @@ router.get("/:categorySlug/edit", middleware.isLoggedIn, function(req, res){
         }
     });
 });
-router.get("/:categorySlug/removedebate", middleware.isLoggedIn, function(req, res){
+router.get("/:categorySlug/removedebate", middleware.hasAdminAbility, function(req, res){
     Category.findOne({slug: req.params.categorySlug}).populate('debates').exec(function(err, foundCat){
         if(err){
             console.log(err);
@@ -71,7 +71,7 @@ router.get("/:categorySlug/removedebate", middleware.isLoggedIn, function(req, r
 // ******************************************
 // ADD MIDDLEWARE TO CHECK FOR CATEGORY ADMIN
 // ******************************************
-router.put("/:categorySlug", middleware.isLoggedIn, function(req, res){
+router.put("/:categorySlug", middleware.hasAdminAbility, function(req, res){
     Category.findOneAndUpdate({slug: req.params.categorySlug}, req.body.category, function(err, updatedCat){
         if(err){
             console.log(err);
@@ -84,7 +84,7 @@ router.put("/:categorySlug", middleware.isLoggedIn, function(req, res){
     });
 });
 // REMOVE DEBATE
-router.put("/removedebate/:categorySlug", middleware.isLoggedIn, function(req, res){
+router.put("/removedebate/:categorySlug", middleware.hasAdminAbility, function(req, res){
     Category.updateOne({slug: req.params.categorySlug},{$pull: {"debates": req.body.category.debates}}, function(err, updatedCat){
        if(err){
            console.log(err);

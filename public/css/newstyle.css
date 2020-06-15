@@ -57,6 +57,12 @@ nav {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+.logo:hover .logo-pipe {
+    color: #fff;
+    background: -webkit-linear-gradient(#cca43b, #fff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 .nav-links {
     display: flex;
     justify-content: space-around;
@@ -341,6 +347,11 @@ ul li {
 }
 
 /* DEBATES PAGE */
+
+#unpublished-button {
+    background: #242f40;
+    color: #e5e5e5;
+}
 
 #published-debates {
     background: #242f40;
