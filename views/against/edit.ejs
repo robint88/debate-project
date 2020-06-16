@@ -8,8 +8,15 @@
             <fieldset>
                 <label for="debateAgainstAuthor">Content Author</label>
                 <input type="text" id="debateAgainstAuthor" name="against[author]" required value="<%= againstArg.author %>">
-                <label for="debateForContent">Content</label>
-                <textarea required name="against[content]" id="debateForContent" cols="30" rows="10" > <%= againstArg.content %></textarea>
+
+                <label for="authorInfo">Author Info</label>
+                <textarea required name="against[authorDetails]" id="authorInfo" cols="30" rows="10" > <%= againstArg.authorDetails %></textarea>
+
+                <label for="authorWeb">Author Web</label>
+                <input type="text" name="against[authorLink]" id="authorWeb" placeholder="Add author web link" value="<%=againstArg.authorLink %>">
+
+                <label for="debateAgasintContent">Content</label>
+                <textarea required name="against[content]" id="debateAgasintContent" cols="30" rows="10" > <%= againstArg.content %></textarea>
                 
     
                 <button class="submit-button" type="submit" name="createPost">update</button>

@@ -69,6 +69,35 @@ background-position: center center; background-size: cover;">
                     </p>
                 </article>
         </section>
+        <section class="about-authors">
+            <!-- <h2>About the authors</h2> -->
+            <div class="author-content">
+                    <article class="author-details">
+                        <h4>
+                            about... <%= debate.for.author %>
+                        </h4>
+                        <% if(debate.for.authorLink){ %>
+                            <a target="_blank" href="http://<%= debate.for.authorLink %>">Visit Website</a>
+                        <% } %>
+                        
+                        <p>
+                            <%= debate.for.authorDetails %>
+                        </p>
+                    </article>
+                    <article class="author-details">
+                        <h4>
+                            about... <%= debate.against.author %>
+                        </h4>
+                        <% if(debate.against.authorLink){ %>
+                            <a target="_blank" href="http://<%= debate.against.authorLink %>">Website</a>
+                        <% } %>
+                        
+                        <p class="author-content">
+                            <%= debate.against.authorDetails %>
+                        </p>
+                    </article>
+            </div>
+        </section>
         <p class="moderator-title"><em>moderator - <%= debate.moderator.username %></em></p>
 
  <!-------------------- VOTES -------------------->

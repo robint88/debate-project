@@ -563,6 +563,39 @@ fieldset {
      padding: 20px;
  }
 
+ .about-authors {
+     background: #cca43b;
+ }
+
+ .author-content {
+     white-space: pre-line;
+     display: flex;
+     flex-direction: row;
+ }
+
+ .author-details {
+     width: 50%;
+     text-align: center;
+     padding: 20px;
+     min-height: 200px;
+ }
+
+ .author-details:nth-of-type(2){
+     background: #363636;
+     color: #fff;
+ }
+
+ .author-details p {
+     padding: 15px 25px;
+ }
+ .author-details a {
+     color: #e5e5e5;
+     padding: 25px;
+ }
+ .author-details a:hover {
+     color: #c54242;
+ }
+
  #vote-section {
      display: flex;
      flex-direction: column;
@@ -736,6 +769,18 @@ nav {
 }
 .index-debate-summary {
     display: none;
+}
+
+.argument-content {
+    padding-top: 0;
+}
+
+.author-content {
+    display: flex;
+    flex-direction: column;
+}
+.author-details {
+    width: 100%;
 }
 @keyframes navLinkFade {
     from {

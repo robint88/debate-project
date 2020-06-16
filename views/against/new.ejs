@@ -9,8 +9,14 @@
                 <label for="debateAgainstAuthor">Content Author</label>
                 <input type="text" id="debateAgainstAuthor" name="against[author]" placeholder="Add author name" required>
 
-                <label for="debateagainstContent">Content</label>
-                <textarea  name="against[content]" id="debateagainstContent" cols="30" rows="10" placeholder="Write your argument here" required></textarea>
+                <label for="authorInfo">Author Info</label>
+                <textarea required name="against[authorDetails]" id="authorInfo" cols="30" rows="10" placeholder="Add details of the author"></textarea>
+
+                <label for="authorWeb">Author Web</label>
+                <input type="text" name="against[authorLink]" id="authorWeb" placeholder="Add author web link">
+
+                <label for="debateAgainstContent">Content</label>
+                <textarea  name="against[content]" id="debateAgainstContent" cols="30" rows="10" placeholder="Write your argument here" required></textarea>
                 
                 <button class="submit-button" type="submit" name="createPost">publish</button>
             </fieldset>

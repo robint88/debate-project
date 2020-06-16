@@ -9,6 +9,12 @@
                 <label for="debateForAuthor">Content Author</label>
                 <input type="text" id="debateforAuthor" name="for[author]" required value="<%= forArg.author %>">
 
+                <label for="authorInfo">Author Info</label>
+                <textarea required name="for[authorDetails]" id="authorInfo" cols="30" rows="10"><%= forArg.authorDetails %></textarea>
+
+                <label for="authorWeb">Author Web</label>
+                <input type="text" name="for[authorLink]" id="authorWeb" placeholder="Add author web link" value="<%= forArg.authorLink %>">
+
                 <label for="debateForContent">Content</label>
                 <textarea required name="for[content]" id="debateForContent" cols="30" rows="10" > <%= forArg.content %></textarea>
                 <button class="submit-button" type="submit" name="createPost">update</button>
