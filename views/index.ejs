@@ -14,6 +14,58 @@
     <H1>Show latest debates here</H1>
 </section> -->
 
+<div class="carousel-container">
+  <a id="p-btn">←</a>
+  <a id="n-btn">→</a>
+  <div class="carousel-slide">
+    <!-- <img id="last-clone" src="https://images.unsplash.com/photo-1578318774420-677a96c0cf8c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1045&q=80" alt="">
+    <img src="https://images.unsplash.com/photo-1479142506502-19b3a3b7ff33?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" alt="">
+    <img src="https://images.unsplash.com/photo-1447727214830-cbcbf097b52c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1158&q=80" alt="">
+    <img src="https://images.pexels.com/photos/4452702/pexels-photo-4452702.jpeg?cs=srgb&dl=brown-leather-belt-on-white-printer-paper-4452702.jpg&fm=jpg" alt="">
+    <img src="https://images.pexels.com/photos/4262185/pexels-photo-4262185.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
+    <img src="https://images.unsplash.com/photo-1578318774420-677a96c0cf8c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1045&q=80" alt="">
+    <img id="first-clone" src="https://images.unsplash.com/photo-1479142506502-19b3a3b7ff33?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" alt="">
+  </div> -->
+
+    <% for(let i=0; i< 4; i++){ %>
+      <div  class="carousel-item" style="background-image: url(<%= debates[i].image %>)">
+          <a href="/category/<%= debates[i].category.slug %>/<%=debates[i].slug%>" class="carousel-content">
+              <h4>
+                  <%= debates[i].topic %>
+              </h4>
+              <p class="debate-summary">
+                <%= debates[i].summary %>
+              </p>
+          </a>
+        </div>
+  <%}%>
+
+  </div>
+</div>
+<section class="index-section">
+  <h4 class="index-category-header">Recent</h4>
+  <article id="index-debates">
+    <% for(let i=0; i< 4; i++){ %>
+      <% if(debates[i].isPublished){ %>
+        <a href="/category/<%=debates[i].category.slug%>/<%=debates[i].slug%>" class="index-debate-item">
+          <img src="<%= debates[i].image%>" class="index-debate-img" alt="<%= debates[i].topic%>">
+          <div class="index-debate-content">
+            <p class="index-page-cat">
+              <%= debates[i].category.name %>
+            </p>
+            <h5 class="index-debate-header">
+              <%= debates[i].topic %>
+            </h5 class="index-debate-header">
+            <p class="index-debate-summary">
+              <%= debates[i].summary %>
+            </p>
+          </div>
+        </a>
+      <% } %>
+    <% } %>
+    <a href="/debates" id="index-all-debates">view all debates</a>
+  </article>
+</section>
 
 <section class="index-section">
   <h4 class="index-category-header">Categories</h4>

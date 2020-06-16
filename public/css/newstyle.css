@@ -530,6 +530,7 @@ fieldset {
  .debate-summary {
      padding: 10px 50px;
      color: #fff;
+     white-space: pre-line;
  }
 
  .debate-section {
@@ -756,6 +757,11 @@ nav {
 }
 .carousel-slide {
     height: 60vh;
+}
+
+.index-cat-item h4,
+.debate-item h4 {
+    font-size: 15px;
 }
 
 .index-debate-img,
