@@ -798,11 +798,16 @@ nav {
     }
     .index-debate-item,
     .debate-page-item {
-        height: 150px
+        height: 150px;
+        width: 100%;
     }
     .index-debate-img,
     .debate-page-img {
         display: none;
+    }
+
+    #index-debates{
+        padding: 0;
     }
 
 }
