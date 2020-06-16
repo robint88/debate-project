@@ -796,6 +796,12 @@ nav {
     .carousel-content {
         font-size: 18px;
     }
+    .index-debate-item,
+    .debate-page-item,
+    .index-debate-img,
+    .debate-page-img {
+        height: 150px
+    }
 }
 
 
