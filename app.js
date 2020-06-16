@@ -74,8 +74,10 @@ app.use("/category/:categorySlug/:slug/discussion",newCommentRoutes);
 
 
 //server
-app.listen(3000, function(){
-    console.log("*************************************");
-    console.log("SERVER RUNNING ON POST 3000! WOOHOO!");
-    console.log("*************************************");
-});
+// app.listen(3000, function(){
+//     console.log("*************************************");
+//     console.log("SERVER RUNNING ON POST 3000! WOOHOO!");
+//     console.log("*************************************");
+// });
+
+app.listen(process.env.PORT || 3000);
