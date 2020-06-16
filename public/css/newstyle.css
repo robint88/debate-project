@@ -791,13 +791,13 @@ nav {
     }
     .index-debate-content h4,
     .debate-page-content  h4{
-        font-size:15px;
+        font-size:10px;
     }
     .carousel-content {
         font-size: 18px;
     }
     .index-debate-item,
-    .debate-page-item,
+    .debate-page-item
     .index-debate-img,
     .debate-page-img {
         height: 150px
