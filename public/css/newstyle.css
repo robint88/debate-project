@@ -801,6 +801,7 @@ nav {
         height: 150px;
         width: 100%;
         border-radius: 0;
+        margin:0;
     }
     .index-debate-img,
     .debate-page-img {
