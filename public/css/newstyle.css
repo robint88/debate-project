@@ -789,9 +789,12 @@ nav {
     .debate-item h4 {
         font-size: 15px;
     }
-    .index-debate-content,
-    .debate-page-content {
+    .index-debate-content h4,
+    .debate-page-content  h4{
         font-size:15px;
+    }
+    .carousel-content {
+        font-size: 18px;
     }
 }
 
