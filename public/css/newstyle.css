@@ -813,6 +813,10 @@ nav {
         background: #fff;
     }
 
+    .author-details {
+        padding: 10px;
+    }
+
     .discussion {
         padding: 0;
         width: 100%;
