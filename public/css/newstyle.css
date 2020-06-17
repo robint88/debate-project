@@ -517,6 +517,12 @@ fieldset {
     flex-direction: column;
     justify-content: center;
 }
+.category-show-header {
+    height:30vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 
 .header-content {
     background: rgba(36, 47, 64,0.5);
@@ -524,6 +530,14 @@ fieldset {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
+}
+.category-header-content {
+    background: rgba(36, 47, 64,0.5);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
 }
 .debate-header {
@@ -845,16 +859,7 @@ nav {
         width: 90%;
     }
 
-    #p-btn{
-
-    }
-
-    #n-btn {
-
-    }
-
 }
-
 
 
 @keyframes navLinkFade {
