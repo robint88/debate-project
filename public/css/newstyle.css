@@ -808,6 +808,10 @@ nav {
         display: none;
     }
 
+    .show-header {
+        height: 33vh;
+    }
+
     #index-debates{
         padding: 18px 10px;
     }
@@ -823,6 +827,14 @@ nav {
 
     #new-comment-form {
         width: 90%;
+    }
+
+    #p-btn{
+
+    }
+
+    #n-btn {
+
     }
 
 }
