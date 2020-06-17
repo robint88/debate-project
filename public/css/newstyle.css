@@ -702,8 +702,14 @@ textarea {
     width: 100%;
 }
 .comment-item {
-    padding: 1px 25px;
-    border-top: 1px solid #cca43b;
+    padding: 10px 25px;
+    border-top: 2px solid #cca43b;
+    background: rgba(36, 47, 64,0.6);
+    color: #e5e5e5;
+}
+
+.comment-date {
+    color: #cca43b;
 }
 .comment-body{
     padding-top: 0;
@@ -712,6 +718,7 @@ textarea {
 .comment-author {
     padding-top: 0;
     text-align: right;
+    color: #cca43b;
 }
 #edit-comment {
     background: #e5e5e5;
