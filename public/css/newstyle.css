@@ -758,8 +758,16 @@ nav {
     padding: 10px;
 }
 
+#debate-c-and-d {
+    font-size: 12px;
+}
+
 .carousel-slide {
     height: 60vh;
+}
+
+.carousel-debate-summary {
+    display: none;
 }
 
 .index-debate-img,
@@ -819,14 +827,10 @@ nav {
         display: none;
     }
 
-    
-
     #index-debates{
         padding: 30px 10px;
     }
 
-
-  
 
     .author-details {
         padding: 10px;
