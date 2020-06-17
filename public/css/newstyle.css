@@ -704,7 +704,7 @@ textarea {
 .comment-item {
     padding: 10px 25px;
     border-top: 2px solid #cca43b;
-    background: rgba(36, 47, 64,0.6);
+    background: #242f40;
     color: #e5e5e5;
 }
 
