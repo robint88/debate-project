@@ -563,7 +563,7 @@ fieldset {
 
 .header-content {
     background: rgba(36, 47, 64,0.5);
-    height: 90vh;
+    min-height: 90vh;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -852,7 +852,7 @@ nav {
 
 .debate-summary {
     font-size: 15px;
-    padding: 10px 30px;
+    padding: 10px 20px;
 }
 #searchfield {
     width:100%;
