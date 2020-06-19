@@ -36,7 +36,7 @@ background-position: center center; background-size: cover;">
             <%= debate.summary %>
         </p>
         <p id="debate-c-and-d">
-            <a href="/category/<%= debate.category.slug %>"> <%=debate.category.name %></a> - <em><%= moment(debate.createdAt).calendar() %></em>
+            <a href="/category/<%= debate.category.slug %>"> <%=debate.category.name %></a> - <em><%= moment(debate.createdAt).format("MMM Do YYYY") %></em>
         </p>
     </div>
         

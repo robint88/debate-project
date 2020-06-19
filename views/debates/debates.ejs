@@ -32,7 +32,7 @@
                             <p class="debate-page-cat">
                                 <%= debate.category.name %> - 
                                 <em class="debate-page-date">
-                                    <%= moment(debate.createdAt).calendar() %>
+                                    <%= moment(debate.createdAt).format("MMM Do YYYY") %>
                                 </em>
                             </p>
                             <h4 class="debate-page-header">
