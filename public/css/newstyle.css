@@ -549,13 +549,13 @@ fieldset {
 }
 
 .show-header {
-    height:90vh;
+    min-height:90vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 .category-show-header {
-    height:30vh;
+    min-height:30vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -563,7 +563,7 @@ fieldset {
 
 .header-content {
     background: rgba(36, 47, 64,0.5);
-    height: 100%;
+    height: 90vh;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -847,11 +847,12 @@ nav {
 }
 
 .show-header {
-    height: 90vh;
+    min-height: 90vh;
 }
 
 .debate-summary {
     font-size: 15px;
+    padding: 10px 30px;
 }
 #searchfield {
     width:100%;
