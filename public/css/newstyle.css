@@ -633,6 +633,7 @@ fieldset {
  .argument-content {
     white-space: pre-line;
     padding-top: 0;
+    text-align: center;
  }
  .argument-content::first-letter{
      color: #cca43b;
