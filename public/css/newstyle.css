@@ -569,7 +569,7 @@ fieldset {
     justify-content: center;
 }
 .category-show-header {
-    min-height:30vh;
+    height:30vh;
     display: flex;
     flex-direction: column;
     justify-content: center;

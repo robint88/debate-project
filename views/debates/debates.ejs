@@ -34,23 +34,23 @@
                 </a>
         </div>
     <%}%>
-        <% debates.forEach(function(debate){ %>
-            <% if(debate.isPublished){ %>
-                <a href="/category/<%= debate.category.slug %>/<%= debate.slug %>" class="debate-page-item">
-                    <img src="<%= debate.image %>" class="debate-page-img" alt="<%= debate.topic %>">
-                    <div class="debate-page-content">
-                            <p class="debate-page-cat">
-                                <%= debate.category.name %> - 
-                                <em class="debate-page-date">
-                                    <%= moment(debate.createdAt).format("MMM Do YYYY") %>
-                                </em>
-                            </p>
-                            <h4 class="debate-page-header">
-                                <%= debate.topic %>
-                            </h4>
-                    </div>
-                </a>
-            <% }%>
-        <% }) %>
+    <% debates.forEach(function(debate){ %>
+        <% if(debate.isPublished){ %>
+            <a href="/category/<%= debate.category.slug %>/<%= debate.slug %>" class="debate-page-item">
+                <img src="<%= debate.image %>" class="debate-page-img" alt="<%= debate.topic %>">
+                <div class="debate-page-content">
+                        <p class="debate-page-cat">
+                            <%= debate.category.name %> - 
+                            <em class="debate-page-date">
+                                <%= moment(debate.createdAt).format("MMM Do YYYY") %>
+                            </em>
+                        </p>
+                        <h4 class="debate-page-header">
+                            <%= debate.topic %>
+                        </h4>
+                </div>
+            </a>
+        <% }%>
+    <% }) %>
 </section>
 <%- include("../partials/footer") %>
