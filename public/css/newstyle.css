@@ -519,13 +519,14 @@ fieldset {
 #debate-c-and-d {
     text-align: right;
     margin-right: 10px;
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.6);
     margin-left: 70%;
     width:30%;
     padding: 5px;
 }
 #debate-c-and-d a {
     color: #cca43b;
+    font-weight: 400;
 }
 #debate-c-and-d a:hover {
     color: #c54242;
