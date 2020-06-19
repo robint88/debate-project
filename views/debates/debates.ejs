@@ -24,6 +24,16 @@
 <h4>published-debates</h4>
 <% } %>
 <section id="published-debates">
+    <% if(noMatch !== undefined){ %>
+        <div class="no-search-results">
+                <h4 id="noMatch">
+                    <%= noMatch %>
+                </h4 id="noMatch">
+                <a href="/debates" class="all-debates">
+                    View all debates
+                </a>
+        </div>
+    <%}%>
         <% debates.forEach(function(debate){ %>
             <% if(debate.isPublished){ %>
                 <a href="/category/<%= debate.category.slug %>/<%= debate.slug %>" class="debate-page-item">
