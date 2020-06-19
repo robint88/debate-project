@@ -857,6 +857,13 @@ nav {
 .debate-page-header {
     font-size: 25px;
 }
+
+.debate-page-cat,
+.index-page-cat {
+    color: #cca43b;
+    font-size: 12px;
+}
+
 .index-debate-summary {
     display: none;
 }
