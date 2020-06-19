@@ -403,12 +403,15 @@ ul li {
     align-items: center;
     padding: 40px;
 }
-
+.search-form {
+    width: 100%;
+}
 #searchTitle {
     padding: 10px;
 }
 
 #searchfield {
+    width: 75%;
     height: 40px;
     color: #cca43b;
 }
@@ -849,7 +852,9 @@ nav {
 .debate-summary {
     font-size: 15px;
 }
-
+#searchfield {
+    width:100%;
+}
 
 .author-content {
     display: flex;
@@ -890,6 +895,7 @@ nav {
     #debate-c-and-d {
         font-size: 12px;
     }
+
 
     .author-details {
         padding: 10px;
