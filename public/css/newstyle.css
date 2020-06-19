@@ -2,8 +2,11 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 400;
+    /* font-family: 'Poppins', sans-serif;
+     */
+     font-family: 'Roboto Slab', serif;
+    font-weight: 300;
+    letter-spacing: 0.5px;
 }
 h1{
     text-align: center;
@@ -394,6 +397,28 @@ ul li {
     align-items: center;
 }
 
+.center-form-search {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+}
+
+#searchTitle {
+    padding: 10px;
+}
+
+#searchfield {
+    height: 40px;
+    color: #cca43b;
+}
+
+#searchfield:focus {
+    outline: none !important;
+    border:1px solid #cca43b;
+    box-shadow: 0 0 6px #242f40;
+}
+
 form ,
 fieldset {
     width:75%;
@@ -403,7 +428,9 @@ fieldset {
 }
  input {
      width: 100%;
+     color: #cca43b;
  }
+
 
 
  .user-form {
@@ -546,6 +573,14 @@ fieldset {
     justify-content: center;
 
 }
+.estimated-read {
+    color: #242f40;
+    text-align: center;
+    padding-top: 20px;
+}
+.read-mins {
+    color: #cca43b;
+}
 .debate-header {
     font-size: 70px;
     padding: 40px;
@@ -568,7 +603,7 @@ fieldset {
  }
 
  .argument {
-     padding: 100px;
+     padding: 60px 100px;
  }
 
  .argument-summary h4{
@@ -579,6 +614,7 @@ fieldset {
 }
  .argument-content {
     white-space: pre-line;
+    padding-top: 0;
  }
  .argument-content::first-letter{
      color: #cca43b;
@@ -814,9 +850,6 @@ nav {
     font-size: 15px;
 }
 
-.argument-content {
-    padding-top: 0;
-}
 
 .author-content {
     display: flex;

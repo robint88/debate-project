@@ -46,59 +46,66 @@ background-position: center center; background-size: cover;">
 
 <section class="debate-section">
     <% if(debate.for && debate.against) { %>
-                <article class="argument">
-                    <div class="argument-summary">
-                        <h4 class="case-header">the case for...</h4 class="case-header">
-                        <p class="argument-author">
-                            <em>by <%= debate.for.author %></em>
-                        </p>
-                    </div>
-                    <p class="argument-content">
-                        <%= debate.for.content %>
-                    </p>
-                </article>
-                <article class="argument argument-against">
-                    <div class="argument-summary">
-                        <h4 class="case-header">the case against...</h4>
-                        <p class="argument-author">
-                            <em>by <%= debate.against.author %></em>
-                        </p>
-                    </div>
-                    <p class="argument-content">
-                        <%= debate.against.content %>
-                    </p>
-                </article>
-        </section>
-        <section class="about-authors">
-            <!-- <h2>About the authors</h2> -->
-            <div class="author-content">
-                    <article class="author-details">
-                        <h4>
-                            about... <%= debate.for.author %>
-                        </h4>
-                        <% if(debate.for.authorLink){ %>
-                            <a target="_blank" href="http://<%= debate.for.authorLink %>">Visit Website</a>
-                        <% } %>
-                        
-                        <p>
-                            <%= debate.for.authorDetails %>
-                        </p>
-                    </article>
-                    <article class="author-details">
-                        <h4>
-                            about... <%= debate.against.author %>
-                        </h4>
-                        <% if(debate.against.authorLink){ %>
-                            <a target="_blank" href="http://<%= debate.against.authorLink %>">Visit Website</a>
-                        <% } %>
-                        
-                        <p class="author-content">
-                            <%= debate.against.authorDetails %>
-                        </p>
-                    </article>
+        <p class="estimated-read">
+            estimated read time...
+            <em class="read-mins">
+                    <%= Math.round(((debate.for.content.split(" ").length) + (debate.against.content.split(" ").length)) / 200) %>
+                    minutes
+            </em>
+        </p>
+        <article class="argument">
+            <div class="argument-summary">
+                <h4 class="case-header">the case for...</h4 class="case-header">
+                <p class="argument-author">
+                    <em>by <%= debate.for.author %></em>
+                </p>
             </div>
-        </section>
-        <p class="moderator-title"><em>moderator - <%= debate.moderator.username %></em></p>
+            <p class="argument-content">
+                <%= debate.for.content %>
+            </p>
+        </article>
+        <article class="argument argument-against">
+            <div class="argument-summary">
+                <h4 class="case-header">the case against...</h4>
+                <p class="argument-author">
+                    <em>by <%= debate.against.author %></em>
+                </p>
+            </div>
+            <p class="argument-content">
+                <%= debate.against.content %>
+            </p>
+        </article>
+</section>
+<section class="about-authors">
+    <!-- <h2>About the authors</h2> -->
+    <div class="author-content">
+            <article class="author-details">
+                <h4>
+                    about... <%= debate.for.author %>
+                </h4>
+                <% if(debate.for.authorLink){ %>
+                    <a target="_blank" href="http://<%= debate.for.authorLink %>">Visit Website</a>
+                <% } %>
+                
+                <p>
+                    <%= debate.for.authorDetails %>
+                </p>
+            </article>
+            <article class="author-details">
+                <h4>
+                    about... <%= debate.against.author %>
+                </h4>
+                <% if(debate.against.authorLink){ %>
+                    <a target="_blank" href="http://<%= debate.against.authorLink %>">Visit Website</a>
+                <% } %>
+                
+                <p class="author-content">
+                    <%= debate.against.authorDetails %>
+                </p>
+            </article>
+    </div>
+</section>
+<p class="moderator-title"><em>moderator - <%= debate.moderator.username %></em></p>
 
  <!-------------------- VOTES -------------------->
 
