@@ -183,7 +183,7 @@ background-position: center center; background-size: cover;">
                 <div id="comment-list">
                     <% debate.comments.forEach(function(comment){ %>
                         <div class="comment-item" id="comment-item">
-                            <em class="comment-date">comment created <%= moment(debate.createdAt).calendar() %></em>
+                            <em class="comment-date">comment created <%= moment(comment.createdAt).calendar() %></em>
                             <div class="comment-body">
                                 <%= comment.text %>
                             </div>
