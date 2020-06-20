@@ -75,14 +75,14 @@ $("#comment-list").on('submit', ".delete-comment-form", function(e){
         $commentToDelete = $(this).closest('.comment-item');
         $.ajax({
             url: actionUrl,
-            type: 'Delete',
+            type: 'DELETE',
             commentToDelete: $commentToDelete,
             success: function(data){
                 this.commentToDelete.remove();
             }
         })
     } else {
-
+        $(this).find('button').blur();
     }
 });
 

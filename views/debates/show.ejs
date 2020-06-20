@@ -199,9 +199,9 @@ background-position: center center; background-size: cover;">
                                 </fieldset>
                             </form>
                             <% if((currentUser && comment.author.id.equals(currentUser._id)) || (currentUser && debate.moderator.id.equals(currentUser._id)) || (currentUser && currentUser.isAdmin)){ %>
-                            <button class="pure-button edit-button" id="edit-comment">EDIT COMMENT</button>
-                            <form class="delete-comment-form" action="/category/<%= category_slug %>/<%= debate.slug %>sdiscussion/<%=comment._id%>?_method=DELETE" method="POST">
-                                <input class="pure-button" id="delete-comment-button" type="submit" value="DELETE">
+                            <button class="pure-button edit-button" id="edit-comment">EDIT</button>
+                            <form class="delete-comment-form" action="/category/<%= category_slug %>/<%= debate.slug %>/discussion/<%=comment._id%>?_method=DELETE" method="POST">
+                                <button class="pure-button" id="delete-comment-button" type="submit">DELETE</button>
                             </form>
                             <% } %>
                         </div>
