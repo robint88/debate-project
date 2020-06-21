@@ -1,9 +1,11 @@
 const express = require("express");
 const router = express.Router();
 const passport = require('passport');
+const middleware = require('../middleware');
 const User = require("../models/user");
 const Debate = require("../models/debate");
 const Category = require("../models/categories");
+const Suggest = require("../models/suggestion");
 
 // LANDING
 router.get("/", function(req, res){
@@ -21,7 +23,8 @@ router.get("/", function(req, res){
             // res.render('index',{categories: foundCats});
             Debate.find({isPublished: true}).sort({createdAt: 'desc'}).populate('category').exec(function(err, foundDebates){
                 if(err){
-                    console.log(err);
+                    req.flash('error', "Something went wrong");
+                    res.redirect('back');
                 } else {
                     res.render('index',{debates: foundDebates,categories: foundCats});
                 }
@@ -97,5 +100,43 @@ router.get("/logout", function(req,res){
     res.redirect("/");
 });
 
+// Suggest a topic
+// New
+router.get('/suggest/new', middleware.isLoggedIn, function(req, res){
+    Category.find({}).sort({name: 1}).exec(function(err, foundCategories){
+        if(err){
+            res.redirect('back');
+        } else{
+            res.render('suggest/new', {categories: foundCategories})
+        }
+    })
+});
+// Create
+router.post('/suggest', middleware.isLoggedIn, function(req, res){
+    Suggest.create(req.body.suggest, function(err, newSuggestion){
+        if(err){
+            req.flash('error', 'Sorry, something went wrong'); 
+            res.redirect('back');
+        } else {
+            newSuggestion.user.username = req.user.username;
+            newSuggestion.user.id = req.user._id;
+
+            newSuggestion.save();
+            req.flash('success', 'Your topic suggestion has been sent!');
+            res.redirect('/');
+        }
+    })
+});
+// Show
+router.get('/suggest', middleware.hasAdminAbility, function(req, res){
+    Suggest.find({}).sort({createdAt: 'desc'}).exec(function(err, foundSuggestions){
+        if(err){
+            req.flash('error', "Something went wrong");
+            res.redirect('back');
+        } else {
+            res.render('suggest/index', {suggestions: foundSuggestions});
+        }
+    });
+});
 
 module.exports = router;

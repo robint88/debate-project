@@ -1,0 +1,23 @@
+<%- include("../partials/header") %>
+
+<h2 class="pageHeaders">Got a topic you'd like to see debated? Suggest it here</h2>
+<% if(currentUser && currentUser.isAdmin){ %>
+    <div class="moderator-functions">
+        <p class="mod-title">Admin functions</p>
+        <div class="moderator-buttons">
+            <a class="pure-button edit-debate-button" href="/suggest"> View User Suggestions </a>
+        </div>
+    </div>
+<% } %>
+<div class="center-form">
+    <form action="/suggest" class="pure-form pure-form-stacked" method="post">
+        <fieldset>
+            <label for="suggestTitle">Topic</label>
+            <input class="pure-input-rounded" type="text" name="suggest[topic]" id="suggestTitle">
+            
+            <button class="pure-button submit-button" type="submit" name="createPost">Submit</button>
+        </fieldset>
+    </form>
+</div>
+
+<%- include("../partials/footer") %>

@@ -119,12 +119,12 @@ ul li {
     border-radius: 5px;
 }
 .flash-message-success {
-    background: #e5e5e5;
+    background: rgb(92, 197, 92);
     width: 66%;
     text-align: center;
     margin: 15px auto;
     padding: 8px;
-    color: #cca43b;
+    color: #fff;
     border-radius: 5px;
 }
 
@@ -248,7 +248,8 @@ ul li {
 }
 
 .index-debate-content,
-.debate-page-content {
+.debate-page-content,
+.suggestion-item {
     padding: 30px;
     width: 100%;
     display: flex;

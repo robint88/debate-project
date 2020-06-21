@@ -80,4 +80,5 @@ app.use("/category/:categorySlug/:slug/discussion",newCommentRoutes);
 //     console.log("*************************************");
 // });
 
+
 app.listen(process.env.PORT || 3000);

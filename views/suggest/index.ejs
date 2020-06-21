@@ -1,0 +1,26 @@
+<%- include("../partials/header") %>
+
+<h3 class="pageHeaders">
+    User Suggestions
+</h3>       
+  <section id="user-suggestions">
+    <% suggestions.forEach(function(suggestion){ %>
+        
+        <div class="suggestion-item">
+            <h4>
+                <%= suggestion.topic %>
+            </h4> 
+            <em>
+                submitted - <%= moment(suggestion.createdAt).format("MMM Do YYYY") %>
+            </em>
+            <p>
+                user - <em>
+                        <%= suggestion.user.username %>
+                </em>
+            </p>
+            <hr>
+        </div>
+    <% }) %>
+  </section>
+</section>
+<%- include("../partials/footer") %>
