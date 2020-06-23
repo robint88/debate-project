@@ -12,7 +12,7 @@ router.get("/", function(req, res){
             } else {
                 var noMatch;
                 if(foundDebates.length < 1){
-                    noMatch = "Sorry, no debates could be found.";
+                    noMatch = "Sorry, no debates could be found for '" + req.query.search + "'";
                 }
                 res.render('debates/debates', {debates: foundDebates, noMatch: noMatch});
             }

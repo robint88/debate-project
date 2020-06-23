@@ -53,7 +53,6 @@ router.get("/:slug", function(req, res){
                 res.redirect("/debates");
                 console.log(err);
             } else {
-                // console.log(foundDebate);
                 // NEED TO FIND AND UPDATE CATEGORY TOO
                 res.render("debates/show", {debate: foundDebate, category_slug: req.params.categorySlug});
             }

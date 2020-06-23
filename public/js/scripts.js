@@ -2,6 +2,10 @@ const navSlide = function(){
 const burger = document.querySelector('.burger');
 const nav = document.querySelector('.nav-links');
 const navLinks = document.querySelectorAll('.nav-links li');
+
+
+
+
 // Toggle nav
 burger.addEventListener('click', function(){
     nav.classList.toggle("nav-active");
@@ -30,7 +34,7 @@ const nextButton = document.querySelector('#n-btn');
 let counter = 1;
 const size = carouselImages[0].clientWidth;
 
-carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
+// carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
 
 // button listeners
 nextButton.addEventListener('click', function(){
@@ -46,15 +50,15 @@ prevButton.addEventListener('click', function(){
     carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
 });
 
-carouselSlide.addEventListener('transitionend', function(){
-    if(carouselImages[counter].id === 'last-clone'){
-        carouselSlide.style.transition = 'none';
-        counter = carouselImages.length - 2;
-        carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
-    }
-    if(carouselImages[counter].id === 'first-clone'){
-        carouselSlide.style.transition = 'none';
-        counter = carouselImages.length - counter;
-        carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
-    }
-});
+// carouselSlide.addEventListener('transitionend', function(){
+//     if(carouselImages[counter].id === 'last-clone'){
+//         carouselSlide.style.transition = 'none';
+//         counter = carouselImages.length - 2;
+//         carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
+//     }
+//     if(carouselImages[counter].id === 'first-clone'){
+//         carouselSlide.style.transition = 'none';
+//         counter = carouselImages.length - counter;
+//         carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
+//     }
+// });
