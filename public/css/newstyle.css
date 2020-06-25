@@ -135,6 +135,10 @@ ul li {
     border-radius: 5px;
 }
 
+.wrapper{
+  min-height: 85vh;
+}
+
 /* INDEX PAGE */
 
 #index-banner {
@@ -808,7 +812,25 @@ select {
     width: 100%;
 }
 
+footer {
+    margin-bottom: 0;
+    margin-top: 40px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 50px;
+    background: #242f40;
+    display: flex;
+    justify-content: space-around;
+}
 
+footer > a {
+    color: rgba(229, 229, 229, 0.6);
+    padding: 15px;
+}
+footer > a:hover {
+    color: rgba(204, 164, 59, 0.8);
+}
 
 @media screen and (max-width: 1080px){
 /* OWN NAV */
@@ -904,6 +926,7 @@ nav {
     width: 100%;
 }
 
+
 @media only screen and (max-width: 768px) {
     .index-cat-item h4,
     .debate-item h4 {
@@ -984,6 +1007,7 @@ nav {
 .argument {
     padding: 25px;
 }
+
 /* gold = #cca43b
 jet = #363636
 platinum = #E5E5E5

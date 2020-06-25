@@ -31,7 +31,7 @@ const carouselImages = document.querySelectorAll('.carousel-slide a');
 const prevButton = document.querySelector('#p-btn');
 const nextButton = document.querySelector('#n-btn');
 // Counter
-let counter = 1;
+let counter = 0;
 const size = carouselImages[0].clientWidth;
 
 // carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
