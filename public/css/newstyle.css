@@ -139,6 +139,29 @@ ul li {
   min-height: 85vh;
 }
 
+/* ABOUT PAGE */
+#about-header {
+    margin: 40px auto;
+    padding: 30px;
+    color: #cca43b;
+}
+.about{
+    width: 75%;
+    margin: 40px auto;
+    text-align: center;
+}
+.about-p {
+    margin: 10px auto;
+}
+
+#suggest-link {
+    color: #cca43b;
+    text-decoration: underline;
+}
+#suggest-link:hover {
+    color: #c54242;
+}
+
 /* INDEX PAGE */
 
 #index-banner {

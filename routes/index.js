@@ -221,7 +221,10 @@ router.post('/forgot', function(req, res, next) {
   });
 
 
-
+// about section
+router.get('/about', function(req, res){
+  res.render('about');
+});
 
 // Suggest a topic
 // New
