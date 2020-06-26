@@ -90,3 +90,9 @@ $("#comment-list").on('submit', ".delete-comment-form", function(e){
 $('body').on('click', '#unpublished-button', function(){
     $(this).siblings('#unpublished-debates').toggle();
 });
+
+// View args on mobile
+
+$('.argument').on('click', ".display-arg", function(){
+    $(this).siblings('.argument-content').toggle();
+})

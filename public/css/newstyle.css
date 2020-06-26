@@ -647,6 +647,10 @@ fieldset {
     color: #fff;
 
 }
+
+.display-arg {
+    display: none;
+}
  .debate-summary {
      padding: 10px 50px;
      color: #fff;
@@ -676,6 +680,7 @@ fieldset {
     white-space: pre-line;
     padding-top: 0;
     text-align: center;
+    display: block;
  }
  .argument-content::first-letter{
      color: #cca43b;
@@ -979,12 +984,17 @@ nav {
         padding: 30px 5px;
     }
 
-
-
     #debate-c-and-d {
         font-size: 12px;
     }
 
+    .display-arg{
+    display: block;
+    }
+
+    .argument-content {
+        display: none;
+    }
 
     .author-details {
         padding: 10px;

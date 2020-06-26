@@ -62,3 +62,12 @@ prevButton.addEventListener('click', function(){
 //         carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
 //     }
 // });
+
+// Display args on mobile
+
+const displayForBtn = document.querySelector('#display-for-arg');
+const displayForContent = document.querySelector('#for-content');
+
+displayForBtn.addEventListener('click', function(){
+    displayForContent.toggle();
+});

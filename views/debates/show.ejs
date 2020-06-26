@@ -56,23 +56,25 @@ background-position: center center; background-size: cover;">
             </em>
         </p>
         <article class="argument">
-            <div class="argument-summary">
-                <h4 class="case-header">the case for...</h4 class="case-header">
+            <div class="argument-summary" id="for-summary">
+                <h4 class="case-header">the case for...</h4>
                 <p class="argument-author">
                     <em>by <%= debate.for.author %></em>
                 </p>
             </div>
+            <button class="pure-button submit-button display-arg">View Argument</button>
             <p class="argument-content">
                 <%= debate.for.content %>
             </p>
         </article>
-        <article class="argument argument-against">
+        <article class="argument argument-against" id="against-summary">
             <div class="argument-summary">
                 <h4 class="case-header">the case against...</h4>
                 <p class="argument-author">
                     <em>by <%= debate.against.author %></em>
                 </p>
             </div>
+            <button class="pure-button submit-button display-arg">View Argument</button>
             <p class="argument-content">
                 <%= debate.against.content %>
             </p>
