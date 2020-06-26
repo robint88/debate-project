@@ -46,6 +46,11 @@
             <% } else {%>
                 <li>
                     <a class="user-buttons" href="#"><%= currentUser.username %></a>
+                    <% if(currentUser.isAdmin){ %>
+                        <span id="is-admin">
+                            a
+                        </span>
+                    <% } %>
                 </li>
                 <li>
                     <a class="user-buttons" href="/logout">logout</a>

@@ -78,7 +78,12 @@ nav {
     justify-content: space-around;
     margin: 0;
 }
-
+#is-admin {
+    color: #e5e5e5;
+    background: #c54242;
+    border-radius: 25%;
+    padding: 3px;
+}
 .nav-links {
     width: 40%;
 }
