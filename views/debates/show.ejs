@@ -45,6 +45,17 @@ background-position: center center; background-size: cover;">
 </section>
 
 <!-------------------- DEBATES -------------------->
+<section class="social">
+    <div class="social-buttons">
+        <ul class="share-buttons" data-source="simplesharingbuttons.com">
+            <li><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fornara.herokuapp.com%2F<%=debate.slug%>&quote=" title="Share on Facebook" target="_blank" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(document.URL) + '&quote=' + encodeURIComponent(document.URL)); return false;"><img alt="Share on Facebook" src="/images/flat_web_icon_set/color/Facebook.png" /></a></li>
+            <li><a href="https://twitter.com/intent/tweet?source=http%3A%2F%2Fornara.herokuapp.com%2F&text=:%20http%3A%2F%2Fornara.herokuapp.com%2F<%=debate.slug%>" target="_blank" title="Tweet" onclick="window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(document.title) + ':%20'  + encodeURIComponent(document.URL)); return false;"><img alt="Tweet" src="/images/flat_web_icon_set/color/Twitter.png" /></a></li>
+            <li><a href="http://www.reddit.com/submit?url=http%3A%2F%2Fornara.herokuapp.com%2<%=debate.slug%>F&title=" target="_blank" title="Submit to Reddit" onclick="window.open('http://www.reddit.com/submit?url=' + encodeURIComponent(document.URL) + '&title=' +  encodeURIComponent(document.title)); return false;"><img alt="Submit to Reddit" src="/images/flat_web_icon_set/color/Reddit.png" /></a></li>
+            <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Fornara.herokuapp.com%2F&title=&summary=&source=http%3A%2F%2Fornara.herokuapp.com%2F<%=debate.slug%>" target="_blank" title="Share on LinkedIn" onclick="window.open('http://www.linkedin.com/shareArticle?mini=true&url=' + encodeURIComponent(document.URL) + '&title=' +  encodeURIComponent(document.title)); return false;"><img alt="Share on LinkedIn" src="/images/flat_web_icon_set/color/LinkedIn.png" /></a></li>
+            <li><a href="mailto:?subject=&body=:%20http%3A%2F%2Fornara.herokuapp.com%2F<%=debate.slug%>" target="_blank" title="Send email" onclick="window.open('mailto:?subject=' + encodeURIComponent(document.title)+  '&body=' +  encodeURIComponent(document.URL)); return false;"><img alt="Send email" src="/images/flat_web_icon_set/color/Email.png" /></a></li>
+        </ul>
+    </div>
+</section>
 
 <section class="debate-section">
     <% if(debate.for && debate.against) { %>
@@ -159,7 +170,17 @@ background-position: center center; background-size: cover;">
         </section>
 
     <!-------------------- DISCUSSION -------------------->
-
+    <section class="social">
+        <div class="social-buttons">
+            <ul class="share-buttons" data-source="simplesharingbuttons.com">
+                <li><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fornara.herokuapp.com%2F&quote=" title="Share on Facebook" target="_blank" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(document.URL) + '&quote=' + encodeURIComponent(document.URL)); return false;"><img alt="Share on Facebook" src="/images/flat_web_icon_set/color/Facebook.png" /></a></li>
+                <li><a href="https://twitter.com/intent/tweet?source=http%3A%2F%2Fornara.herokuapp.com%2F&text=:%20http%3A%2F%2Fornara.herokuapp.com%2F" target="_blank" title="Tweet" onclick="window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(document.title) + ':%20'  + encodeURIComponent(document.URL)); return false;"><img alt="Tweet" src="/images/flat_web_icon_set/color/Twitter.png" /></a></li>
+                <li><a href="http://www.reddit.com/submit?url=http%3A%2F%2Fornara.herokuapp.com%2F&title=" target="_blank" title="Submit to Reddit" onclick="window.open('http://www.reddit.com/submit?url=' + encodeURIComponent(document.URL) + '&title=' +  encodeURIComponent(document.title)); return false;"><img alt="Submit to Reddit" src="/images/flat_web_icon_set/color/Reddit.png" /></a></li>
+                <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Fornara.herokuapp.com%2F&title=&summary=&source=http%3A%2F%2Fornara.herokuapp.com%2F" target="_blank" title="Share on LinkedIn" onclick="window.open('http://www.linkedin.com/shareArticle?mini=true&url=' + encodeURIComponent(document.URL) + '&title=' +  encodeURIComponent(document.title)); return false;"><img alt="Share on LinkedIn" src="/images/flat_web_icon_set/color/LinkedIn.png" /></a></li>
+                <li><a href="mailto:?subject=&body=:%20http%3A%2F%2Fornara.herokuapp.com%2F" target="_blank" title="Send email" onclick="window.open('mailto:?subject=' + encodeURIComponent(document.title) + '&body=' +  encodeURIComponent(document.URL)); return false;"><img alt="Send email" src="/images/flat_web_icon_set/color/Email.png" /></a></li>
+            </ul>
+        </div>
+    </section>
         <section class="discussion">
                 <h4>Discuss</h4>
                 <!-- <div class="discussion-join">

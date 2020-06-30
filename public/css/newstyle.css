@@ -8,6 +8,7 @@
     font-weight: 300;
     letter-spacing: 0.5px;
 }
+
 h1{
     text-align: center;
 }
@@ -643,6 +644,38 @@ fieldset {
     text-align: center;
     padding-top: 20px;
 }
+
+.social {
+    width: 100%;
+    padding: 20px;
+}
+.social-buttons {
+    margin: auto;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+ul.share-buttons{
+    list-style: none;
+    padding: 0;
+  }
+  
+  ul.share-buttons li{
+    display: inline;
+    padding: 5px;
+  }
+  
+  ul.share-buttons .sr-only{
+    position: absolute;
+    clip: rect(1px 1px 1px 1px);
+    clip: rect(1px, 1px, 1px, 1px);
+    padding: 0;
+    border: 0;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+  }
 .read-mins {
     color: #cca43b;
 }
