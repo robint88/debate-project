@@ -8,9 +8,10 @@ const middleware = require("../middleware");
 router.get("/", function(req,res){
     Category.findOne({slug: req.params.categorySlug}).populate('debates').exec(function(err, foundCat){
         if(err){
-            console.log(err);
+            req.flash('error', 'Something went wrong');
             res.redirect('back');
         } else {
+            res.locals.title = foundCat.name;
             res.render('category/show', {category: foundCat});
         }
     });
@@ -19,8 +20,10 @@ router.get("/", function(req,res){
 router.get("/new", middleware.hasAdminAbility,function(req,res){
     Category.find({}).sort({name: 1}).exec(function(err, foundCategories){
         if(err){
+            req.flash('error', 'Something went wrong');
             res.res('back');
         } else {
+            res.locals.title = "Add new debate";
             res.render("debates/compose", {categories: foundCategories, category_slug: req.params.categorySlug});
 
         }
@@ -50,10 +53,11 @@ router.post("/", middleware.hasAdminAbility, function(req,res){
 router.get("/:slug", function(req, res){
         Debate.findOne({slug: req.params.slug}).populate('comments for against category').exec(function(err, foundDebate){
             if(err){
+                req.flash('error', 'Something went wrong');
                 res.redirect("/debates");
-                console.log(err);
             } else {
                 // NEED TO FIND AND UPDATE CATEGORY TOO
+                res.locals.title = foundDebate.topic;
                 res.render("debates/show", {debate: foundDebate, category_slug: req.params.categorySlug});
             }
         });  
@@ -63,15 +67,15 @@ router.get("/:slug", function(req, res){
 // ADD AUTHENTICATION MIDDLEWARE TO EDIT AND UPDATE!
 router.get("/:slug/edit", middleware.checkDebateOwnershipNew, function(req,res){
     Debate.findOne({slug: req.params.slug}, function(err, foundArg){
-        console.log(foundArg);
         if(err){
+            req.flash('error', 'Something went wrong');
             res.redirect("/category/");
-            console.log(err);
         } else {
             Category.find({}).populate('categories').sort({name: 1}).exec(function(err, foundCategories){
                 if(err){
-                    console.log(err);
+                    req.flash('error', 'Something went wrong');
                 } else {
+                    res.locals.title = "Edit " + foundArg.topic;
                     res.render("debates/edit", {debate: foundArg, categories: foundCategories, category_slug: req.params.categorySlug});
                 }
             })

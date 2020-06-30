@@ -14,6 +14,7 @@ router.get("/", function(req, res){
                 if(foundDebates.length < 1){
                     noMatch = "Sorry, no debates could be found for '" + req.query.search + "'";
                 }
+                res.locals.title = "Results for '" + req.query.search +"'";
                 res.render('debates/debates', {debates: foundDebates, noMatch: noMatch});
             }
         });
@@ -25,6 +26,7 @@ router.get("/", function(req, res){
                 res.redirect('back');
             } else {
                 var noMatch;
+                res.locals.title = "Debates";
                 res.render('debates/debates', {debates: foundDebates, noMatch: noMatch});
             }
         });

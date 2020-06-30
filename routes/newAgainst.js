@@ -9,12 +9,15 @@ const middleware = require("../middleware");
 router.get("/new", middleware.checkDebateOwnershipNew, function(req, res){
     Debate.findOne({slug: req.params.slug}, function(err, foundDebate){
         if(err){
-            console.log(err);
+            req.flash('error', 'Something went wrong');
+            res.redirect('back')
         } else {
             Category.findOne({slug: req.params.categorySlug}, function(err, foundCat){
                 if(err){
-                    console.log(err);
+                    req.flash('error', 'Something went wrong');
+                    res.redirect('back')
                 } else {
+                    res.locals.title = "New 'Against' argument";
                     res.render("against/new", {debate: foundDebate, category: foundCat});
                 }   
             });  
@@ -25,12 +28,12 @@ router.get("/new", middleware.checkDebateOwnershipNew, function(req, res){
 router.post("/", middleware.checkDebateOwnershipNew, function(req,res){
     Debate.findOne({slug: req.params.slug}, function(err, foundDebate){
         if(err){
-            console.log(err);
+            req.flash('error', 'Something went wrong');
             res.redirect("/debates");
         } else {
             Argument.create(req.body.against, function(err, againstArg){
                 if(err){
-                    console.log(err);
+                    req.flash('error', 'Something went wrong');
                 } else {
                     againstArg.save()
                     foundDebate.against = againstArg; 
@@ -47,6 +50,7 @@ router.get("/:against_id/edit", middleware.checkDebateOwnershipNew, function(req
         if(err){
             res.redirect("back");
         } else {
+            res.locals.title = "Edit 'Against' argument";
             res.render("against/edit", {debate_slug: req.params.slug, againstArg: foundArg, category_slug: req.params.categorySlug});
         }
     });

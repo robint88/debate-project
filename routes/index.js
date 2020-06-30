@@ -29,6 +29,7 @@ router.get("/", function(req, res){
                     req.flash('error', "Something went wrong");
                     res.redirect('back');
                 } else {
+                  res.locals.title = "debate and discuss";
                     res.render('index',{debates: foundDebates,categories: foundCats});
                 }
             });
@@ -64,7 +65,8 @@ router.get("/", function(req, res){
 // Authentication Routes
 //  Register
 router.get("/register", function(req, res){
-    res.render("register");
+  res.locals.title = "Register";
+  res.render("register");
 });
 
 // Signup logic
@@ -78,6 +80,7 @@ router.post('/register', function(req, res){
         }
         passport.authenticate("local")(req,res, function(){
             req.flash('success', 'Welcome, ' + user.username);
+            res.locals.title = "Welcome";
             res.redirect("/");
         });
     });
@@ -85,6 +88,7 @@ router.post('/register', function(req, res){
 
 // Login
 router.get("/login", function(req,res){
+  res.locals.title = "Log in";
     res.render("login");
 });
 // Login Logic
@@ -105,6 +109,7 @@ router.get("/logout", function(req,res){
 
 // Reset password
 router.get('/forgot', function(req, res){
+    res.locals.title = "Password reset";
     res.render('forgot');
 });
 
@@ -166,6 +171,7 @@ router.post('/forgot', function(req, res, next) {
         req.flash('error', 'Password reset token is invalid or has expired.');
         return res.redirect('/forgot');
       }
+      res.locals.title = "Reset password";
       res.render('reset', {token: req.params.token});
     });
   });
@@ -223,6 +229,7 @@ router.post('/forgot', function(req, res, next) {
 
 // about section
 router.get('/about', function(req, res){
+  res.locals.title = "About";
   res.render('about');
 });
 
@@ -233,6 +240,7 @@ router.get('/suggest/new', middleware.isLoggedIn, function(req, res){
         if(err){
             res.redirect('back');
         } else{
+          res.locals.title = "Suggest a debate";
             res.render('suggest/new', {categories: foundCategories})
         }
     })
@@ -260,6 +268,7 @@ router.get('/suggest', middleware.hasAdminAbility, function(req, res){
             req.flash('error', "Something went wrong");
             res.redirect('back');
         } else {
+          res.locals.title = "Debate suggestions";
             res.render('suggest/index', {suggestions: foundSuggestions});
         }
     });

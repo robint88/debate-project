@@ -7,9 +7,10 @@ const middleware = require("../middleware");
 router.get('/', function(req, res){
     Category.find({}).sort({name: 1}).exec(function(err, foundCat){
         if(err){
-            console.log(err);
+            req.flash('error', 'Something went wrong');
             res.redirect("/");
         } else {
+            res.locals.title = "Categories";
             res.render("category/index", {categories: foundCat});
         }
     });
@@ -17,12 +18,13 @@ router.get('/', function(req, res){
 
 // New and create
 router.get("/new", middleware.hasAdminAbility, function(req, res){
+    res.locals.title = "Add new category";
     res.render("category/new");
 });
 router.post("/", middleware.hasAdminAbility, function(req, res){
     Category.create(req.body.category, function(err, newCategory){
         if(err){
-            console.log(err);
+            req.flash('error', 'Something went wrong');
             res.redirect('back');
         } else {
             newCategory.save();
@@ -35,9 +37,10 @@ router.get("/:categorySlug", function(req, res){
     Category.findOne({slug: req.params.categorySlug}).populate('debates').exec(function(err, foundCat){
         console.log(foundCat);
         if(err){
-            console.log(err);
+            req.flash('error', 'Something went wrong when finding that category');
             res.redirect('back');
         } else {
+            res.locals.title = foundCat.name;
             res.render('category/show', {category: foundCat});
         }
     });
@@ -49,9 +52,10 @@ router.get("/:categorySlug", function(req, res){
 router.get("/:categorySlug/edit", middleware.hasAdminAbility, function(req, res){
     Category.findOne({slug: req.params.categorySlug}, function(err, foundCat){
         if(err){
-            console.log(err);
+            req.flash('error', 'Something went wrong');
             res.redirect('back');
         } else {
+            res.locals.title = "Edit category";
             res.render('category/edit', {category: foundCat});
         }
     });
@@ -59,10 +63,11 @@ router.get("/:categorySlug/edit", middleware.hasAdminAbility, function(req, res)
 router.get("/:categorySlug/removedebate", middleware.hasAdminAbility, function(req, res){
     Category.findOne({slug: req.params.categorySlug}).populate('debates').exec(function(err, foundCat){
         if(err){
-            console.log(err);
+            req.flash('error', 'Something went wrong');
             res.redirect('back');
         } else {
             // res.send("THIS WAY");
+            res.locals.title = "Remove debate";
             res.render('category/removedebate', {category: foundCat});
         }
     });

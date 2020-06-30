@@ -10,6 +10,7 @@ router.get("/new", middleware.isLoggedIn, function(req, res){
         if(err){
             console.log(err);
         } else {
+            res.locals.title = "New comment";
             res.render("discussion/new", {debate: foundDebate});
         }
     });
@@ -48,6 +49,7 @@ router.get("/:comment_id/edit", middleware.checkCommentOwnership, function(req,r
         if(err){
             res.redirect("back");
         } else {
+            res.locals.title = "Edit comment";
             res.render("discussion/edit", {category_slug: req.params.categorySlug, debate_slug: req.params.slug, comment: foundComment});
         }
     });
