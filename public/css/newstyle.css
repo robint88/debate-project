@@ -1025,7 +1025,13 @@ nav {
     #debate-c-and-d {
         font-size: 12px;
     }
-
+    .social-buttons {
+        margin: auto;
+        width: 90%;
+        height: 100%;
+        display: flex;
+        justify-content: space-evenly;
+    }
     .display-arg{
     display: block;
     }
